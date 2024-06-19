@@ -40,7 +40,8 @@
     
     Weak(weakSelf);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf getLndState];
+        [weakSelf getLndState:YES callBack:^(NSString *litStatus) {
+        }];
     });
     [[BLPermissionsManager shared] requestNetwork];
 
@@ -60,7 +61,7 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 }
-//饿的我
+
 -(void)initMainTabBarVC{
     self.window.rootViewController = self.tabBarVC;
     [self.window makeKeyAndVisible];
@@ -73,7 +74,7 @@
     [self.window makeKeyAndVisible];
 }
 
--(void)getLndState{
+-(void)getLndState:(BOOL)isNeedUnLock callBack:(void (^)(NSString * litStatus))blok{
     Weak(weakSelf);
     [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSString * litStatus = ApiGetState();
@@ -83,15 +84,22 @@
             [weakSelf initWalletVC];
             [timer invalidate];
         }else if ([litStatus isEqualToString:@"LOCKED"]){//钱包已锁定
-            static dispatch_once_t onceToken;
-            dispatch_once(&onceToken, ^{
-                NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
-                NSString * passWorld = walletInfo[@"WalletPassWorld"];
-                [BLTools showTostWithTip:@"开始解锁钱包~" superView:weakSelf.window];
-                if(!ApiUnlockWallet(passWorld)){
-                    [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.window];
+            if(isNeedUnLock){
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
+                    NSString * passWorld = walletInfo[@"WalletPassWorld"];
+                    [BLTools showTostWithTip:@"开始解锁钱包~" superView:weakSelf.window];
+                    if(!ApiUnlockWallet(passWorld)){
+                        [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.window];
+                    }
+                });
+            }else{
+                if(blok){
+                    blok(litStatus);
                 }
-            });
+                [timer invalidate];
+            }
         }else if ([litStatus isEqualToString:@"UNLOCKED"]){//钱包已成功解锁，但 RPC 服务器尚未就绪
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
@@ -105,7 +113,6 @@
             [weakSelf getTapState];
             [timer invalidate];
         }else if ([litStatus isEqualToString:@"NO_START_LND"]){//LND服务挂了，请重新启动服务
-            [BLTools showTostWithTip:@"LND服务挂了，请重新启动服务" superView:weakSelf.window];
 //            [timer invalidate];
         }
     }];

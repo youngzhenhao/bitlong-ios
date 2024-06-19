@@ -30,7 +30,7 @@ class BLBaseTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func `deinit`(){
-        print("视图-%@- had deinited！",NSStringFromClass(object_getClass(self)!))
+    deinit {
+        NSSLog(msg: String.init(format: "cell\n-%@- had deinited！",NSStringFromClass(object_getClass(self)!)))
     }
 }

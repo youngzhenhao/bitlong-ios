@@ -110,7 +110,7 @@ class BLCreatAssetLogoCell: BLCreatAssetsCell {
     
     @objc override func containerTapAcation(){
         if delegate != nil && (delegate?.responds(to: #selector(delegate?.getLogoPicAcation))) != nil{
-            delegate?.getLogoPicAcation()
+            delegate?.getLogoPicAcation!()
         }
     }
 }

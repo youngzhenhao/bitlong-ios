@@ -29,12 +29,12 @@ import CoreLocation
         if let location = locations.last {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            print("Latitude: \(latitude), Longitude: \(longitude)")
+            NSSLog(msg: "Latitude: \(latitude), Longitude: \(longitude)")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to get user's location: \(error.localizedDescription)")
+        NSSLog(msg: String.init(format: "Failed to get user's location: \(error.localizedDescription)"))
     }
     
     /*
@@ -46,16 +46,16 @@ import CoreLocation
         manager.setReachabilityStatusChange { status in
             switch (status) {
             case .unknown:
-                print("Network unknown")
+                NSSLog(msg: "Network unknown")
                 break
             case .notReachable:
-                print("Network notReachable")
+                NSSLog(msg: "Network notReachable")
                 break
             case .reachableViaWWAN:
-                print("Network reachableViaWWAN")
+                NSSLog(msg: "Network reachableViaWWAN")
                 break
             case .reachableViaWiFi:
-                print("Network reachableViaWiFi")
+                NSSLog(msg: "Network reachableViaWiFi")
                 break
             default:
                 break

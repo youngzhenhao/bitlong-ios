@@ -18,7 +18,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         super.viewDidLoad()
         
         self.title = "发行"
-        self.navgationRightBtn(picStr: "", titleStr: "历史记录", titleColor: UIColorHex(hex: 0x383838, a: 1.0))
+        self.navgationRightBtn(picStr: "", title: "历史记录", titleColor: nil)
         
         self.initUI()
         self.getFeeQueryRate()
@@ -374,7 +374,6 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         
             self.saveLocalDatas()
 //            let listAssetsStr : String = ApiListAssets(false, false, false)
-//            print("listAssetsStr:%@",listAssetsStr)
         }else{
             self.getFeeQueryRate()
             
@@ -486,9 +485,5 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         } failed: { [weak self] error in
             BLTools.showTost(tip: error.msg, superView: (self?.view)!)
         }
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

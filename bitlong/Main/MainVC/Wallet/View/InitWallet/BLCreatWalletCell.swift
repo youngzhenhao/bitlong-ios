@@ -139,8 +139,4 @@ class BLCreatWalletCell: BLBaseTableViewCell,UITextFieldDelegate {
     func getText() -> String{
         return textField.text!
     }
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

@@ -11,14 +11,17 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.isHidden = false
         self.navgationLeftBtn(picStr: "ic_back_black")
+        let bgColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
+        self.setNavTitleColor(titleColor: UIColorHex(hex: 0x383838, a: 1.0), bgColor: bgColor, bgImage: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.setNavigationBar(isHidden: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +40,10 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
+    }
+    
+    func setNavigationBar(isHidden : Bool){
+        self.navigationController?.isNavigationBarHidden = isHidden
     }
     
     @objc lazy var tableView : UITableView = {
@@ -117,6 +124,44 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
         
     }
     
+    func setNavTitleColor(titleColor : UIColor, bgColor : UIColor?, bgImage : UIImage?){
+        var nav : UINavigationController?
+        if self.navigationController != nil{
+            nav = self.navigationController
+        }else{
+            nav = BLTools.getCurrentVC().navigationController
+        }
+        if nav == nil{
+            nav = UINavigationController.init(rootViewController: BLTools.getCurrentVC())
+        }
+        
+        let attrs : NSMutableDictionary = NSMutableDictionary.init()
+        attrs[NSAttributedString.Key.font] = FONT_BOLD(s: 17*Float(SCALE))
+        attrs[NSAttributedString.Key.foregroundColor] = titleColor
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            if bgColor != nil{
+                appearance.backgroundColor = bgColor
+            }
+            if bgImage != nil{
+                appearance.backgroundImage = bgImage
+            }
+            // 去掉半透明效果
+            appearance.backgroundEffect = nil
+            // 去除导航栏阴影（如果不设置clear，导航栏底下会有一条阴影线）
+            appearance.shadowColor = .clear
+            appearance.titleTextAttributes = attrs as! [NSAttributedString.Key : Any]
+            // 带scroll滑动的页面
+            nav!.navigationBar.scrollEdgeAppearance = appearance
+            // 常规页面
+            nav!.navigationBar.standardAppearance = appearance
+        }else{
+            nav!.navigationBar.setBackgroundImage(bgImage, for: .default)
+            nav!.navigationBar.titleTextAttributes = (attrs as! [NSAttributedString.Key : Any])
+        }
+    }
+    
     @objc func navgationLeftBtn(picStr : String){
         let leftButton : UIButton = UIButton.init()
         let normalImage : UIImage?
@@ -135,13 +180,17 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
         self.navigationItem.setLeftBarButton(leftBarItem, animated: true)
     }
      
-    @objc func navgationRightBtn(picStr : String, titleStr : String, titleColor : UIColor){
+    @objc func navgationRightBtn(picStr : String, title : String, titleColor : UIColor?){
         let rightButton : UIButton = UIButton.init()
         if 0 < picStr.count{
             rightButton.setImage(imagePic(name: picStr), for: .normal)
-        }else if 0 < titleStr.count{
-            rightButton.setTitle(titleStr, for: .normal)
-            rightButton.setTitleColor(titleColor, for: .normal)
+        }else if 0 < title.count{
+            rightButton.setTitle(title, for: .normal)
+            if titleColor != nil{
+                rightButton.setTitleColor(titleColor, for: .normal)
+            }else{
+                rightButton.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
+            }
             rightButton.titleLabel?.font = FONT_NORMAL(s: 12*Float(SCALE))
         }
         rightButton.isExclusiveTouch = true
@@ -333,8 +382,8 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
         let _ : NSString = ""
     }
     
-    func `deinit`(){
-        print("控制器-%@- had deinited！",NSStringFromClass(object_getClass(self)!))
+    deinit {
+        NSSLog(msg: String.init(format: "deinit\n控制器-%@- had deinited！",NSStringFromClass(object_getClass(self)!)))
     }
 }
 

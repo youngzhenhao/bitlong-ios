@@ -23,8 +23,7 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
+        self.setNavigationBar(isHidden: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,8 +50,8 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
 //        WKWebViewJavascriptBridge
         self.initJavascriptBridge()
         
-        self.setHtmlUrl(urlStr: "http://202.79.173.43/")
-//        self.setHtmlUrl(urlStr: "http://192.168.110.36:8080/")
+//        self.setHtmlUrl(urlStr: "http://202.79.173.43/")
+        self.setHtmlUrl(urlStr: "http://192.168.110.36:8080/")
     }
     
     lazy var netWorkManager : NetworkManager = {
@@ -60,10 +59,6 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
         
         return manager
     }()
-    
-    override func listView() -> UIView! {
-        return self.view
-    }
     
     func setHtmlUrl(urlStr : String){
         htmlUrl = urlStr.removingPercentEncoding
@@ -96,10 +91,10 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
 //                let script : WKUserScript = WKUserScript.init(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: true)
 //                userController.addUserScript(script)
 //            }catch{
-//                print("js_brige could not be loaded.")
+//                NSSLog(msg: "js_brige could not be loaded.")
 //            }
 //        }else{
-//            print("js_brige File not found")
+//            NSSLog(msg: "js_brige File not found")
 //        }
 //        userController.add(self, name: JsCallHandle)
         var view =  WKWebView.init(frame: .zero, configuration: config)
@@ -204,9 +199,9 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
         let genSeedStr : String = BLTools.getGenSeed()
         let generateKeys : String = ApiGenerateKeys(genSeedStr as String)
         if 0 < generateKeys.count{
-            print("generateKeys 成功")
+            NSSLog(msg: "generateKeys 成功")
         }else{
-            print("generateKeys 失败")
+            NSSLog(msg: "generateKeys 失败")
         }
     }
     
@@ -214,7 +209,7 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
         bridge = WKWebViewJavascriptBridge.init(webView: webView)
         bridge?.isLogEnable = true
         bridge?.register(handlerName: "getPublicKey", handler: { parameters, callback in
-//            print("parameters:%@",parameters as Any)
+            NSSLog(msg: String.init(format: "parameters:%@",parameters!))
             if parameters != nil{
                 let dic : NSDictionary = parameters! as NSDictionary
                 let signObj = dic["signStr"]
@@ -224,13 +219,13 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
                         if signStr.count <= 0{
                             if callback != nil{
                                 let publicKey : String = ApiGetPublicKey()
-                                print("publicKey:%@",publicKey)
+                                NSSLog(msg: String.init(format: "publicKey:%@",publicKey))
                                 callback!(publicKey)
                             }
                         }else{
                             if callback != nil{
                                 let signMess : String = ApiSignMess(signStr)
-                                print("signMess:%@",signMess)
+                                NSSLog(msg: String.init(format: "signMess:%@",signMess))
                                 callback!(signMess)
                             }
                         }

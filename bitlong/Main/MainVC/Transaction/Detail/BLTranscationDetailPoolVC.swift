@@ -15,10 +15,6 @@ class BLTranscationDetailPoolVC: BLBaseVC {
         self.initUI()
     }
     
-    override func listView() -> UIView! {
-        return self.view
-    }
-    
     func initUI(){
         
     }

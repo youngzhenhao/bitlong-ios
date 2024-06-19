@@ -13,7 +13,7 @@ class BLCollectionAddAddressVC: BLBaseVC {
         super.viewDidLoad()
 
         self.title = "地址管理"
-        self.navgationRightBtn(picStr:"", titleStr: "刷新", titleColor: UIColorHex(hex: 0x665AF0, a: 1.0))
+        self.navgationRightBtn(picStr:"", title: "刷新", titleColor: nil)
    
         self.initUI()
         self.loadData()

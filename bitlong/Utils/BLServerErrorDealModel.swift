@@ -36,8 +36,6 @@ class BLServerErrorDealModel: BLBaseModel {
 
     //下载证明文件
     @objc static func proofDownload(filePath : String, assetId : String, fileName : String){
-//       print("%@", BLServerErrorDealModel.hexStringToBytes(dates))
-               
         let urlStr : String = ApiProofDownload + "/" + assetId + "/" + fileName
         let param : NSMutableDictionary = NSMutableDictionary.init(dictionary: BLLoginManger.shared.getHeader())
         param.setValue("application/octet-stream", forKey: "Accept")
@@ -52,7 +50,7 @@ class BLServerErrorDealModel: BLBaseModel {
                         }
                     }
                 } catch {
-                    print("Error writing proof file data to file: \(error)")
+                    NSSLog(msg: String.init(format: "Error writing proof file data to file: \(error)"))
                 }
             }
         } onFailureBlock: { errorRespModel in

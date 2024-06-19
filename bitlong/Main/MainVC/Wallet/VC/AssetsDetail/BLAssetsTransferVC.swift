@@ -173,7 +173,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
         vc.callBack = { [weak self] codeStr in
             self?.getDecodeAddr(codeStr: codeStr)
         }
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.setNavigationBar(isHidden: true)
     }
 
     func getDecodeAddr(codeStr : String){

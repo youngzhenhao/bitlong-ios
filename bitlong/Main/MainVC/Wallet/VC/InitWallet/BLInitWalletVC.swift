@@ -106,8 +106,4 @@ class BLInitWalletVC: BLBaseVC {
         
         return arr
     }()
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

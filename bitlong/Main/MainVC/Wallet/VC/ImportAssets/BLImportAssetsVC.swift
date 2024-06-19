@@ -24,8 +24,7 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
+        self.setNavigationBar(isHidden: false)
     }
 
     func initUI(){

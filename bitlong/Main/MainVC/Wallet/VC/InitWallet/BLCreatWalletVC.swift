@@ -147,8 +147,8 @@ class BLCreatWalletVC: BLBaseVC {
         let genSeedVC : BLGetGenSeedVC = BLGetGenSeedVC.init()
         let walletInfo : NSMutableDictionary = NSMutableDictionary.init()
         walletInfo.setObject(nameField?.text as Any, forKey: WalletName as NSCopying)
-        walletInfo.setObject(passWorldField?.text as Any, forKey: PalletPassWorld as NSCopying)
-        walletInfo.setObject(passWorldNotiField?.text as Any, forKey: PassWorldNotice as NSCopying)
+        walletInfo.setObject(passWorldField?.text as Any, forKey: WalletPassWorld as NSCopying)
+        walletInfo.setObject(passWorldNotiField?.text as Any, forKey: WalletPassWorldNotice as NSCopying)
         genSeedVC.pageType = .backupsGenSeed
         genSeedVC.walletInfo = walletInfo
         genSeedVC.creatWalletBlock = {
@@ -156,9 +156,5 @@ class BLCreatWalletVC: BLBaseVC {
             appDelegate.initMainTabBarVC()
         }
         self.present(genSeedVC, animated: true)
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

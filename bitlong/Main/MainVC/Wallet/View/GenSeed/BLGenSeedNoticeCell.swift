@@ -50,8 +50,4 @@ class BLGenSeedNoticeCell: BLBaseTableViewCell {
         
         return lbl
     }()
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

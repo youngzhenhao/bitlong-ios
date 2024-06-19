@@ -85,8 +85,4 @@ class BLWalletCell: BLBaseTableViewCell {
         
         return view
     }()
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

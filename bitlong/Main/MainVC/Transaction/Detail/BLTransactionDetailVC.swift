@@ -19,8 +19,7 @@ class BLTransactionDetailVC: BLBaseVC,JXCategoryListCollectionContainerViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
+        self.setNavigationBar(isHidden: true)
     }
     
     func initUI(){
@@ -224,27 +223,23 @@ class BLTransactionDetailVC: BLBaseVC,JXCategoryListCollectionContainerViewDataS
     //TimeItemDelegate
     func itemClickAcation(index: NSInteger) {
         if index == ChartTimeType.chartOneMin.rawValue{
-            print("1分")
+            NSSLog(msg: "1分")
         }else if index == ChartTimeType.chartFiveMin.rawValue{
-            print("5分")
+            NSSLog(msg: "5分")
         }else if index == ChartTimeType.chartThirtyMin.rawValue{
-            print("30分")
+            NSSLog(msg: "30分")
         }else if index == ChartTimeType.chartOneHour.rawValue{
-            print("1时")
+            NSSLog(msg: "1时")
         }else if index == ChartTimeType.chartFourHour.rawValue{
-            print("4时")
+            NSSLog(msg: "4时")
         }else if index == ChartTimeType.chartOneDay.rawValue{
-            print("1天")
+            NSSLog(msg: "1天")
         }else if index == ChartTimeType.chartOneWeek.rawValue{
-            print("1周")
+            NSSLog(msg: "1周")
         }else if index == ChartTimeType.chartMore.rawValue{
-            print("更多")
+            NSSLog(msg: "更多")
         }else if index == ChartTimeType.chartIndex.rawValue{
-            print("指标")
+            NSSLog(msg: "指标")
         }
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

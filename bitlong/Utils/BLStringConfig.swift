@@ -16,22 +16,22 @@ let APISECCUSS  = "SECCUSS"
 //助解字
 let GenSeed = "GenSeed"
 //钱包信息
-let WalletInfo         = "WalletInfo"
-let WalletName         = "WalletName"
-let PalletPassWorld    = "WalletPassWorld"
-let PassWorldNotice    = "WassWorldNotice"
-let WalletBalance      = "WalletBalance"//钱包资产信息 包含一下信息
-let TotalBalance       = "TotalBalance" //总资产
-let ConfirmedBalance   = "ConfirmedBalance" //已确认资产
-let UnconfirmedBalance = "UnconfirmedBalance" //未已确认资产
-let LockedBalance      = "LockedBalance" //锁定的资产
+let WalletInfo               = "WalletInfo"
+let WalletName               = "WalletName"
+let WalletPassWorld          = "WalletPassWorld"
+let WalletPassWorldNotice    = "WalletPassWorldNotice"
+let WalletBalance            = "WalletBalance"//钱包资产信息 包含一下信息
+let TotalBalance             = "TotalBalance" //总资产
+let ConfirmedBalance         = "ConfirmedBalance" //已确认资产
+let UnconfirmedBalance       = "UnconfirmedBalance" //未已确认资产
+let LockedBalance            = "LockedBalance" //锁定的资产
 
 //钱包地址
-let WalletAddress   = "WalletAddress"
+let WalletAddress            = "WalletAddress"
 //资产信息
-let AssetsInfo      = "AssetsInfo"
-let AssetsName      = "AssetsName"
-let AssetsNum       = "AssetsNum"
+let AssetsInfo               = "AssetsInfo"
+let AssetsName               = "AssetsName"
+let AssetsNum                = "AssetsNum"
 //创建资产发票时间
 let AssetsInvoiceCreatTime   = "AssetsInvoiceCreatTime"
 
@@ -42,14 +42,14 @@ let Token  = "Token"
  test
  */
 //创建钱包
-let genSeedTitle               = "备份助记词"
-let genSeedSubTitle            = "请按顺序抄写助记词，确保备份正确。"
-let genSeedWarnTitle           = "妥善保管助记词至隔离网络的安全地方。"
-let genSeedWarnSubTitle        = "请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等。"
+let genSeedTitle              = "备份助记词"
+let genSeedSubTitle           = "请按顺序抄写助记词，确保备份正确。"
+let genSeedWarnTitle          = "妥善保管助记词至隔离网络的安全地方。"
+let genSeedWarnSubTitle       = "请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等。"
 
-let manualBackupTitle = "手动备份"
-let cloudBackupTitle = "云备份"
-let laterBackupTitle = "稍后备份"
+let manualBackupTitle         = "手动备份"
+let cloudBackupTitle          = "云备份"
+let laterBackupTitle          = "稍后备份"
 
 
 /*

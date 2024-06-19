@@ -18,7 +18,8 @@ class BLTransactionVC: BLBaseVC,JXCategoryListCollectionContainerViewDataSource,
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        super.viewWillAppear(animated)
+        self.setNavigationBar(isHidden: true)
     }
     
     func initUI(){
@@ -178,9 +179,5 @@ class BLTransactionVC: BLBaseVC,JXCategoryListCollectionContainerViewDataSource,
     
     func categoryView(_ categoryView: JXCategoryBaseView!, scrollingFromLeftIndex leftIndex: Int, toRightIndex rightIndex: Int, ratio: CGFloat) {
         
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

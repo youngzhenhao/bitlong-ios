@@ -18,10 +18,6 @@ class BLTranscationDetailMarketVC: BLBaseVC,DetailMarketDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-    override func listView() -> UIView! {
-        return self.view
-    }
     
     func initUI(){
         self.view.addSubview(tableView)

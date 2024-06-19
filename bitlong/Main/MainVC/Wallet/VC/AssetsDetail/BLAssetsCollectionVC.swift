@@ -48,7 +48,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
 //        let walletDic : NSDictionary = userDefaults.object(forKey: WalletInfo) as! NSDictionary
 //        let walletName = walletDic[WalletName] as? String
 //        let addressStr : String = ApiLnurlUploadUserInfo(lnurlGetNewId, walletName, "9090", lnurlGetPortAvailable)
-//        print("%@",addressStr)
+//        NSSLog(msg: addressStr)
         
         let obj = userDefaults.value(forKeyPath: WalletAddress)
         if obj != nil && obj is String{
@@ -279,7 +279,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
             let postscript : String = assetsCollectionView.postscript()
             let param : NSDictionary = ["amount" : amount, "memo" : postscript]
             BLWalletViewModel.invoiceInvoiceApply(param: param) { [weak self] respObj in
-                print("respObj:%@",respObj)
+                NSSLog(msg: String.init(format: "respObj:%@",respObj))
                 //暂时存储时间
                 let dic : NSDictionary = respObj
                 if dic["invoice"] != nil{
@@ -287,7 +287,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
                 }
                 self?.getInvoiceQueryInvoice()
             } failed: { error in
-                print("error:%@",error)
+                NSSLog(msg: String.init(format: "error:%@",error))
             }
         }
     }

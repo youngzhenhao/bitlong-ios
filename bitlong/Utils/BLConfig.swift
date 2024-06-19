@@ -79,6 +79,11 @@ func isipad() -> Bool {
     return false;
 }
 
+func NSSLog<T>(msg: T) {
+#if DEBUG
+    print(msg)
+#endif
+}
 
 func KNSDocumentPath(name : String) -> String{
     let pathArr : NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray

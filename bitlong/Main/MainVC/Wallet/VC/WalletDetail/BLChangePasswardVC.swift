@@ -133,26 +133,40 @@ class BLChangePasswardVC: BLBaseVC {
             return
         }
         
+        let oldPassward : String = (oldPasswardCell?.textField.text)!
+        let newPassward : String = (newPasswardCell?.textField.text)!
+        
         //校验旧密码
         let obj = userDefaults.object(forKey: WalletInfo)
         if obj != nil && obj is NSDictionary{
             let dic : NSDictionary = obj as! NSDictionary
-            if let passward = dic[PalletPassWorld]{
-                if (newPasswardCell?.textField.text)! != passward as! String{
+            if let passward = dic[WalletPassWorld]{
+                if oldPassward != passward as! String{
                     BLTools.showTost(tip: "原密码错误", superView: self.view)
                     return
                 }
             }
         }
         
-        if !BLTools.checkRegular(regex: PasswardRegex, value: (newPasswardCell?.textField.text)!){
+        if !BLTools.checkRegular(regex: PasswardRegex, value: newPassward){
             BLTools.showTost(tip: "密码不合法，请输入8到12位数字与字母组合的密码", superView: self.view)
             return
         }
         
-        if ApiChangePassword(oldPasswardCell?.textField.text, newPasswardCell?.textField.text){
+        if ApiChangePassword(oldPassward, newPassward){
             BLTools.showTost(tip: "密码修改成功", superView: self.view)
-            self.back()
+
+            let obj = userDefaults.object(forKey: WalletPassWorld)
+            if obj != nil && obj is NSDictionary{
+                let dic : NSMutableDictionary = NSMutableDictionary.init(dictionary: obj as! NSDictionary)
+                dic.setObject(newPassward, forKey: WalletPassWorld as NSCopying)
+                userDefaults.synchronize()
+                if ApiUnlockWallet((newPassward)) {
+                    NSSLog(msg: "se")
+                }else{
+                    NSSLog(msg: "fa")
+                }
+            }
         }else{
             BLTools.showTost(tip: "密码修改失败", superView: self.view)
         }

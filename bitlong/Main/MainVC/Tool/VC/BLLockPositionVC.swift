@@ -1,25 +1,29 @@
 //
-//  BLDestructionVC.swift
+//  BLLockPositionVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/14.
+//  Created by 微链通 on 2024/6/18.
 //
 
 import UIKit
 
-class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
-    var destructionNum : Int64 = 0
+class BLLockPositionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate,CreatAssetsDelegate {
     var currentSellectIndex : NSInteger = -1
     var assetsModel: BLAssetsModel?
     var selectedItem : BLAssetsItem?
+    var timeCell : BLLockPositionTimeCell?
+    var lockNum : Int64 = 0
+    var unLuockTime : Int64 = 0
+    var hashLock : String = ""
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "销毁"
+        self.title = "锁仓"
         
         self.initUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBar(isHidden: false)
@@ -29,17 +33,19 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         super.viewDidAppear(animated)
         self.loadData()
     }
-    
+
     func initUI(){
+        self.view.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
+        self.tableView.backgroundColor = self.view.backgroundColor
         self.view.addSubview(self.tableView)
-        self.view.addSubview(destructBt)
+        self.view.addSubview(creatInvoiceBt)
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(TopHeight)
             make?.left.right().mas_equalTo()(0)
-            make?.bottom.mas_equalTo()(destructBt.mas_top)?.offset()(-20*SCALE)
+            make?.bottom.mas_equalTo()(creatInvoiceBt.mas_top)?.offset()(-20*SCALE)
         }
         
-        destructBt.mas_makeConstraints { (make : MASConstraintMaker?) in
+        creatInvoiceBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.bottom.mas_equalTo()(-SafeAreaBottomHeight-70*SCALE)
             make?.left.mas_equalTo()(10*SCALE)
             make?.right.mas_equalTo()(-10*SCALE)
@@ -47,9 +53,11 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         }
         
         self.tableView.isScrollEnabled = false
-        self.tableView.register(BLBatchTransferTypeCell.self, forCellReuseIdentifier: BLBatchTransferTypeCellId)
-        self.tableView.register(BLBatchTransferIDCell.self, forCellReuseIdentifier: BLBatchTransferIDCellId)
-        self.tableView.register(BLDestructionNumCell.self, forCellReuseIdentifier: BLDestructionNumCellId)
+        self.tableView.register(BLLockPositionAssetCell.self, forCellReuseIdentifier: BLLockPositionAssetCellId)
+        self.tableView.register(BLLockPositionIDCell.self, forCellReuseIdentifier: BLLockPositionIDCellId)
+        self.tableView.register(BLLockPositionLockNumCell.self, forCellReuseIdentifier: BLLockPositionLockNumCellId)
+        self.tableView.register(BLLockPositionTimeCell.self, forCellReuseIdentifier: BLLockPositionTimeCellId)
+        self.tableView.register(BLLockPositionHashLockCell.self, forCellReuseIdentifier: BLLockPositionHashLockCellId)
     }
     
     override func loadData() {
@@ -60,9 +68,9 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         }
     }
     
-    lazy var destructBt : UIButton = {
+    lazy var creatInvoiceBt : UIButton = {
         var bt : UIButton = UIButton.init()
-        bt.setTitle("确认", for: .normal)
+        bt.setTitle("生成发票", for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
@@ -90,7 +98,7 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     }()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,7 +111,7 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
-            let cell : BLBatchTransferTypeCell = tableView.dequeueReusableCell(withIdentifier: BLBatchTransferTypeCellId)! as! BLBatchTransferTypeCell
+            let cell : BLLockPositionAssetCell = tableView.dequeueReusableCell(withIdentifier: BLLockPositionAssetCellId)! as! BLLockPositionAssetCell
             cell.titleLbl.text = "资产"
             cell.subTitleLbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
             cell.setCellType(isDestruction: true)
@@ -113,7 +121,7 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
             
             return cell
         }else if indexPath.section == 1 || indexPath.section == 2{
-            let cell : BLBatchTransferIDCell = tableView.dequeueReusableCell(withIdentifier: BLBatchTransferIDCellId)! as! BLBatchTransferIDCell
+            let cell : BLLockPositionIDCell = tableView.dequeueReusableCell(withIdentifier: BLLockPositionIDCellId)! as! BLLockPositionIDCell
             cell.titleLbl.text = indexPath.section == 1 ? "ID" : "余额"
             if selectedItem != nil{
                 if indexPath.section == 1{
@@ -125,11 +133,26 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
             cell.setCellType(isDestruction: true)
             
             return cell
-        }else{
-            let cell : BLDestructionNumCell = tableView.dequeueReusableCell(withIdentifier: BLDestructionNumCellId)! as! BLDestructionNumCell
-            cell.titleLbl.text = "销毁数量"
+        }else if indexPath.section == 3{
+            let cell : BLLockPositionLockNumCell = tableView.dequeueReusableCell(withIdentifier: BLLockPositionLockNumCellId)! as! BLLockPositionLockNumCell
+            cell.titleLbl.text = "锁仓数量"
             cell.setCellType(isDestruction: true)
             cell.delegate = self
+            
+            return cell
+        }else if indexPath.section == 4{
+            let cell : BLLockPositionTimeCell = tableView.dequeueReusableCell(withIdentifier: BLLockPositionTimeCellId)! as! BLLockPositionTimeCell
+            cell.typeTitleLbl.text = "解锁时间"
+            cell.delegate = self
+            timeCell = cell
+            
+            return cell
+        }else{
+            let cell : BLLockPositionHashLockCell = tableView.dequeueReusableCell(withIdentifier: BLLockPositionHashLockCellId)! as! BLLockPositionHashLockCell
+            cell.titleLbl.text = "哈希锁"
+            cell.setCellType(isDestruction: true)
+            cell.delegate = self
+            cell.addrTextField.text = hashLock
             
             return cell
         }
@@ -159,11 +182,15 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         currentSellectIndex = indexPath.section
         
         if indexPath.section == 0{
-            let cell : BLBatchTransferTypeCell = tableView.cellForRow(at: indexPath) as! BLBatchTransferTypeCell
+            let cell : BLLockPositionAssetCell = tableView.cellForRow(at: indexPath) as! BLLockPositionAssetCell
             cell.layoutIfNeeded()
             self.showSelectList(frame: CGRect.init(x: CGRectGetMinX(cell.subTitleLbl.frame), y: TopHeight+CGRectGetMaxY(cell.frame), width: 200*SCALE, height: 0),section: indexPath.section)
         }else{
             self.hideSelectList()
+        }
+        
+        if timeCell != nil{
+            timeCell?.removeDatePicker()
         }
     }
     
@@ -201,10 +228,33 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     //BatchTransferDelegate
     func tocuhAcation() {
         self.hideSelectList()
+        if timeCell != nil{
+            timeCell?.removeDatePicker()
+        }
     }
     
     func didEndEditing(obj: String, cell: Any) {
-        destructionNum = Int64(obj)!
+        if cell is BLLockPositionLockNumCell{
+            lockNum = Int64(obj)!
+        }else if cell is BLLockPositionHashLockCell{
+            hashLock = obj
+        }
+    }
+    
+    func scanAcation(cell: Any) {
+        let vc : BLQRScanVC = BLQRScanVC.init()
+        vc.callBack = { [weak self] codeStr in
+            self?.hashLock = codeStr
+            self?.tableView.reloadRows(at: [IndexPath.init(row: 0, section: 5)], with: .fade)
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //CreatAssetsDelegate
+    //解锁日期
+    func setAssetsUnLockDate(date: Date) {
+        let timeStr : String = BLTools.getCurrentTimeStrWithData(timeData: date as NSDate)
+        unLuockTime = Int64(timeStr)!
     }
     
     //SelectDelegate
@@ -219,24 +269,28 @@ class BLDestructionVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     
     @objc func destructAcation(){
         self.hideSelectList()
+        if timeCell != nil{
+            timeCell?.removeDatePicker()
+        }
         
         if selectedItem == nil || selectedItem?.asset_id == nil{
             BLTools.showTost(tip: "请选择资产", superView: self.view)
             return
         }
         
-        if destructionNum <= 0{
-            BLTools.showTost(tip: "请输入数量", superView: self.view)
+        if lockNum <= 0{
+            BLTools.showTost(tip: "请输入锁仓数量", superView: self.view)
             return
         }
         
-        let jsonStr : String = ApiBurnAsset(selectedItem?.asset_id, destructionNum)
-        let status : String = BLTools.getResaultStatus(jsonStr: jsonStr)
-        //"{\"success\":true,\"error\":\"\",\"code\":200,\"data\":\"3d77d3cd75bed414d777c90e05af34488a905ee1977c3308aeb8988027d18ffb\"}"
-        if status == APISECCUSS{
-            BLTools.showTost(tip: "销毁成功", superView: self.view)
-        }else{
-            BLTools.showTost(tip: status, superView: self.view)
+        if unLuockTime <= 0{
+            BLTools.showTost(tip: "请选择时间", superView: self.view)
+            return
+        }
+        
+        if hashLock.count <= 0{
+            BLTools.showTost(tip: "请输入哈希锁", superView: self.view)
+            return
         }
     }
 }

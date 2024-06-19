@@ -21,6 +21,8 @@
 -(void)initWalletVC;
 -(void)initMainTabBarVC;
 -(void)getAllName:(NSString *)local;
+-(void)startServer;
+-(void)getLndState:(BOOL)isNeedUnLock callBack:(void (^)(NSString * litStatus))blok;
 
 @end
 

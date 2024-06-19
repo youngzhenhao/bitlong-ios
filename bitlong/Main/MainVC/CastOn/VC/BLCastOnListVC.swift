@@ -16,10 +16,6 @@ class BLCastOnListVC: BLBaseVC {
         self.initUI()
         self.loadData()
     }
-    
-    override func listView() -> UIView! {
-        return self.view
-    }
 
     func initUI(){
         self.view.addSubview(headerView)

@@ -225,7 +225,7 @@ class BLGetGenSeedVC: BLBaseVC {
                 if walletInfo != nil{
                     BLTools.showTost(tip: "钱包正在创建中，请稍作等待~", superView: self.view)
                     DispatchQueue.global().async { [weak self] in
-                        let passWorld : String = self?.walletInfo!.object(forKey: PalletPassWorld) as! String
+                        let passWorld : String = self?.walletInfo!.object(forKey: WalletPassWorld) as! String
                         let isCreatSuccess : Bool = ApiInitWallet(self?.genSeed, passWorld)
                         if isCreatSuccess{
                             userDefaults.set(self?.walletInfo, forKey: WalletInfo)
@@ -237,9 +237,9 @@ class BLGetGenSeedVC: BLBaseVC {
                                     self?.creatWalletBlock!()
                                 }
                             }
-                            print("钱包创建成功!")
+                            NSSLog(msg: "钱包创建成功!")
                         }else{
-                            print("钱包创建失败!")
+                            NSSLog(msg: "钱包创建失败!")
                         }
                     }
                 }else{
@@ -258,9 +258,5 @@ class BLGetGenSeedVC: BLBaseVC {
         default:
             break
         }
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

@@ -15,10 +15,6 @@ class BLTransactionListVC: BLBaseVC {
         self.initUI()
     }
 
-    override func listView() -> UIView! {
-        return self.view
-    }
-
     func initUI(){
         self.view.addSubview(tableView)
         tableView.mas_makeConstraints { (make : MASConstraintMaker?) in

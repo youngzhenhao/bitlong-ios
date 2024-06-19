@@ -131,10 +131,14 @@ class BLCreatAssetDateCell: BLCreatAssetsCell,DatePickerDelegate {
         }
         pickerView.mas_remakeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(containerView.mas_bottom)?.offset()(5*SCALE)
-            make?.left.mas_equalTo()(containerView.mas_left)?.offset()(-10*SCALE)
-            make?.right.mas_equalTo()(containerView.mas_right)?.offset()(10*SCALE)
+            make?.centerX.mas_equalTo()(containerView.mas_centerX)
+            make?.width.mas_equalTo()(262*SCALE)
             make?.height.mas_equalTo()(50*SCALE)
         }
+    }
+    
+    func removeDatePicker(){
+        pickerView.removePickerView()
     }
     
     //DatePickerDelegate
@@ -144,11 +148,11 @@ class BLCreatAssetDateCell: BLCreatAssetsCell,DatePickerDelegate {
         
         if cellType == .assetsBegainDate{
             if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsBegainDate(date:)))) != nil{
-                delegate?.setAssetsBegainDate(date: date)
+                delegate?.setAssetsBegainDate!(date: date)
             }
         }else if cellType == .assetsEndDate{
             if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsEndDate(date:)))) != nil{
-                delegate?.setAssetsEndDate(date: date)
+                delegate?.setAssetsEndDate!(date: date)
             }
         }
     }

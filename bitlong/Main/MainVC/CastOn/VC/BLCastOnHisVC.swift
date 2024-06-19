@@ -85,11 +85,11 @@ class BLCastOnHisVC: BLBaseVC {
                             if resObj["data"] is NSDictionary{
                                 let data : NSDictionary = resObj["data"] as! NSDictionary
                                 let anchor_outpoint_txid : String = data["anchor_outpoint_txid"] as! String
-                                print("anchor_outpoint_txid:%@",anchor_outpoint_txid)
+                                NSSLog(msg: String.init(format: "anchor_outpoint_txid:%@",anchor_outpoint_txid))
                             }
                         }
                     } failed: { error in
-                        print("error:%@",error.msg as Any)
+                        NSSLog(msg: String.init(format: "error:%@",error.msg!))
                     }
                 }
             }

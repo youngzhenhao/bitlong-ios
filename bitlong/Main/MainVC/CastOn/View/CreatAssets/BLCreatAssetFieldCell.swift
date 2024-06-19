@@ -141,9 +141,9 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
         if cellType == .assetsName{
             if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsName(name:)))) != nil{
                 if textField.text != nil && 0 < textField.text!.count{
-                    delegate?.setAssetsName(name: textField.text!)
+                    delegate?.setAssetsName!(name: textField.text!)
                 }else{
-                    delegate?.setAssetsName(name: "")
+                    delegate?.setAssetsName!(name: "")
                 }
             }
         }else if cellType == .assetsNum{
@@ -151,9 +151,9 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
                 if textField.text != nil && 0 < textField.text!.count{
                     let numText : NSString = textField.text! as NSString
                     let num : NSInteger = numText.integerValue
-                    delegate?.setAssetsNum(num: num)
+                    delegate?.setAssetsNum!(num: num)
                 }else{
-                    delegate?.setAssetsNum(num: 0)
+                    delegate?.setAssetsNum!(num: 0)
                 }
             }
         }else if cellType == .assetsReserve{
@@ -161,9 +161,9 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
                 if textField.text != nil && 0 < textField.text!.count{
                     let numText : NSString = textField.text! as NSString
                     let num : NSInteger = numText.integerValue
-                    delegate?.setAssetsReserve(reserve: num)
+                    delegate?.setAssetsReserve!(reserve: num)
                 }else{
-                    delegate?.setAssetsReserve(reserve: 0)
+                    delegate?.setAssetsReserve!(reserve: 0)
                 }
             }
         }else if cellType == .assetsMintNum{
@@ -171,9 +171,9 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
                 if textField.text != nil && 0 < textField.text!.count{
                     let numText : NSString = textField.text! as NSString
                     let num : NSInteger = numText.integerValue
-                    delegate?.setAssetsMintNum(num: num)
+                    delegate?.setAssetsMintNum!(num: num)
                 }else{
-                    delegate?.setAssetsMintNum(num: 0)
+                    delegate?.setAssetsMintNum!(num: 0)
                 }
             }
         }

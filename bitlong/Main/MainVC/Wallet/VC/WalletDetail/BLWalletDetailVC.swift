@@ -18,8 +18,7 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
+        self.setNavigationBar(isHidden: false)
     }
     
     func initUI(){
@@ -182,6 +181,12 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
             self.pushBaseVC(vc: genSeedVC, animated: true)
         }else if indexPath.section == 2{
             if indexPath.row == 0{//修改密码
+                let litstatus : LitStatus = BLTools.getLitStatus()
+                if litstatus != .SERVER_ACTIVE{
+                    BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+                    return
+                }
+                
                 self.pushBaseVCStr(vcStr: "BLChangePasswardVC", animated: true)
             }else if indexPath.row == 1{//重置密码
                 
@@ -216,9 +221,5 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
         let hisItem : BLCollectionHisItem = BLCollectionHisItem.init()
         hisItem.encoded = addr
         invoiceQRView.assignHisItem(obj: hisItem, title: "比特币地址")
-    }
-    
-    override func `deinit`(){
-        super.deinit()
     }
 }

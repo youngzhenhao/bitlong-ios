@@ -10,16 +10,17 @@ import UIKit
 let BLCreatAssetsCellId = "BLCreatAssetsCellId"
 
 @objc protocol CreatAssetsDelegate : NSObjectProtocol {
-    func getLogoPicAcation()
-    func setAssetsName(name : String)
-    func setAssetsType(index : NSInteger)
-    func setAssetsNum(num : NSInteger)
-    func setAssetsReserve(reserve : NSInteger)
-    func setAssetsMintNum(num : NSInteger)
-    func setAssetsBegainDate(date : Date)
-    func setAssetsEndDate(date : Date)
-    func setAssetsLockTimeType(index : NSInteger)
-    func setAssetsDescription(description : String)
+    @objc optional func getLogoPicAcation()
+    @objc optional func setAssetsName(name : String)
+    @objc optional func setAssetsType(index : NSInteger)
+    @objc optional func setAssetsNum(num : NSInteger)
+    @objc optional func setAssetsReserve(reserve : NSInteger)
+    @objc optional func setAssetsMintNum(num : NSInteger)
+    @objc optional func setAssetsBegainDate(date : Date)
+    @objc optional func setAssetsEndDate(date : Date)
+    @objc optional func setAssetsUnLockDate(date : Date)
+    @objc optional func setAssetsLockTimeType(index : NSInteger)
+    @objc optional func setAssetsDescription(description : String)
 }
 
 class BLCreatAssetsCell: BLBaseTableViewCell {

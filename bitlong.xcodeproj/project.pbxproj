@@ -165,6 +165,13 @@
 		DFBDC08B2C0D599700F6DEE1 /* BLBatchTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBDC08A2C0D599700F6DEE1 /* BLBatchTransferCell.swift */; };
 		DFBDC08D2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBDC08C2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift */; };
 		DFBDC08F2C0D6CA100F6DEE1 /* BLBatchTransferSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBDC08E2C0D6CA100F6DEE1 /* BLBatchTransferSelectCell.swift */; };
+		DFCD38B22C216BF90070CC44 /* BLLockPositionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38B12C216BF90070CC44 /* BLLockPositionVC.swift */; };
+		DFCD38B42C21718B0070CC44 /* BLDestructionNumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38B32C21718B0070CC44 /* BLDestructionNumCell.swift */; };
+		DFCD38B62C2171C30070CC44 /* BLLockPositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38B52C2171C30070CC44 /* BLLockPositionCell.swift */; };
+		DFCD38B82C218FC40070CC44 /* BLIDOVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38B72C218FC40070CC44 /* BLIDOVC.swift */; };
+		DFCD38BA2C21926F0070CC44 /* BLIDOListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38B92C21926F0070CC44 /* BLIDOListVC.swift */; };
+		DFCD38BD2C22CC4A0070CC44 /* BLIDOReleaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38BC2C22CC4A0070CC44 /* BLIDOReleaseVC.swift */; };
+		DFCD38BF2C22CC6C0070CC44 /* BLIDOJoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD38BE2C22CC6C0070CC44 /* BLIDOJoinVC.swift */; };
 		DFCD64B72C0FFB0500ECA514 /* BLApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD64B62C0FFB0500ECA514 /* BLApiConfig.swift */; };
 		DFCD64BB2C1014D600ECA514 /* BLAssetsSendHisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD64BA2C1014D600ECA514 /* BLAssetsSendHisVC.swift */; };
 		DFCD64BD2C10153200ECA514 /* BLAssetsSendHisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD64BC2C10153200ECA514 /* BLAssetsSendHisCell.swift */; };
@@ -441,6 +448,13 @@
 		DFBDC08A2C0D599700F6DEE1 /* BLBatchTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBatchTransferCell.swift; sourceTree = "<group>"; };
 		DFBDC08C2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBatchTransferSelectView.swift; sourceTree = "<group>"; };
 		DFBDC08E2C0D6CA100F6DEE1 /* BLBatchTransferSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBatchTransferSelectCell.swift; sourceTree = "<group>"; };
+		DFCD38B12C216BF90070CC44 /* BLLockPositionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLockPositionVC.swift; sourceTree = "<group>"; };
+		DFCD38B32C21718B0070CC44 /* BLDestructionNumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLDestructionNumCell.swift; sourceTree = "<group>"; };
+		DFCD38B52C2171C30070CC44 /* BLLockPositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLockPositionCell.swift; sourceTree = "<group>"; };
+		DFCD38B72C218FC40070CC44 /* BLIDOVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLIDOVC.swift; sourceTree = "<group>"; };
+		DFCD38B92C21926F0070CC44 /* BLIDOListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLIDOListVC.swift; sourceTree = "<group>"; };
+		DFCD38BC2C22CC4A0070CC44 /* BLIDOReleaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLIDOReleaseVC.swift; sourceTree = "<group>"; };
+		DFCD38BE2C22CC6C0070CC44 /* BLIDOJoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLIDOJoinVC.swift; sourceTree = "<group>"; };
 		DFCD64B62C0FFB0500ECA514 /* BLApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLApiConfig.swift; sourceTree = "<group>"; };
 		DFCD64BA2C1014D600ECA514 /* BLAssetsSendHisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsSendHisVC.swift; sourceTree = "<group>"; };
 		DFCD64BC2C10153200ECA514 /* BLAssetsSendHisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsSendHisCell.swift; sourceTree = "<group>"; };
@@ -753,6 +767,9 @@
 				DFAD2B172BE8D6310028A4B6 /* BLToolVC.swift */,
 				DFBDC0882C0D585F00F6DEE1 /* BLBatchTransferVC.swift */,
 				DFDB2F9F2C1C14E2001C8218 /* BLDestructionVC.swift */,
+				DFCD38B12C216BF90070CC44 /* BLLockPositionVC.swift */,
+				DFCD38B72C218FC40070CC44 /* BLIDOVC.swift */,
+				DFCD38BB2C22CBDB0070CC44 /* IDO */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1136,8 +1153,20 @@
 				DFBDC08A2C0D599700F6DEE1 /* BLBatchTransferCell.swift */,
 				DFBDC08C2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift */,
 				DFBDC08E2C0D6CA100F6DEE1 /* BLBatchTransferSelectCell.swift */,
+				DFCD38B32C21718B0070CC44 /* BLDestructionNumCell.swift */,
+				DFCD38B52C2171C30070CC44 /* BLLockPositionCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DFCD38BB2C22CBDB0070CC44 /* IDO */ = {
+			isa = PBXGroup;
+			children = (
+				DFCD38B92C21926F0070CC44 /* BLIDOListVC.swift */,
+				DFCD38BC2C22CC4A0070CC44 /* BLIDOReleaseVC.swift */,
+				DFCD38BE2C22CC6C0070CC44 /* BLIDOJoinVC.swift */,
+			);
+			path = IDO;
 			sourceTree = "<group>";
 		};
 		DFCD64C22C1037B500ECA514 /* ViewModel */ = {
@@ -1556,9 +1585,12 @@
 				DFAC35032BF35843008CB9C7 /* BLCollectionView.swift in Sources */,
 				DF8DA41C2C07124600E121F2 /* BLQRScanVC.swift in Sources */,
 				DFAC35712BF4C32D008CB9C7 /* JXCategoryListCollectionContainerView.m in Sources */,
+				DFCD38B82C218FC40070CC44 /* BLIDOVC.swift in Sources */,
 				DFA4F3E72BFAF8950094D2AE /* BLTransactionListCell.swift in Sources */,
 				DFD52F882BDE404C007A0E82 /* BLWalletCell.swift in Sources */,
 				DF78CA852C09D93E007ACC47 /* BLCollectionHisModel.swift in Sources */,
+				DFCD38B22C216BF90070CC44 /* BLLockPositionVC.swift in Sources */,
+				DFCD38B62C2171C30070CC44 /* BLLockPositionCell.swift in Sources */,
 				DFAC34852BECAB27008CB9C7 /* BLBaseModel.m in Sources */,
 				DFAC35902BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */,
 				DFF6122A2BFEEDFB0041E4B7 /* BLCreatAssetSwitchCell.swift in Sources */,
@@ -1589,6 +1621,7 @@
 				DFFFEAE62BFC821E00058F98 /* BLTranscationListHeaderView.swift in Sources */,
 				DFBDC0872C0D511F00F6DEE1 /* BLToolItemsView.swift in Sources */,
 				DF0B92092C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift in Sources */,
+				DFCD38BF2C22CC6C0070CC44 /* BLIDOJoinVC.swift in Sources */,
 				DFBDC08D2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift in Sources */,
 				DFA4F3E52BFAEE870094D2AE /* BLTransactionListVC.swift in Sources */,
 				DFF6122C2BFEEE0D0041E4B7 /* BLCreatAssetTextInputCell.swift in Sources */,
@@ -1601,10 +1634,12 @@
 				DFAC35722BF4C32D008CB9C7 /* JXCategoryListContainerView.m in Sources */,
 				DFFFEADF2BFC50EB00058F98 /* BLTranscationDetailListVC.swift in Sources */,
 				DFCFF8FB2C05CE6200FC248D /* BLAddAddressModel.swift in Sources */,
+				DFCD38BA2C21926F0070CC44 /* BLIDOListVC.swift in Sources */,
 				DFAC34702BEB4A71008CB9C7 /* BLWalletHeaderView.swift in Sources */,
 				DFCFF8F72C05B1AC00FC248D /* BLAddAddressHeaderView.swift in Sources */,
 				DFB0FC332BDF8BC600B68F8C /* BLBaseView.swift in Sources */,
 				DFF612752BFF32D70041E4B7 /* LoggerFactory.m in Sources */,
+				DFCD38BD2C22CC4A0070CC44 /* BLIDOReleaseVC.swift in Sources */,
 				DFAC35072BF49443008CB9C7 /* BLCollectionBTCAddresCell.swift in Sources */,
 				DFFFEAE42BFC7B4C00058F98 /* BLTranscationDetailMyOrderVC.swift in Sources */,
 				DFAC34EB2BF1F2BC008CB9C7 /* BLTransactionVC.swift in Sources */,
@@ -1637,6 +1672,7 @@
 				DFAC357C2BF4C32D008CB9C7 /* JXCategoryIndicatorBallView.m in Sources */,
 				DFB0FC3B2BE080BD00B68F8C /* BLGenSeedNoticeCell.swift in Sources */,
 				DFDDBBC32C0EE768002E563E /* BLAssetsCoinDetailModel.swift in Sources */,
+				DFCD38B42C21718B0070CC44 /* BLDestructionNumCell.swift in Sources */,
 				DF78CA7D2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift in Sources */,
 				DFB0FC2E2BDF477B00B68F8C /* BLCreatWalletCell.swift in Sources */,
 				DFCD64BD2C10153200ECA514 /* BLAssetsSendHisCell.swift in Sources */,
@@ -1894,6 +1930,7 @@
 					"\"UIKit\"",
 					"-ld_classic",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wlt.bitlong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1948,6 +1985,7 @@
 					"\"UIKit\"",
 					"-ld_classic",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wlt.bitlong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

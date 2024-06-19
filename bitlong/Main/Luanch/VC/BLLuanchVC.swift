@@ -51,8 +51,4 @@ class BLLuanchVC: BLBaseVC {
         
         return lbl
     }()
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

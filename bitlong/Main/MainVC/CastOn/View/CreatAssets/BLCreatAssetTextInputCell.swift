@@ -93,7 +93,7 @@ class BLCreatAssetTextInputCell: BLCreatAssetsCell,UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsDescription(description:)))) != nil{
-            delegate?.setAssetsDescription(description: textView.text)
+            delegate?.setAssetsDescription!(description: textView.text)
         }
     }
 }

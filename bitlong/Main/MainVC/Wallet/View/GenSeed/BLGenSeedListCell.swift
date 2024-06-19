@@ -63,9 +63,4 @@ class BLGenSeedListCell: BLBaseTableViewCell,ItemSelectedDelegate {
     }
     
     //ItemSelectedDelegate
-    
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

@@ -17,8 +17,7 @@ class BLToolVC: BLBaseVC,ToolItemClickDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
+        self.setNavigationBar(isHidden: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,10 +46,17 @@ class BLToolVC: BLBaseVC,ToolItemClickDelegate {
     
     //ToolItemClickDelegate
     func itemsClicked(sender: UIButton) {
+        let litstatus : LitStatus = BLTools.getLitStatus()
+        if litstatus != .SERVER_ACTIVE{
+            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            return
+        }
+        
         switch sender.tag {
         case 100://浏览器
             break
         case 101://锁仓
+            self.pushBaseVCStr(vcStr: "BLLockPositionVC", animated: true)
             break
         case 102://多签
             break
@@ -63,13 +69,10 @@ class BLToolVC: BLBaseVC,ToolItemClickDelegate {
             self.pushBaseVCStr(vcStr: "BLDestructionVC", animated: true)
             break
         case 106://IDO
+            self.pushBaseVCStr(vcStr: "BLIDOVC", animated: true)
             break
         default:
             break
         }
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

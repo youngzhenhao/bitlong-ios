@@ -84,4 +84,8 @@
     return YES;
 }
 
+-(void)dealloc{
+//    NSLog(@"model-%@- had dealloc！",NSStringFromClass(object_getClass(self)));
+}
+
 @end

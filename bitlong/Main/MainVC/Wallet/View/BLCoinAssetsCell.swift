@@ -134,6 +134,7 @@ class BLCoinAssetsCell: BLBaseTableViewCell {
             let assetsNum : String = String.init(format: "%ld",num)
             coinPriceCNY.text = assetsNum
             coinPriceUSD.text = String.init(format: "$%@", assetsNum)
+            coinPriceCNY.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         }else if assetsObj is BLAssetsItem{
             let assetsItem : BLAssetsItem = assetsObj as! BLAssetsItem
 
@@ -147,6 +148,7 @@ class BLCoinAssetsCell: BLBaseTableViewCell {
             coinTitle.text = assetsItem.name
             coinPriceCNY.text = assetsItem.balance as? String
             coinPriceUSD.text = String.init(format: "$%@", assetsItem.balance!)
+            coinPriceCNY.textColor = UIColorHex(hex: 0x38D176, a: 1.0)
         }
     }
 }

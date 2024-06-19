@@ -17,7 +17,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "铸造"
-        self.navgationRightBtn(picStr: "", titleStr: "历史记录", titleColor: UIColorHex(hex: 0x383838, a: 1.0))
+        self.navgationRightBtn(picStr: "", title: "历史记录", titleColor: nil)
         
         self.initUI()
         self.loadData()
@@ -51,7 +51,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
             //宇宙同步资产
             if self?.queryIssuedItem != nil && self?.queryIssuedItem?.asset_id != nil{
                 let jsonStr : String = ApiSyncUniverse("132.232.109.84:8443", self?.queryIssuedItem?.asset_id)
-                print("宇宙同步资产:%@",jsonStr)
+                NSSLog(msg: String.init(format: "宇宙同步资产:%@",jsonStr))
             }
             //查询费率
             self?.getFairFaunchQueryMint()

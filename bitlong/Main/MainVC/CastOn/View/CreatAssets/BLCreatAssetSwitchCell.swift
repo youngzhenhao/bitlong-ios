@@ -202,17 +202,17 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
         if cellType == .assetsType{
             if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsType(index:)))) != nil{
                 if switchBtOne.isSelected{
-                    delegate?.setAssetsType(index: 0)
+                    delegate?.setAssetsType!(index: 0)
                 }else if switchBtTwo.isSelected{
-                    delegate?.setAssetsType(index: 1)
+                    delegate?.setAssetsType!(index: 1)
                 }
             }
         }else if cellType == .assetsLockoutTime{
             if delegate != nil && (delegate?.responds(to: #selector(delegate?.setAssetsLockTimeType(index:)))) != nil{
                 if switchBtOne.isSelected{
-                    delegate?.setAssetsLockTimeType(index: 0)
+                    delegate?.setAssetsLockTimeType!(index: 0)
                 }else if switchBtTwo.isSelected{
-                    delegate?.setAssetsLockTimeType(index: 1)
+                    delegate?.setAssetsLockTimeType!(index: 1)
                 }
             }
         }

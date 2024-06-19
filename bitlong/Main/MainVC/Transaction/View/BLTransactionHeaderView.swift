@@ -111,8 +111,4 @@ class BLTransactionHeaderView: BLBaseView,UITextFieldDelegate {
         
         return true
     }
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

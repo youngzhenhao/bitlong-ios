@@ -72,17 +72,20 @@ class BLUIDatePickerView: BLBaseView {
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
         bt.layer.cornerRadius = 6*SCALE
         bt.clipsToBounds = true
-        bt.addTarget(self, action: #selector(removePickerView), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(confirmAcation), for: .touchUpInside)
         
         return bt
     }()
     
-    @objc func removePickerView(){
-        
+    @objc func confirmAcation(){
         if delegate != nil && (delegate?.responds(to: #selector(delegate?.datePickerDelected(date:)))) != nil{
             delegate?.datePickerDelected(date: datePicker.date)
         }
         
+        self.removePickerView()
+    }
+    
+    func removePickerView(){
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.alpha = 0.0
         }completion: { [weak self] flag in

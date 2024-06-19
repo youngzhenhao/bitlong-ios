@@ -20,7 +20,7 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        self.setNavigationBar(isHidden: true)
         
         headerView.updateWalletInfo()
     }
@@ -82,7 +82,7 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
             userDefaults.setValue(address, forKey: WalletAddress)
             userDefaults.synchronize()
         }
-//            print("WalletAddress:%@",address as Any);
+        NSSLog(msg: String.init(format: "WalletAddress:%@",address as! CVarArg))
         
         //获取钱包信息
         walletBalanceModel = BLWalletViewModel.getWalletBalance()
@@ -205,9 +205,5 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
         if index == 2{
             channelListVC.loadQueryBalance()
         }
-    }
-    
-    override func `deinit`() {
-        super.`deinit`()
     }
 }

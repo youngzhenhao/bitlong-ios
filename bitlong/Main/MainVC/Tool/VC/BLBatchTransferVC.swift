@@ -30,8 +30,7 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = false
+        self.setNavigationBar(isHidden: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,12 +61,6 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
     }
     
     override func loadData() {
-        let litstatus : LitStatus = BLTools.getLitStatus()
-        if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
-            return
-        }
-        
         assetsModel = BLWalletViewModel.getAssetsModel()
         if assetsModel?.datas != nil && 0 < (assetsModel?.datas!.count)!{
             let item : BLAssetsItem = (assetsModel?.datas![0])!
@@ -308,15 +301,15 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         addrDic.setObject(amount, forKey: addr as NSCopying)
     }
 
-    func scanAcation(cell: BLBatchTransferAddrCell) {
-        addrCell = cell
+    func scanAcation(cell: Any) {
+        addrCell = (cell as! BLBatchTransferAddrCell)
         let vc : BLQRScanVC = BLQRScanVC.init()
         vc.callBack = { [weak self] codeStr in
-            cell.addrTextField.text = codeStr
-            cell.amountTextField.isUserInteractionEnabled = true
+            self?.addrCell!.addrTextField.text = codeStr
+            self?.addrCell!.amountTextField.isUserInteractionEnabled = true
             let addressType : AddressType = BLTools.addressType(address: codeStr)
             if addressType == .addressBTC{//比特币
-                cell.amountTextField.text = "0"
+                self?.addrCell!.amountTextField.text = "0"
                 self?.addrDic.setObject("0", forKey: codeStr as NSCopying)
             }else if addressType == .addressAssets{//资产
                 let jsonStr : String = ApiDecodeAddr(codeStr)
@@ -325,15 +318,15 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
                     let model : BLAssetAddressDecodeModel = BLWalletViewModel.getAssetAddressDecode(jsonStr: jsonStr)
                     if model.amount != nil{
                         if 0 < Int(model.amount!)!{
-                            cell.amountTextField.text = model.amount
-                            cell.amountTextField.isUserInteractionEnabled = false
+                            self?.addrCell!.amountTextField.text = model.amount
+                            self?.addrCell!.amountTextField.isUserInteractionEnabled = false
                             self?.addrDic.setObject(model.amount as Any, forKey: codeStr as NSCopying)
                         }else{
-                            cell.amountTextField.text = "0"
+                            self?.addrCell!.amountTextField.text = "0"
                             self?.addrDic.setObject("0", forKey: codeStr as NSCopying)
                         }
                     }else{
-                        cell.amountTextField.text = "0"
+                        self?.addrCell!.amountTextField.text = "0"
                         self?.addrDic.setObject("0", forKey: codeStr as NSCopying)
                     }
                 }else{

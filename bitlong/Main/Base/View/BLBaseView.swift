@@ -45,8 +45,7 @@ class BLBaseView: UIView {
         self.endEditing(true)  
    }
 
-    
-    func `deinit`(){
-        print("视图-%@- had deinited！",NSStringFromClass(object_getClass(self)!))
+    deinit {
+        NSSLog(msg: String.init(format: "视图\n-%@- had deinited！",NSStringFromClass(object_getClass(self)!)))
     }
 }

@@ -53,14 +53,14 @@ class BLCastOnHeaderView: BLBaseView,UITextFieldDelegate {
         }
         
         creatAssetBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(searchView.mas_left)
+            make?.left.mas_equalTo()(15*SCALE)
             make?.top.mas_equalTo()(searchView.mas_bottom)?.offset()(25*SCALE)
             make?.width.mas_equalTo()((SCREEN_WIDTH-60*SCALE)/2.0)
             make?.height.mas_equalTo()(50*SCALE)
         }
         
         castONOutBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.right.mas_equalTo()(searchView.mas_right)
+            make?.right.mas_equalTo()(-15*SCALE)
             make?.top.mas_equalTo()(searchView.mas_bottom)?.offset()(25*SCALE)
             make?.width.mas_equalTo()((SCREEN_WIDTH-60*SCALE)/2.0)
             make?.height.mas_equalTo()(50*SCALE)
@@ -69,6 +69,21 @@ class BLCastOnHeaderView: BLBaseView,UITextFieldDelegate {
         self.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.bottom.mas_equalTo()(creatAssetBt.mas_bottom)
         }
+    }
+    
+    func showOfPageIDO(){
+        searchView.removeAllSubviews()
+        searchView.removeFromSuperview()
+        creatAssetBt.mas_updateConstraints { (make : MASConstraintMaker?) in
+            make?.top.mas_equalTo()(25*SCALE)
+        }
+        
+        castONOutBt.mas_updateConstraints { (make : MASConstraintMaker?) in
+            make?.top.mas_equalTo()(25*SCALE)
+        }
+        
+        creatAssetBt.setTitle("发布", for: .normal)
+        castONOutBt.setTitle("参与", for: .normal)
     }
     
     lazy var searchView : UIView = {

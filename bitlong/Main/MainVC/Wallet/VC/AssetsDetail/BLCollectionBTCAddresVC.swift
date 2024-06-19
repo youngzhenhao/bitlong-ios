@@ -148,8 +148,4 @@ class BLCollectionBTCAddresVC: BLBaseVC {
     @objc func addAddressAcation(){
         self.pushBaseVCStr(vcStr: "BLCollectionAddAddressVC", animated: true)
     }
-    
-    override func `deinit`() {
-        super.`deinit`()
-    }
 }

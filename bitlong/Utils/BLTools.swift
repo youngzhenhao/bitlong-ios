@@ -363,7 +363,7 @@ open class BLTools: NSObject {
             let data : NSData = try NSKeyedArchiver.archivedData(withRootObject: archData, requiringSecureCoding: secureCoding) as NSData
             return data.write(toFile: path, atomically: true)
         }catch{
-            print("nSKeyedArchiver error")
+            NSSLog(msg: "nSKeyedArchiver error")
             return false
         }
     }
@@ -506,9 +506,9 @@ open class BLTools: NSObject {
 //        let manager : FileManager = FileManager.default
         if dateDic.write(toFile: filePath, atomically: true){
             let readDic : NSDictionary = NSDictionary.init(contentsOfFile: filePath)!
-            print("icon写入文件成功%@",readDic)
+            NSSLog(msg: String.init(format: "icon写入文件成功%@",readDic))
         }else{
-            print("icon写入文件失败")
+            NSSLog(msg: "icon写入文件失败")
         }
     }
     

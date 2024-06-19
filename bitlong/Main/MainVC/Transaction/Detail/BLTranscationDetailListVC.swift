@@ -14,11 +14,7 @@ class BLTranscationDetailListVC: BLBaseVC {
 
         self.initUI()
     }
-    
-    override func listView() -> UIView! {
-        return self.view
-    }
-    
+
     func initUI(){
         self.view.addSubview(tableView)
         tableView.tableHeaderView = tableHeaderView

@@ -21,7 +21,8 @@ class BLAssetsSendHisVC: BLBaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillAppear(animated)
+        self.setNavigationBar(isHidden: false)
     }
     
     func initUI(){

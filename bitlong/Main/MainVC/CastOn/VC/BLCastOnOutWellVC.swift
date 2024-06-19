@@ -8,19 +8,18 @@
 import UIKit
 
 class BLCastOnOutWellVC: BLBaseVC,CastOnDelegate,JXCategoryListCollectionContainerViewDataSource,JXCategoryViewDelegate,JXCategoryListCollectionScrollViewDelegate {
-
+    
     var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.initUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.isHidden = true
+        self.setNavigationBar(isHidden: true)
     }
     
     func initUI(){
@@ -136,7 +135,7 @@ class BLCastOnOutWellVC: BLBaseVC,CastOnDelegate,JXCategoryListCollectionContain
         
         return listVC
     }
-
+    
     func number(ofListsInlistContainerView listContainerView: JXCategoryListCollectionContainerView!) -> Int {
         return titleList.count
     }
@@ -151,9 +150,9 @@ class BLCastOnOutWellVC: BLBaseVC,CastOnDelegate,JXCategoryListCollectionContain
     func jxCategoryListCollectionScrollViewWillBeginDecelerating(_ scrollView: UIScrollView!) {
         
     }
-
+    
     func jxCategoryListCollectionScrollViewDidEndDecelerating(_ scrollView: UIScrollView!) {
-        print("调用滚动完成")
+        NSSLog(msg: "调用滚动完成")
     }
     
     func categoryView(_ categoryView: JXCategoryBaseView!, scrollingFromLeftIndex leftIndex: Int, toRightIndex rightIndex: Int, ratio: CGFloat) {
@@ -171,10 +170,6 @@ class BLCastOnOutWellVC: BLBaseVC,CastOnDelegate,JXCategoryListCollectionContain
             creatCastOnVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(creatCastOnVC, animated: true)
         }
-    }
-    
-    deinit{
-        print(" deinit -----专题tab销毁-----")
     }
 }
 
