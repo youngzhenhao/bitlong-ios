@@ -90,6 +90,15 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
         return view
     }()
     
+    lazy var tipView : BLChangePasswordTipView = {
+        var view = BLChangePasswordTipView.init()
+        view.isNeedToChange = false
+        view.backgroundColor = UIColorHex(hex: 0x000000, a: 0.7)
+        view.updateView(isChange: false)
+        
+        return view
+    }()
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1+walletItemList.count
     }
@@ -181,13 +190,12 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
             self.pushBaseVC(vc: genSeedVC, animated: true)
         }else if indexPath.section == 2{
             if indexPath.row == 0{//修改密码
-                let litstatus : LitStatus = BLTools.getLitStatus()
-                if litstatus != .SERVER_ACTIVE{
-                    BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
-                    return
+                if tipView.superview == nil{
+                    appDelegate.window.addSubview(tipView)
+                    tipView.mas_makeConstraints { (make : MASConstraintMaker?) in
+                        make?.top.left().right().bottom().mas_equalTo()(0)
+                    }
                 }
-                
-                self.pushBaseVCStr(vcStr: "BLChangePasswardVC", animated: true)
             }else if indexPath.row == 1{//重置密码
                 
             }

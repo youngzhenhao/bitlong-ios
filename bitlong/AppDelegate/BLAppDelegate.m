@@ -11,6 +11,8 @@
 @interface BLAppDelegate()
 
 @property(nonatomic,strong)BLInitWalletVC *walletVC;
+@property(nonatomic,strong)BLLuanchVC *luanchVC;
+@property(nonatomic,strong)BLChangePasswordTipView *changePasswordTipView;
 
 @end
 
@@ -19,17 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    NSDictionary * walletInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"WalletInfo"];
-//    if(walletInfo){
-//        NSString * walletName = walletInfo[@"WalletName"];
-//        if (walletName.length) {
-//            [self initMainTabBarVC];
-//        }else{
-//            [self initWalletVC];
-//        }
-//    }else{
-//        [self initWalletVC];
+//    if(!walletInfo){
+//        [self initWalletVC
 //    }
-    
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 10*SCALE;
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
@@ -40,20 +34,12 @@
     
     Weak(weakSelf);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf getLndState:YES callBack:^(NSString *litStatus) {
+        [weakSelf getLndStateCallBack:^(NSString *litStatus) {
         }];
     });
     [[BLPermissionsManager shared] requestNetwork];
 
     return YES;
-}
-
--(UIWindow *)window{
-    if (!_window) {
-        _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    }
-    
-    return _window;
 }
 
 -(void)initWalletVC{
@@ -69,12 +55,12 @@
 
 -(void)initLuanchView{
     BLLuanchVC * luanchVC = [[BLLuanchVC alloc] init];
-//    luanchView.view.frame = self.window.frame;
-    self.window.rootViewController = luanchVC;
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:luanchVC];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 }
 
--(void)getLndState:(BOOL)isNeedUnLock callBack:(void (^)(NSString * litStatus))blok{
+-(void)getLndStateCallBack:(void (^)(NSString * litStatus))blok{
     Weak(weakSelf);
     [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSString * litStatus = ApiGetState();
@@ -83,22 +69,15 @@
         }else if ([litStatus isEqualToString:@"NON_EXISTING"]){//钱包尚未初始化
             [weakSelf initWalletVC];
             [timer invalidate];
+            timer = nil;
         }else if ([litStatus isEqualToString:@"LOCKED"]){//钱包已锁定
-            if(isNeedUnLock){
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-                    NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
-                    NSString * passWorld = walletInfo[@"WalletPassWorld"];
-                    [BLTools showTostWithTip:@"开始解锁钱包~" superView:weakSelf.window];
-                    if(!ApiUnlockWallet(passWorld)){
-                        [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.window];
-                    }
-                });
-            }else{
-                if(blok){
-                    blok(litStatus);
-                }
+            BOOL isNeedChangePassword = [userDefaults boolForKey:@"IsNeedChangePassWord"];
+            if(isNeedChangePassword){
+                [weakSelf showChangePasswordTipView];
                 [timer invalidate];
+                timer = nil;
+            }else{
+                [weakSelf unlockWallet];
             }
         }else if ([litStatus isEqualToString:@"UNLOCKED"]){//钱包已成功解锁，但 RPC 服务器尚未就绪
             static dispatch_once_t onceToken;
@@ -112,8 +91,10 @@
         }else if ([litStatus isEqualToString:@"SERVER_ACTIVE"]){//RPC 服务器可用并准备好接受调用
             [weakSelf getTapState];
             [timer invalidate];
+            timer = nil;
         }else if ([litStatus isEqualToString:@"NO_START_LND"]){//LND服务挂了，请重新启动服务
 //            [timer invalidate];
+//            timer = nil;
         }
     }];
 }
@@ -122,12 +103,50 @@
     [NSTimer scheduledTimerWithTimeInterval:2.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
         //获取Tap服务状态，检测错误状态
         NSString * jsonStr = ApiGetInfoOfTap();
+        __block NSTimer * timerCopy = timer;
         [BLServerErrorDealModel dealTapErrorWithJsonStr:jsonStr callBack:^(BOOL isInvalidate) {
             if(isInvalidate){
-                [timer invalidate];
+                [timerCopy invalidate];
+                timerCopy = nil;
             }
         }];
     }];
+}
+
+-(void)showChangePasswordTipView{
+    if(!self.changePasswordTipView.superview){
+        [self.window addSubview:self.changePasswordTipView];
+        [self.changePasswordTipView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+        }];
+        
+        Weak(weakSelf);
+        self.changePasswordTipView.callBack = ^{
+            [weakSelf getLndStateCallBack:^(NSString *litStatus) {
+            }];
+        };
+    }
+}
+
+-(void)unlockWallet{
+    Weak(weakSelf);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
+        NSString * passWorld = walletInfo[@"WalletPassWorld"];
+        [BLTools showTostWithTip:@"开始解锁钱包~" superView:weakSelf.window];
+        if(!ApiUnlockWallet(passWorld)){
+            [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.window];
+        }
+    });
+}
+
+-(UIWindow *)window{
+    if (!_window) {
+        _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    
+    return _window;
 }
 
 -(BLInitWalletVC *)walletVC{
@@ -144,6 +163,16 @@
     }
     
     return _tabBarVC;
+}
+
+-(BLChangePasswordTipView *)changePasswordTipView{
+    if(!_changePasswordTipView){
+        _changePasswordTipView = [[BLChangePasswordTipView alloc] init];
+        [_changePasswordTipView updateViewWithIsChange:YES];
+        _changePasswordTipView.backgroundColor = UIColorFromRGBA(0x000000, 0.7);
+    }
+    
+    return _changePasswordTipView;
 }
 
 -(void)applicationWillResignActive:(UIApplication *)application{

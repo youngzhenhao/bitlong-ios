@@ -90,3 +90,9 @@ func KNSDocumentPath(name : String) -> String{
     let pathStr : NSString = pathArr.lastObject as! NSString
     return pathStr.appendingPathComponent(name)
 }
+
+
+/*
+ typealias
+ */
+typealias ChangePasswordBlock = () ->()

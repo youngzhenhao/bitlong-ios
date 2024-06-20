@@ -19,9 +19,9 @@
 		DF0B92092C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */; };
 		DF444D522C085228003B0418 /* BLAssetsDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */; };
 		DF66A7252C1FD86700ED2BEA /* BLChangeWalletNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */; };
-		DF66A7272C20121A00ED2BEA /* BLChangePasswardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7262C20121A00ED2BEA /* BLChangePasswardVC.swift */; };
-		DF66A7292C2012AF00ED2BEA /* BLChangePasswardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7282C2012AF00ED2BEA /* BLChangePasswardCell.swift */; };
-		DF66A72B2C2036A600ED2BEA /* BLWalletInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A72A2C2036A600ED2BEA /* BLWalletInfoView.swift */; };
+		DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */; };
+		DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */; };
+		DF66A72B2C2036A600ED2BEA /* BLWalletInfoAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */; };
 		DF78CA7A2C097AEF007ACC47 /* BLAssetsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA792C097AEF007ACC47 /* BLAssetsCollectionView.swift */; };
 		DF78CA7D2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA7C2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift */; };
 		DF78CA7F2C09CA79007ACC47 /* BLCollectionHisListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA7E2C09CA79007ACC47 /* BLCollectionHisListCell.swift */; };
@@ -33,6 +33,7 @@
 		DF990E2F2C0DC63F00448134 /* BLImportAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E2E2C0DC63F00448134 /* BLImportAssetsVC.swift */; };
 		DF990E322C0DC7FB00448134 /* BLImportAssetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E312C0DC7FB00448134 /* BLImportAssetsCell.swift */; };
 		DF990E362C0EA5EC00448134 /* BLLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E352C0EA5EC00448134 /* BLLoginManger.swift */; };
+		DF9A26652C23C219001313AA /* BLChangePasswordTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9A26642C23C219001313AA /* BLChangePasswordTipView.swift */; };
 		DFA4F3DB2BF704BA0094D2AE /* BLUIDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4F3DA2BF704BA0094D2AE /* BLUIDatePickerView.swift */; };
 		DFA4F3DD2BF731750094D2AE /* BLCreatCastOnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4F3DC2BF731750094D2AE /* BLCreatCastOnVC.swift */; };
 		DFA4F3DF2BF7359E0094D2AE /* BLCreatCastOnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4F3DE2BF7359E0094D2AE /* BLCreatCastOnCell.swift */; };
@@ -245,9 +246,9 @@
 		DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLaunchQueryOwnMintModel.swift; sourceTree = "<group>"; };
 		DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsDetailItemView.swift; sourceTree = "<group>"; };
 		DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangeWalletNameView.swift; sourceTree = "<group>"; };
-		DF66A7262C20121A00ED2BEA /* BLChangePasswardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswardVC.swift; sourceTree = "<group>"; };
-		DF66A7282C2012AF00ED2BEA /* BLChangePasswardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswardCell.swift; sourceTree = "<group>"; };
-		DF66A72A2C2036A600ED2BEA /* BLWalletInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLWalletInfoView.swift; sourceTree = "<group>"; };
+		DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordVC.swift; sourceTree = "<group>"; };
+		DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordCell.swift; sourceTree = "<group>"; };
+		DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLWalletInfoAlterView.swift; sourceTree = "<group>"; };
 		DF78CA792C097AEF007ACC47 /* BLAssetsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCollectionView.swift; sourceTree = "<group>"; };
 		DF78CA7C2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionInvoiceCell.swift; sourceTree = "<group>"; };
 		DF78CA7E2C09CA79007ACC47 /* BLCollectionHisListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisListCell.swift; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 		DF990E2E2C0DC63F00448134 /* BLImportAssetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLImportAssetsVC.swift; sourceTree = "<group>"; };
 		DF990E312C0DC7FB00448134 /* BLImportAssetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLImportAssetsCell.swift; sourceTree = "<group>"; };
 		DF990E352C0EA5EC00448134 /* BLLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLoginManger.swift; sourceTree = "<group>"; };
+		DF9A26642C23C219001313AA /* BLChangePasswordTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordTipView.swift; sourceTree = "<group>"; };
 		DFA4F3DA2BF704BA0094D2AE /* BLUIDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUIDatePickerView.swift; sourceTree = "<group>"; };
 		DFA4F3DC2BF731750094D2AE /* BLCreatCastOnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCreatCastOnVC.swift; sourceTree = "<group>"; };
 		DFA4F3DE2BF7359E0094D2AE /* BLCreatCastOnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCreatCastOnCell.swift; sourceTree = "<group>"; };
@@ -657,7 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				DFAC346F2BEB4A71008CB9C7 /* BLWalletHeaderView.swift */,
-				DF66A72A2C2036A600ED2BEA /* BLWalletInfoView.swift */,
+				DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */,
 				DFAC34732BEB60B2008CB9C7 /* BLSegmentView.swift */,
 				DFAC34752BEB6D28008CB9C7 /* BLCoinAssetsCell.swift */,
 				DFAC34DE2BEF59AC008CB9C7 /* InitWallet */,
@@ -788,7 +790,7 @@
 			isa = PBXGroup;
 			children = (
 				DFAC34DC2BEF0E4F008CB9C7 /* BLWalletDetailVC.swift */,
-				DF66A7262C20121A00ED2BEA /* BLChangePasswardVC.swift */,
+				DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */,
 			);
 			path = WalletDetail;
 			sourceTree = "<group>";
@@ -806,8 +808,9 @@
 			isa = PBXGroup;
 			children = (
 				DFAC34E02BEF59E7008CB9C7 /* BLWalletDetailCell.swift */,
+				DF9A26642C23C219001313AA /* BLChangePasswordTipView.swift */,
 				DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */,
-				DF66A7282C2012AF00ED2BEA /* BLChangePasswardCell.swift */,
+				DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */,
 			);
 			path = WalletDetail;
 			sourceTree = "<group>";
@@ -1566,7 +1569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF66A7272C20121A00ED2BEA /* BLChangePasswardVC.swift in Sources */,
+				DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */,
 				DFAD2B142BE8BB730028A4B6 /* MainTabBarVC.m in Sources */,
 				DF78CA7A2C097AEF007ACC47 /* BLAssetsCollectionView.swift in Sources */,
 				DFAC34F92BF2FE5D008CB9C7 /* BLAssetsDetailModel.swift in Sources */,
@@ -1578,7 +1581,7 @@
 				DFAC356E2BF4C32D008CB9C7 /* JXCategoryCollectionView.m in Sources */,
 				DFAC34FB2BF33255008CB9C7 /* BLAssetsTransferVC.swift in Sources */,
 				DF0B92052C1944B8001330A1 /* BLCastOnHisHeaderView.swift in Sources */,
-				DF66A7292C2012AF00ED2BEA /* BLChangePasswardCell.swift in Sources */,
+				DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */,
 				DFAC35A62BF4CE0A008CB9C7 /* TADotView.m in Sources */,
 				DFCFF8EB2C04835700FC248D /* BLUIViewExtension.swift in Sources */,
 				DFCD64CA2C104EDC00ECA514 /* BLChannelListVC.swift in Sources */,
@@ -1586,6 +1589,7 @@
 				DF8DA41C2C07124600E121F2 /* BLQRScanVC.swift in Sources */,
 				DFAC35712BF4C32D008CB9C7 /* JXCategoryListCollectionContainerView.m in Sources */,
 				DFCD38B82C218FC40070CC44 /* BLIDOVC.swift in Sources */,
+				DF9A26652C23C219001313AA /* BLChangePasswordTipView.swift in Sources */,
 				DFA4F3E72BFAF8950094D2AE /* BLTransactionListCell.swift in Sources */,
 				DFD52F882BDE404C007A0E82 /* BLWalletCell.swift in Sources */,
 				DF78CA852C09D93E007ACC47 /* BLCollectionHisModel.swift in Sources */,
@@ -1658,7 +1662,7 @@
 				DFA4F3E92BFB24060094D2AE /* BLTransactionDetailVC.swift in Sources */,
 				DF02C9302C129F3600E48C52 /* BLInvoicesModel.swift in Sources */,
 				DFA4F3DB2BF704BA0094D2AE /* BLUIDatePickerView.swift in Sources */,
-				DF66A72B2C2036A600ED2BEA /* BLWalletInfoView.swift in Sources */,
+				DF66A72B2C2036A600ED2BEA /* BLWalletInfoAlterView.swift in Sources */,
 				DF0B91FD2C17E21C001330A1 /* BLLaunchQueryIssuedModel.swift in Sources */,
 				DF0B92032C19418B001330A1 /* BLCastOnHisVC.swift in Sources */,
 				DFA887C82BE0878200758A91 /* BLBaseTableViewCell.swift in Sources */,

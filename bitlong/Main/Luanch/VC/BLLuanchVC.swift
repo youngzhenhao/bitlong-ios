@@ -15,6 +15,12 @@ class BLLuanchVC: BLBaseVC {
         self.initUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     func initUI(){
         self.view.addSubview(imgView)
         self.view.addSubview(titleLbl)

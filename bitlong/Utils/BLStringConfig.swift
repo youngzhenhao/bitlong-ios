@@ -12,7 +12,6 @@ import Foundation
  */
 //api成功状态
 let APISECCUSS  = "SECCUSS"
-
 //助解字
 let GenSeed = "GenSeed"
 //钱包信息
@@ -25,7 +24,6 @@ let TotalBalance             = "TotalBalance" //总资产
 let ConfirmedBalance         = "ConfirmedBalance" //已确认资产
 let UnconfirmedBalance       = "UnconfirmedBalance" //未已确认资产
 let LockedBalance            = "LockedBalance" //锁定的资产
-
 //钱包地址
 let WalletAddress            = "WalletAddress"
 //资产信息
@@ -34,9 +32,10 @@ let AssetsName               = "AssetsName"
 let AssetsNum                = "AssetsNum"
 //创建资产发票时间
 let AssetsInvoiceCreatTime   = "AssetsInvoiceCreatTime"
-
 //token
 let Token  = "Token"
+//是否修改密码标志位
+let IsNeedChangePassWord     = "IsNeedChangePassWord"
 
 /*
  test
@@ -81,6 +80,6 @@ let IDCardRegex        = "^(\\d{14}|\\d{17})(\\d|[xX])$"
 //IP验证
 let IPRegex              = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])(\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)){3}$"
 //由字母和数字组成的8-12位字符
-let PasswardRegex        = "^[a-zA-Z0-9]{8,12}$"
+let PasswordRegex        = "^[a-zA-Z0-9]{8,12}$"
 //0到10的数字，最多两位小数
 let NumRegex             = "^[0-9](\\.[0-9]{1,2}){0,1}$"

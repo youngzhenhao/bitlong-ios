@@ -1,5 +1,5 @@
 //
-//  BLChangePasswardCell.swift
+//  BLChangePasswordCell.swift
 //  bitlong
 //
 //  Created by 微链通 on 2024/6/17.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-let BLChangePasswardCellId = "BLChangePasswardCellId"
+let BLChangePasswordCellId = "BLChangePasswordCellId"
 
-class BLChangePasswardCell: BLBaseTableViewCell {
+class BLChangePasswordCell: BLBaseTableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,6 +33,7 @@ class BLChangePasswardCell: BLBaseTableViewCell {
     }
 
     func initUI(){
+        self.contentView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         self.contentView.addSubview(containerView)
         containerView.addSubview(textField)
         

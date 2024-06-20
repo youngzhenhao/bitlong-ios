@@ -128,8 +128,8 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
         return view
     }()
     
-    lazy var walletInfoView : BLWalletInfoView = {
-        var view = BLWalletInfoView.init()
+    lazy var walletInfoView : BLWalletInfoAlterView = {
+        var view = BLWalletInfoAlterView.init()
         view.backgroundColor = UIColorHex(hex: 0x000000, a: 0.7)
         
         return view

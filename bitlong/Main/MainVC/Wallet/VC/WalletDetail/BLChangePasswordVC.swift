@@ -1,5 +1,5 @@
 //
-//  BLChangePasswardVC.swift
+//  BLChangePasswordVC.swift
 //  bitlong
 //
 //  Created by 微链通 on 2024/6/17.
@@ -7,16 +7,23 @@
 
 import UIKit
 
-class BLChangePasswardVC: BLBaseVC {
+class BLChangePasswordVC: BLBaseVC {
     
-    var oldPasswardCell : BLChangePasswardCell?
-    var newPasswardCell : BLChangePasswardCell?
+    var oldPasswordCell : BLChangePasswordCell?
+    var newPasswordCell : BLChangePasswordCell?
+    var callBack : ChangePasswordBlock?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "修改密码"
         
         self.initUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func initUI(){
@@ -38,7 +45,7 @@ class BLChangePasswardVC: BLBaseVC {
             make?.height.mas_equalTo()(50*SCALE)
         }
         
-        self.tableView.register(BLChangePasswardCell.self, forCellReuseIdentifier: BLChangePasswardCellId)
+        self.tableView.register(BLChangePasswordCell.self, forCellReuseIdentifier: BLChangePasswordCellId)
     }
     
     lazy var headerList : NSArray = {
@@ -71,12 +78,12 @@ class BLChangePasswardVC: BLBaseVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : BLChangePasswardCell = tableView.dequeueReusableCell(withIdentifier: BLChangePasswardCellId)! as! BLChangePasswardCell
+        let cell : BLChangePasswordCell = tableView.dequeueReusableCell(withIdentifier: BLChangePasswordCellId)! as! BLChangePasswordCell
         cell.assignIndexPath(path: indexPath)
         if indexPath.section == 0{
-            oldPasswardCell = cell
+            oldPasswordCell = cell
         }else{
-            newPasswardCell = cell
+            newPasswordCell = cell
         }
         
         return cell
@@ -118,57 +125,62 @@ class BLChangePasswardVC: BLBaseVC {
     }
     
     @objc func changePassWord(){
-        if oldPasswardCell == nil || oldPasswardCell?.textField.text == nil {
+        if oldPasswordCell == nil || oldPasswordCell?.textField.text == nil {
             BLTools.showTost(tip: "请输入原密码", superView: self.view)
             return
         }
         
-        if newPasswardCell == nil || newPasswardCell?.textField.text == nil {
+        if newPasswordCell == nil || newPasswordCell?.textField.text == nil {
             BLTools.showTost(tip: "请输入新密码", superView: self.view)
             return
         }
         
-        if (newPasswardCell?.textField.text!.count)! < 8 || 12 < (newPasswardCell?.textField.text!.count)!{
+        if (newPasswordCell?.textField.text!.count)! < 8 || 12 < (newPasswordCell?.textField.text!.count)!{
             BLTools.showTost(tip: "请输入8到12位数字与字母组合的密码", superView: self.view)
             return
         }
         
-        let oldPassward : String = (oldPasswardCell?.textField.text)!
-        let newPassward : String = (newPasswardCell?.textField.text)!
+        let oldPassword : String = (oldPasswordCell?.textField.text)!
+        let newPassword : String = (newPasswordCell?.textField.text)!
         
         //校验旧密码
         let obj = userDefaults.object(forKey: WalletInfo)
         if obj != nil && obj is NSDictionary{
             let dic : NSDictionary = obj as! NSDictionary
-            if let passward = dic[WalletPassWorld]{
-                if oldPassward != passward as! String{
+            if let password = dic[WalletPassWorld]{
+                if oldPassword != password as! String{
                     BLTools.showTost(tip: "原密码错误", superView: self.view)
                     return
                 }
             }
         }
         
-        if !BLTools.checkRegular(regex: PasswardRegex, value: newPassward){
+        if !BLTools.checkRegular(regex: PasswordRegex, value: newPassword){
             BLTools.showTost(tip: "密码不合法，请输入8到12位数字与字母组合的密码", superView: self.view)
             return
         }
         
-        if ApiChangePassword(oldPassward, newPassward){
-            BLTools.showTost(tip: "密码修改成功", superView: self.view)
-
-            let obj = userDefaults.object(forKey: WalletPassWorld)
+        BLTools.showTost(tip: "密码修改中，请勿重复操作！", superView: self.view)
+        let flg : Bool = ApiChangePassword(oldPassword, newPassword)
+        if flg{
+            let obj = userDefaults.object(forKey: WalletInfo)
             if obj != nil && obj is NSDictionary{
                 let dic : NSMutableDictionary = NSMutableDictionary.init(dictionary: obj as! NSDictionary)
-                dic.setObject(newPassward, forKey: WalletPassWorld as NSCopying)
+                dic.setObject(newPassword, forKey: WalletPassWorld as NSCopying)
                 userDefaults.synchronize()
-                if ApiUnlockWallet((newPassward)) {
-                    NSSLog(msg: "se")
-                }else{
-                    NSSLog(msg: "fa")
-                }
+                
+                self.back()
             }
         }else{
             BLTools.showTost(tip: "密码修改失败", superView: self.view)
         }
+    }
+    
+    override func back() {
+        if callBack != nil{
+            callBack!()
+        }
+        
+        super.back()
     }
 }

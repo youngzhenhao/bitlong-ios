@@ -1,5 +1,5 @@
 //
-//  BLWalletInfoView.swift
+//  BLWalletInfoAlterView.swift
 //  bitlong
 //
 //  Created by 微链通 on 2024/6/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BLWalletInfoView: BLBaseView,UITableViewDelegate,UITableViewDataSource {
+class BLWalletInfoAlterView: BLBaseView,UITableViewDelegate,UITableViewDataSource {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +28,7 @@ class BLWalletInfoView: BLBaseView,UITableViewDelegate,UITableViewDataSource {
         
         containerView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.right().mas_equalTo()(0)
-            make?.height.mas_equalTo()(SCREEN_HEIGHT/2.0)
+            make?.height.mas_equalTo()(SCREEN_HEIGHT/2.0+SafeAreaBottomHeight)
             make?.bottom.mas_equalTo()(0)
         }
         
@@ -54,7 +54,7 @@ class BLWalletInfoView: BLBaseView,UITableViewDelegate,UITableViewDataSource {
         tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(lineView.mas_bottom)
             make?.left.right().mas_equalTo()(0)
-            make?.bottom.mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         tableView.register(BLWalletDetailCell.self, forCellReuseIdentifier: BLWalletDetailCellId)
@@ -158,6 +158,13 @@ class BLWalletInfoView: BLBaseView,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let view = touches.first?.view
+        if view != containerView{
+            self.closeAcation()
+        }
     }
     
     @objc func closeAcation(){
