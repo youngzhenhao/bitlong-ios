@@ -1,0 +1,15 @@
+Api.xcframework/Info.plist
+Api.xcframework/ios-arm64/Api.framework/Api
+Api.xcframework/ios-arm64/Api.framework/Info.plist
+Api.xcframework/ios-arm64/Api.framework/Headers/Api.h
+Api.xcframework/ios-arm64/Api.framework/Headers/Api.objc.h
+Api.xcframework/ios-arm64/Api.framework/Headers/ref.h
+Api.xcframework/ios-arm64/Api.framework/Headers/Universe.objc.h
+Api.xcframework/ios-arm64/Api.framework/Modules/module.modulemap
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Api
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Info.plist
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/Api.h
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/Api.objc.h
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/ref.h
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/Universe.objc.h
+Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Modules/module.modulemap
