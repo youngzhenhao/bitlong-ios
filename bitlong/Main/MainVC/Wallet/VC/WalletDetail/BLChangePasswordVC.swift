@@ -160,19 +160,27 @@ class BLChangePasswordVC: BLBaseVC {
             return
         }
         
-        BLTools.showTost(tip: "密码修改中，请勿重复操作！", superView: self.view)
-        let flg : Bool = ApiChangePassword(oldPassword, newPassword)
-        if flg{
-            let obj = userDefaults.object(forKey: WalletInfo)
-            if obj != nil && obj is NSDictionary{
-                let dic : NSMutableDictionary = NSMutableDictionary.init(dictionary: obj as! NSDictionary)
-                dic.setObject(newPassword, forKey: WalletPassWorld as NSCopying)
-                userDefaults.synchronize()
-                
-                self.back()
+        BLTools.showLoading(status: "密码修改中~")
+        
+        DispatchQueue.global().async {
+            let flg : Bool = ApiChangePassword(oldPassword, newPassword)
+            if flg{
+                let obj = userDefaults.object(forKey: WalletInfo)
+                if obj != nil && obj is NSDictionary{
+                    let dic : NSMutableDictionary = NSMutableDictionary.init(dictionary: obj as! NSDictionary)
+                    dic.setObject(newPassword, forKey: WalletPassWorld as NSCopying)
+                    userDefaults.setValue(dic, forKey: WalletInfo)
+                    userDefaults.synchronize()
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        self?.back()
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    BLTools.showError(status: "密码修改失败!")
+                }
             }
-        }else{
-            BLTools.showTost(tip: "密码修改失败", superView: self.view)
         }
     }
     

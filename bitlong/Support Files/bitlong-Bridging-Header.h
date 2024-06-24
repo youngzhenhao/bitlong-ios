@@ -18,3 +18,4 @@
 #import <WKWebViewJavascriptBridge/WKWebViewJavascriptBridge.h>
 #import "NSString+MD5Addition.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "SVProgressHUD.h"

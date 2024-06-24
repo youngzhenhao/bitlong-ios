@@ -41,22 +41,22 @@ class BLCreatWalletCell: BLBaseTableViewCell,UITextFieldDelegate {
         containerView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
             make?.right.mas_equalTo()(0)
-            make?.height.mas_equalTo()(46)
+            make?.height.mas_equalTo()(46*SCALE)
             make?.bottom.mas_equalTo()(0)
         }
         
         textField.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(14)
-            make?.right.mas_equalTo()(-45)
-            make?.height.mas_equalTo()(46)
+            make?.left.mas_equalTo()(14*SCALE)
+            make?.right.mas_equalTo()(-45*SCALE)
+            make?.height.mas_equalTo()(46*SCALE)
             make?.bottom.mas_equalTo()(0)
         }
         
         passWorldVisibleBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.width.mas_equalTo()(17)
-            make?.height.mas_equalTo()(12)
+            make?.width.mas_equalTo()(17*SCALE)
+            make?.height.mas_equalTo()(12*SCALE)
             make?.centerY.mas_equalTo()(0)
-            make?.right.mas_equalTo()(-14)
+            make?.right.mas_equalTo()(-14*SCALE)
         }
             
     }
@@ -64,15 +64,16 @@ class BLCreatWalletCell: BLBaseTableViewCell,UITextFieldDelegate {
     lazy var containerView : UIView = {
         var view = UIView.init()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 2
-        //设置阴影颜色
-        view.layer.shadowColor = UIColor.lightGray.cgColor
-        //设置透明度
-        view.layer.shadowOpacity = 0.7
-        //设置阴影半径
-        view.layer.shadowRadius = 1.5
-        //设置阴影偏移量
-        view.layer.shadowOffset = CGSize.init(width: 0, height: 0)
+        view.layer.cornerRadius = 4*SCALE
+        view.clipsToBounds = true
+//        //设置阴影颜色
+//        view.layer.shadowColor = UIColor.lightGray.cgColor
+//        //设置透明度
+//        view.layer.shadowOpacity = 0.7
+//        //设置阴影半径
+//        view.layer.shadowRadius = 1.5
+//        //设置阴影偏移量
+//        view.layer.shadowOffset = CGSize.init(width: 0, height: 0)
         
         return view
     }()
@@ -81,8 +82,8 @@ class BLCreatWalletCell: BLBaseTableViewCell,UITextFieldDelegate {
         var field = UITextField.init()
         field.backgroundColor = .white
         field.textColor = .black
-        field.font = UIFont.boldSystemFont(ofSize: 14)
-        field.attributedPlaceholder = NSAttributedString.init(string:"", attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize:14),NSAttributedString.Key.foregroundColor:UIColor.lightText])
+        field.font = UIFont.boldSystemFont(ofSize: 14*SCALE)
+        field.attributedPlaceholder = NSAttributedString.init(string:"", attributes: [NSAttributedString.Key.font:FONT_NORMAL(s: 14*Float(SCALE)),NSAttributedString.Key.foregroundColor:UIColor.lightText])
         field.delegate = self
 
         return field

@@ -137,6 +137,42 @@ open class BLTools: NSObject {
         return textRect.width
     }
     
+    /*
+     HUD
+     */
+    @objc static func showLoading(){
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show()
+    }
+    
+    @objc static func showLoading(status : String){
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show(withStatus: status)
+    }
+    
+    // 显示消息图标和状态
+    @objc static func showInfo(status : String){
+        SVProgressHUD.showInfo(withStatus: status)
+    }
+
+    // 显示成功图标和状态
+    @objc static func showSucces(status : String){
+        SVProgressHUD.showSuccess(withStatus: status)
+    }
+
+    // 显示错误图标和状态
+    @objc static func showError(status : String){
+        SVProgressHUD.showError(withStatus: status)
+    }
+    // 显示自定义图标和状态
+    @objc static func showImage(image : UIImage,status : String){
+        SVProgressHUD.show(image, status: status)
+    }
+    
+    @objc static func hideLoading(){
+        SVProgressHUD.dismiss()
+    }
+    
     @objc static func showTost(tip : String,superView : UIView){
         if superView.viewWithTag(tostViewTag) != nil && superView.viewWithTag(tostViewTag)?.superview != nil{
             return

@@ -33,7 +33,7 @@
     [self startServer];
     
     Weak(weakSelf);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [weakSelf getLndStateCallBack:^(NSString *litStatus) {
         }];
     });
@@ -64,7 +64,7 @@
     Weak(weakSelf);
     [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSString * litStatus = ApiGetState();
-        NSLog(@"litStatus：%@",litStatus);
+        NSSLog(@"litStatus：%@",litStatus);
         if ([litStatus isEqualToString:@"WAITING_TO_START"]){//节点正在等待成为集群的领导者，尚未启动
         }else if ([litStatus isEqualToString:@"NON_EXISTING"]){//钱包尚未初始化
             [weakSelf initWalletVC];
@@ -132,11 +132,11 @@
     Weak(weakSelf);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        [BLTools showTostWithTip:@"开始解锁钱包" superView:weakSelf.luanchVC.view];
         NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
         NSString * passWorld = walletInfo[@"WalletPassWorld"];
-        [BLTools showTostWithTip:@"开始解锁钱包~" superView:weakSelf.window];
         if(!ApiUnlockWallet(passWorld)){
-            [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.window];
+            [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.luanchVC.view];
         }
     });
 }

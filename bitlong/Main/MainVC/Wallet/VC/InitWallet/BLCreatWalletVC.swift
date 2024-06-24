@@ -19,7 +19,7 @@ class BLCreatWalletVC: BLBaseVC {
     }
     
     func initUI(){
-        self.view.backgroundColor = UIColor.init(white: 0.9, alpha: 1)
+        self.view.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         self.tableView.backgroundColor = self.view.backgroundColor
         self.view.addSubview(self.tableView)
         self.view.addSubview(creatBt)

@@ -29,5 +29,6 @@ target 'bitlong' do
   pod 'SDWebImage'
   pod 'WKWebViewJavascriptBridge'
   pod 'IQKeyboardManager'
+  pod 'SVProgressHUD'
   
 end

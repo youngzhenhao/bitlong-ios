@@ -60,6 +60,7 @@ class BLGetGenSeedVC: BLBaseVC {
     override func loadData() {
         if genSeed == nil || genSeed!.count <= 0{
             if pageType == .backupsGenSeed{
+                BLTools.showLoading()
                 self.getGenSeed()
             }else{
                 let obj = userDefaults.object(forKey: GenSeed)
@@ -77,6 +78,8 @@ class BLGetGenSeedVC: BLBaseVC {
             DispatchQueue.main.async {
                 let indexPath = IndexPath(row: 2, section: 0)
                 self?.tableView.reloadRows(at: [indexPath], with: .fade)
+                
+                BLTools.hideLoading()
             }
         }
     }
@@ -223,7 +226,7 @@ class BLGetGenSeedVC: BLBaseVC {
                 userDefaults.synchronize()
                 
                 if walletInfo != nil{
-                    BLTools.showTost(tip: "钱包正在创建中，请稍作等待~", superView: self.view)
+                    BLTools.showLoading(status: "正在创建中，请稍后~")
                     DispatchQueue.global().async { [weak self] in
                         let passWorld : String = self?.walletInfo!.object(forKey: WalletPassWorld) as! String
                         let isCreatSuccess : Bool = ApiInitWallet(self?.genSeed, passWorld)
@@ -237,9 +240,8 @@ class BLGetGenSeedVC: BLBaseVC {
                                     self?.creatWalletBlock!()
                                 }
                             }
-                            NSSLog(msg: "钱包创建成功!")
                         }else{
-                            NSSLog(msg: "钱包创建失败!")
+                            BLTools.showError(status: "钱包创建失败!")
                         }
                     }
                 }else{
