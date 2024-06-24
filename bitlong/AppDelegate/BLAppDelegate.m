@@ -203,7 +203,8 @@
 //        NSString *cacheDirectory = [cacheDirectories objectAtIndex:0];
 //        NSString *SQLITETMPDIRPath = [cacheDirectory stringByAppendingPathComponent:@"SQLITE_TMPDIR"];
 //        int flg = setenv("SQLITE_TMPDIR", [SQLITETMPDIRPath UTF8String], 1);
-//        NSLog(@"%d",flg);
+//        NSSLog(@"%d",flg);
+
         
         NSString *litPath = [documentsDirectory stringByAppendingPathComponent:@".lit"];
         NSString *lndPath = [documentsDirectory stringByAppendingPathComponent:@".lnd"];
@@ -218,15 +219,78 @@
             [[NSFileManager defaultManager] createDirectoryAtPath:tapdPath withIntermediateDirectories:NO attributes:nil error:&error];
         }
         
-//        NSString *keyInfo = [documentsDirectory stringByAppendingPathComponent:@"keyInfo.db"];
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:keyInfo]){
-//            [[NSFileManager defaultManager] removeItemAtPath:keyInfo error:&error];
-//        }
+        //mainNet
+        //第一条线
+        NSString *dataPath = [lndPath stringByAppendingPathComponent:@"data"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *chainPath = [dataPath stringByAppendingPathComponent:@"chain"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:chainPath]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:chainPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *bitcoinPath = [chainPath stringByAppendingPathComponent:@"bitcoin"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:bitcoinPath]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:bitcoinPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *testnetPath = [bitcoinPath stringByAppendingPathComponent:@"mainnet"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:testnetPath]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:testnetPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
         
-//        NSString * proofPath = [tapdPath stringByAppendingString:@"/data/regtest/proofs/921d8ca7bb09219c38bfe0cbac9a8bc6e8001e25f94cf115a9cc4b073903c99a/02d7935eccdaeb47661910ee76435191596db36b172624fb33a4f435f162177316-d03bc28bb272a30ab2ed406a94154072-1.assetproof"];
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:proofPath]){
-//            [[NSFileManager defaultManager] removeItemAtPath:proofPath error:&error];
-//        }
+        //不能直接拷贝文件到文件夹，要先生成文件路径，往里拷
+        NSString *block_headersFilePath = [testnetPath stringByAppendingPathComponent:@"block_headers.bin"];
+        NSString *neutrinoFilePath = [testnetPath stringByAppendingPathComponent:@"neutrino.db"];
+        NSString *reg_filter_headersFilePath = [testnetPath stringByAppendingPathComponent:@"reg_filter_headers.bin"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:block_headersFilePath]){
+            NSString * block_headersPath = [[NSBundle mainBundle] pathForResource:@"block_headers" ofType:@"bin"];
+            if(block_headersPath){
+                [[NSFileManager defaultManager] copyItemAtPath:block_headersPath toPath:block_headersFilePath error:&error];
+            }
+        }
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:neutrinoFilePath]){
+            NSString * neutrinoPath = [[NSBundle mainBundle] pathForResource:@"neutrino" ofType:@"db"];
+            if(neutrinoPath){
+                [[NSFileManager defaultManager] copyItemAtPath:neutrinoPath toPath:neutrinoFilePath error:&error];
+            }
+        }
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:reg_filter_headersFilePath]){
+            NSString * reg_filter_headersPath = [[NSBundle mainBundle] pathForResource:@"reg_filter_headers" ofType:@"bin"];
+            if(reg_filter_headersPath){
+                [[NSFileManager defaultManager] copyItemAtPath:reg_filter_headersPath toPath:reg_filter_headersFilePath error:NULL];
+            }
+        }
+        
+        //第二条线
+        NSString *graphPath = [dataPath stringByAppendingPathComponent:@"graph"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:graphPath]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:graphPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *testnet2Path = [graphPath stringByAppendingPathComponent:@"mainnet"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:testnet2Path]){
+            [[NSFileManager defaultManager] createDirectoryAtPath:testnet2Path withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        
+        NSString *channelFilePath = [testnet2Path stringByAppendingPathComponent:@"channel.db"];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:channelFilePath]){
+            NSString * channelPath = [[NSBundle mainBundle] pathForResource:@"channel" ofType:@"db"];
+            if(channelPath){
+                [[NSFileManager defaultManager] copyItemAtPath:channelPath toPath:channelFilePath error:&error];
+            }
+        }
+        
+        //        NSString *keyInfo = [documentsDirectory stringByAppendingPathComponent:@"keyInfo.db"];
+        //        if ([[NSFileManager defaultManager] fileExistsAtPath:keyInfo]){
+        //            [[NSFileManager defaultManager] removeItemAtPath:keyInfo error:&error];
+        //        }
+                
+        //        NSString * proofPath = [tapdPath stringByAppendingString:@"/data/regtest/proofs/921d8ca7bb09219c38bfe0cbac9a8bc6e8001e25f94cf115a9cc4b073903c99a/02d7935eccdaeb47661910ee76435191596db36b172624fb33a4f435f162177316-d03bc28bb272a30ab2ed406a94154072-1.assetproof"];
+        //        if ([[NSFileManager defaultManager] fileExistsAtPath:proofPath]){
+        //            [[NSFileManager defaultManager] removeItemAtPath:proofPath error:&error];
+        //        }
+        
         
         NSString *configFilePath = [documentsDirectory stringByAppendingPathComponent:@"config.txt"];
         NSMutableString * text = [NSMutableString string];
@@ -247,42 +311,6 @@
         NSMutableString * litText = [NSMutableString string];
         
         /*
-         公网 内网
-         */
-//        [litText appendString:@"lnd-mode=integrated"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"uipassword=11111111"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"network=testnet"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.alias=lnd1"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.active=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.node=bitcoind"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
-//        [litText appendString:@"\n"];
-////            [litText appendString:@"lnd.bitcoind.rpchost=202.79.173.41"]; //公网
-//        [litText appendString:@"lnd.bitcoind.rpchost=192.168.110.42"];    //内网
-//        [litText appendString:@"\n"];
-////            [litText appendString:@"lnd.bitcoind.rpcuser=tapuser"];       //公网
-//        [litText appendString:@"lnd.bitcoind.rpcuser=rpcuser"];             //内网
-//        [litText appendString:@"\n"];
-////            [litText appendString:@"lnd.bitcoind.rpcpass=lndtappwd"];     //公网
-//        [litText appendString:@"lnd.bitcoind.rpcpass=rpcpassword"];         //内网
-//        [litText appendString:@"\n"];
-////            [litText appendString:@"lnd.bitcoind.zmqpubrawblock=tcp://202.79.173.41:28332"]; //公网
-//        [litText appendString:@"lnd.bitcoind.zmqpubrawblock=tcp://192.168.110.42:28332"];    //内网
-//        [litText appendString:@"\n"];
-////            [litText appendString:@"lnd.bitcoind.zmqpubrawtx=tcp://202.79.173.41:28333"];    //公网
-//        [litText appendString:@"lnd.bitcoind.zmqpubrawtx=tcp://192.168.110.42:28333"];       //内网
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.rpcmiddleware.enable=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.db.bolt.auto-compact=true"];
-       
-        /*
          私链
          */
         [litText appendString:@"lnd-mode=integrated"];
@@ -297,19 +325,7 @@
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.bitcoin.active=true"];
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoin.node=bitcoind"];
-        [litText appendString:@"\n"];
         [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoind.rpchost=132.232.109.84"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoind.rpcuser=rpcuser"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoind.rpcpass=rpcpassword"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoind.zmqpubrawblock=tcp://132.232.109.84:58332"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoind.zmqpubrawtx=tcp://132.232.109.84:58333"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.rpcmiddleware.enable=true"];
         [litText appendString:@"\n"];
@@ -320,6 +336,23 @@
         [litText appendString:@"lnd.bitcoin.regtest=true"];
         [litText appendString:@"\n"];
         [litText appendString:@"taproot-assets.universe.federationserver=132.232.109.84:8443"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.neutrino.connect=132.232.109.84:18444"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"taproot-assets.network=regtest"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"taproot-assets.allow-public-uni-proof-courier=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"taproot-assets.allow-public-stats=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"taproot-assets.universe.public-access=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.neutrino.persistfilters=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
+        
         
         /*
          主网
@@ -330,46 +363,68 @@
 //        [litText appendString:@"\n"];
 //        [litText appendString:@"network=mainnet"];
 //        [litText appendString:@"\n"];
+//        [litText appendString:@"httpslisten=0.0.0.0:8443"];
+//        [litText appendString:@"\n"];
 //        [litText appendString:@"lnd.alias=lnd1"];
 //        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.active=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"];
+//        [litText appendString:@"autopilot.disable=true"];
 //        [litText appendString:@"\n"];
 //        [litText appendString:@"lnd.rpcmiddleware.enable=true"];
 //        [litText appendString:@"\n"];
 //        [litText appendString:@"lnd.db.bolt.auto-compact=true"];
 //        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.bitcoin.active=true"];
+//        [litText appendString:@"\n"];
 //        [litText appendString:@"lnd.bitcoin.mainnet=true"];
-        
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.accept-keysend=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.accept-amp=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.neutrino.persistfilters=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.network=mainnet"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.allow-public-uni-proof-courier=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.allow-public-stats=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.universe.public-access=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"];
+     
         [litText writeToFile:litFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
 //        ApiSetPath(documentsDirectory,@"testnet"); //内网
         ApiSetPath(documentsDirectory,@"regtest"); //私链
 //        ApiSetPath(documentsDirectory,@"mainnet"); //主网
-        NSLog(@"ApiGetPath:\n%@",ApiGetPath());
+        NSSLog(@"ApiGetPath:\n%@",ApiGetPath());
         
 //        ApiReadConfigFile1();
-//        NSLog(@"-------------ApiReadConfigFile2-------------:\n");
+//        NSSLog(@"-------------ApiReadConfigFile2-------------:\n");
 //        ApiReadConfigFile2();
 //
 //        ApiCreateDir2();
 //        ApiVisit();
-//        [self getAllName:@"----------ApiStartLitd--------"];
+//        [self getAllName:@"----------ApiStartLitd2--------"];
         ApiStartLitd();
     });
 }
 
 - (void)getAllName:(NSString *)local{
-    NSLog(@"local:%@\n",local);
+    NSSLog(@"local:%@\n",local);
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSFileManager *fileManager      = [NSFileManager defaultManager];
 //    NSString *testDirectory    = [documentsPath stringByAppendingPathComponent:@"files"];
     //取得一个目录下得所有文件名
     NSArray *files = [fileManager subpathsAtPath:documentsPath];
-    NSLog(@"Document:%@",files);
+    NSSLog(@"Document:%@",files);
 }
 
 @end
