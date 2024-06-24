@@ -13,3 +13,7 @@ Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/Api.objc.h
 Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/ref.h
 Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Headers/Universe.objc.h
 Api.xcframework/ios-arm64_x86_64-simulator/Api.framework/Modules/module.modulemap
+bitlong/Source/block_headers.bin
+bitlong/Source/channel.db
+bitlong/Source/neutrino.db
+bitlong/Source/reg_filter_headers.bin
