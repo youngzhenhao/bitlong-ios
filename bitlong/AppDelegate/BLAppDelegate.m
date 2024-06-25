@@ -398,6 +398,8 @@
         [litText appendString:@"taproot-assets.universe.public-access=true"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.addpeer=027208d43d94fa830417a0e730d12cd11996d5cd62df2e210cdc48464feaafd3bc@132.232.109.84:9736"];
      
         [litText writeToFile:litFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
