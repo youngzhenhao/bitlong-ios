@@ -20,3 +20,4 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SSZipArchive/SSZipArchive.h>
+#import "WXApi.h"

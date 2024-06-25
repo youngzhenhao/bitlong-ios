@@ -38,6 +38,12 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
         return self.view
     }
     
+    func listDidAppear() {
+    }
+    
+    func listDidDisappear() {
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }

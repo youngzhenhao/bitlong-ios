@@ -2,7 +2,7 @@
 //  BLBatchTransferVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/3.
+//  Created by slc on 2024/6/3.
 //
 
 import UIKit
@@ -362,16 +362,17 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
         //String returnData = BitlongApi.SendAssets(jsonAddrs, 0);资产
         //String returnData = BitlongApi.SendMany(json, 0);btc
         self.hideSelectList()
+        
+        if typeCell == nil || typeCell?.subTitleLbl.text == nil{
+            BLTools.showTost(tip: "请选择转账类型", superView: self.view)
+            return
+        }
+        if selectedItem == nil{
+            BLTools.showTost(tip: "请选择资产", superView: self.view)
+            return
+        }
+        
         if assetsType == .BTCType{//btc
-            if typeCell == nil || typeCell?.subTitleLbl.text == nil{
-                BLTools.showTost(tip: "请选择转账类型", superView: self.view)
-                return
-            }
-            if selectedItem == nil{
-                BLTools.showTost(tip: "请选择资产", superView: self.view)
-                return
-            }
-
             //{"address1":100,"address2":200}
             if 0 < addrDic.allKeys.count{
                 let jsonStr = ApiSendMany(addrDic.mj_JSONString(), 0)
@@ -396,8 +397,6 @@ class BLBatchTransferVC: BLBaseVC,SelectDelegate,BatchTransferDelegate {
             }else{
                 BLTools.showTost(tip: "请添加地址！", superView: self.view)
             }
-        }else{
-            
         }
     }
 }

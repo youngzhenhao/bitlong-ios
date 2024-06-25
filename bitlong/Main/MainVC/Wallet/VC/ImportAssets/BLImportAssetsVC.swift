@@ -2,17 +2,18 @@
 //  BLImportAssetsVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/3.
+//  Created by slc on 2024/6/3.
 //
 
 import UIKit
 
-class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate {
+class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate,AddressSelectDelegate {
     
     var assetsIDCell  : BLImportAssetsIDCell?
     var universeAddressCell : BLImportUniverseAddressCell?
     var assetsDetailCell : BLImportAssetsDetailCell?
     var coinDetailModel : BLAssetsCoinDetailModel?
+    var currentSellectIndex : NSInteger = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,16 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate {
         self.tableView.register(BLImportUniverseAddressCell.self, forCellReuseIdentifier: BLImportUniverseAddressCellId)
         self.tableView.register(BLImportAssetsDetailCell.self, forCellReuseIdentifier: BLImportAssetsDetailCellId)
     }
+    
+    lazy var hostListView : BLUniverseAddressListView = {
+        var view = BLUniverseAddressListView.init()
+        view.backgroundColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
+        view.layer.cornerRadius = 4*SCALE
+        view.clipsToBounds = true
+        view.delegate = self
+        
+        return view
+    }()
     
     lazy var headerList : NSArray = {
         var arr = ["资产id","宇宙地址"]
@@ -146,6 +157,55 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if currentSellectIndex == indexPath.section{
+            self.hideHostList()
+            return
+        }
+        
+        currentSellectIndex = indexPath.section
+        
+        if indexPath.section == 1{
+            let cell : BLImportUniverseAddressCell = tableView.cellForRow(at: indexPath) as! BLImportUniverseAddressCell
+            cell.layoutIfNeeded()
+            self.showHostList(frame: CGRect.init(x: CGRectGetMinX(cell.containerView.frame), y: TopHeight+CGRectGetMaxY(cell.frame), width: SCREEN_WIDTH - 100*SCALE, height: 0),section: indexPath.section)
+        }else{
+            self.hideHostList()
+        }
+    }
+    
+    func showHostList(frame : CGRect,section : NSInteger){
+        if hostListView.superview == nil{
+            self.view.addSubview(hostListView)
+        }
+        hostListView.frame = frame
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            var height : CGFloat = 0.0
+            if section == 0{
+                height = CGFloat((self?.hostListView.hostList.count)!)*(40*SCALE)
+            }else{
+                if (self?.hostListView.hostList.count)! <= 5{
+                    height = CGFloat((self?.hostListView.hostList.count)!)*(40*SCALE)
+                }else{
+                    height = 5*(40*SCALE)
+                }
+            }
+            self?.hostListView.frame = CGRect.init(x: frame.origin.x+10*SCALE, y: frame.maxY, width: frame.width, height: height)
+        }
+    }
+    
+    func hideHostList(){
+        if hostListView.superview != nil{
+            hostListView.removeFromSuperview()
+        }
+        
+        currentSellectIndex = -1
+    }
+    
+    //AddressSelectDelegate
+    func addressSelect(addr: String) {
+        universeAddressCell?.addrLbl.text = addr
+        self.hideHostList()
     }
     
     //ImportAssetsDelegate
@@ -183,6 +243,10 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate {
             }
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func editBegin() {
+        self.hideHostList()
     }
     
     @objc func confirmAcation(){

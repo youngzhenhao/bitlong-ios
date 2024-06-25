@@ -2,7 +2,7 @@
 //  BLAssetsListVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/5.
+//  Created by slc on 2024/6/5.
 //
 
 import UIKit
@@ -49,15 +49,14 @@ class BLAssetsListVC: BLBaseVC {
         if obj is NSArray{
             self.filterAssets(assets: obj as! NSArray, isInsert: true)
         }
-        
-        self.loadData()
     }
 
     override func loadData() {
+        self.getLocalData()
+        
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
             BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
-            tableView.reloadData()
             return
         }
         
@@ -66,8 +65,6 @@ class BLAssetsListVC: BLBaseVC {
         if assetsModel.datas != nil && 0 < assetsModel.datas!.count{
             let assets : NSArray = assetsModel.datas! as NSArray
             self.filterAssets(assets: assets, isInsert: false)
-            
-            tableView.reloadData()
         }
         
         self.gifHeader.endRefreshing()
@@ -106,6 +103,8 @@ class BLAssetsListVC: BLBaseVC {
         }else{
             assetsInfoList = NSMutableArray.init(array: assets)
         }
+        
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

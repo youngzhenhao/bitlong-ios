@@ -2,7 +2,7 @@
 //  BLGenSeedListCell.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/4/30.
+//  Created by slc on 2024/4/30.
 //
 
 import UIKit

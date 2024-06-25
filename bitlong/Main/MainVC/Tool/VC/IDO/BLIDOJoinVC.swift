@@ -2,7 +2,7 @@
 //  BLIDOJoinVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/19.
+//  Created by slc on 2024/6/19.
 //
 
 import UIKit

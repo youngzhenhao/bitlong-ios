@@ -24,6 +24,9 @@
 		DF4DF59F2C2923240016AB95 /* block_headers.bin in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF59B2C2923240016AB95 /* block_headers.bin */; };
 		DF4DF5A22C2943B40016AB95 /* BLZipManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */; };
 		DF4DF5A42C295B590016AB95 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4DF5A32C295B590016AB95 /* Api.xcframework */; };
+		DF4DF5A72C2AAA9C0016AB95 /* BLUniverseAddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A62C2AAA9C0016AB95 /* BLUniverseAddressListView.swift */; };
+		DF4DF5A92C2AAC070016AB95 /* BLUniverseAddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A82C2AAC070016AB95 /* BLUniverseAddressListCell.swift */; };
+		DF4DF5AD2C2AC9810016AB95 /* BLShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5AC2C2AC9810016AB95 /* BLShareView.swift */; };
 		DF66A7252C1FD86700ED2BEA /* BLChangeWalletNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */; };
 		DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */; };
 		DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */; };
@@ -209,11 +212,10 @@
 		DFD52F882BDE404C007A0E82 /* BLWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD52F872BDE404C007A0E82 /* BLWalletCell.swift */; };
 		DFDB2F9E2C1BE9DA001C8218 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDB2F9D2C1BE9DA001C8218 /* Api.xcframework */; };
 		DFDB2FA02C1C14E2001C8218 /* BLDestructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB2F9F2C1C14E2001C8218 /* BLDestructionVC.swift */; };
-		DFDB2FA22C1C1974001C8218 /* BLServerErrorDealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB2FA12C1C1974001C8218 /* BLServerErrorDealModel.swift */; };
+		DFDB2FA22C1C1974001C8218 /* BLServerErrorManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB2FA12C1C1974001C8218 /* BLServerErrorManger.swift */; };
 		DFDDBBC12C0ED425002E563E /* BLAssetsCoinDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDDBBC02C0ED425002E563E /* BLAssetsCoinDetailVC.swift */; };
 		DFDDBBC32C0EE768002E563E /* BLAssetsCoinDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDDBBC22C0EE768002E563E /* BLAssetsCoinDetailModel.swift */; };
 		DFDDBBC52C0EF282002E563E /* BLAssetsCoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDDBBC42C0EF282002E563E /* BLAssetsCoinDetailView.swift */; };
-		DFF612012BFD84C40041E4B7 /* js_brige.js in Resources */ = {isa = PBXBuildFile; fileRef = DFF612002BFD84C40041E4B7 /* js_brige.js */; };
 		DFF612042BFDBFE70041E4B7 /* BLKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF612022BFDBFE70041E4B7 /* BLKeychain.m */; };
 		DFF612242BFEEDA20041E4B7 /* BLCreatAssetLogoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF612232BFEEDA20041E4B7 /* BLCreatAssetLogoCell.swift */; };
 		DFF612262BFEEDCB0041E4B7 /* BLCreatAssetFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF612252BFEEDCB0041E4B7 /* BLCreatAssetFieldCell.swift */; };
@@ -257,6 +259,9 @@
 		DF4DF59B2C2923240016AB95 /* block_headers.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = block_headers.bin; sourceTree = "<group>"; };
 		DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLZipManger.swift; sourceTree = "<group>"; };
 		DF4DF5A32C295B590016AB95 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
+		DF4DF5A62C2AAA9C0016AB95 /* BLUniverseAddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUniverseAddressListView.swift; sourceTree = "<group>"; };
+		DF4DF5A82C2AAC070016AB95 /* BLUniverseAddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUniverseAddressListCell.swift; sourceTree = "<group>"; };
+		DF4DF5AC2C2AC9810016AB95 /* BLShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLShareView.swift; sourceTree = "<group>"; };
 		DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangeWalletNameView.swift; sourceTree = "<group>"; };
 		DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordVC.swift; sourceTree = "<group>"; };
 		DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordCell.swift; sourceTree = "<group>"; };
@@ -503,11 +508,10 @@
 		DFD52F872BDE404C007A0E82 /* BLWalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLWalletCell.swift; sourceTree = "<group>"; };
 		DFDB2F9D2C1BE9DA001C8218 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DFDB2F9F2C1C14E2001C8218 /* BLDestructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLDestructionVC.swift; sourceTree = "<group>"; };
-		DFDB2FA12C1C1974001C8218 /* BLServerErrorDealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLServerErrorDealModel.swift; sourceTree = "<group>"; };
+		DFDB2FA12C1C1974001C8218 /* BLServerErrorManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLServerErrorManger.swift; sourceTree = "<group>"; };
 		DFDDBBC02C0ED425002E563E /* BLAssetsCoinDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCoinDetailVC.swift; sourceTree = "<group>"; };
 		DFDDBBC22C0EE768002E563E /* BLAssetsCoinDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCoinDetailModel.swift; sourceTree = "<group>"; };
 		DFDDBBC42C0EF282002E563E /* BLAssetsCoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCoinDetailView.swift; sourceTree = "<group>"; };
-		DFF612002BFD84C40041E4B7 /* js_brige.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_brige.js; sourceTree = "<group>"; };
 		DFF612022BFDBFE70041E4B7 /* BLKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLKeychain.m; sourceTree = "<group>"; };
 		DFF612032BFDBFE70041E4B7 /* BLKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKeychain.h; sourceTree = "<group>"; };
 		DFF612232BFEEDA20041E4B7 /* BLCreatAssetLogoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCreatAssetLogoCell.swift; sourceTree = "<group>"; };
@@ -599,6 +603,22 @@
 			path = ZipKit;
 			sourceTree = "<group>";
 		};
+		DF4DF5AA2C2AC8840016AB95 /* ServerError */ = {
+			isa = PBXGroup;
+			children = (
+				DFDB2FA12C1C1974001C8218 /* BLServerErrorManger.swift */,
+			);
+			path = ServerError;
+			sourceTree = "<group>";
+		};
+		DF4DF5AB2C2AC95A0016AB95 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DF5AC2C2AC9810016AB95 /* BLShareView.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		DF78CA7B2C099CF2007ACC47 /* BLAssetsCollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +652,8 @@
 			isa = PBXGroup;
 			children = (
 				DF990E312C0DC7FB00448134 /* BLImportAssetsCell.swift */,
+				DF4DF5A62C2AAA9C0016AB95 /* BLUniverseAddressListView.swift */,
+				DF4DF5A82C2AAC070016AB95 /* BLUniverseAddressListCell.swift */,
 			);
 			path = ImportAssets;
 			sourceTree = "<group>";
@@ -718,6 +740,7 @@
 		DFAC346C2BEB24B5008CB9C7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				DF4DF5AA2C2AC8840016AB95 /* ServerError */,
 				DF4DF5A02C2943940016AB95 /* ZipKit */,
 				DF990E332C0EA59D00448134 /* Permissions */,
 				DF990E342C0EA5B600448134 /* Login */,
@@ -1374,12 +1397,11 @@
 				DFD52F802BDE3173007A0E82 /* BLEnum.swift */,
 				DFAC34712BEB4E27008CB9C7 /* BLExtension.swift */,
 				DFA4F3ED2BFB41C40094D2AE /* BLRout.swift */,
-				DFDB2FA12C1C1974001C8218 /* BLServerErrorDealModel.swift */,
 				DFAD2B162BE8BBC90028A4B6 /* Macro.h */,
+				DF4DF5AB2C2AC95A0016AB95 /* Share */,
 				DF8DA41A2C07121000E121F2 /* QR */,
 				DFCFF8E92C0482F600FC248D /* Extension */,
 				DFF612732BFF32D70041E4B7 /* DSJNetWork */,
-				DFF611FF2BFD84B80041E4B7 /* JS */,
 				DFAC356A2BF4C32D008CB9C7 /* JXCategoryView */,
 				DFAC35A32BF4CE0A008CB9C7 /* SDCycleScrollView */,
 			);
@@ -1395,14 +1417,6 @@
 				DF4DF59A2C2923220016AB95 /* reg_filter_headers.bin */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		DFF611FF2BFD84B80041E4B7 /* JS */ = {
-			isa = PBXGroup;
-			children = (
-				DFF612002BFD84C40041E4B7 /* js_brige.js */,
-			);
-			path = JS;
 			sourceTree = "<group>";
 		};
 		DFF612212BFEED170041E4B7 /* CreatAssets */ = {
@@ -1541,7 +1555,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFF612012BFD84C40041E4B7 /* js_brige.js in Resources */,
 				DF4DF59F2C2923240016AB95 /* block_headers.bin in Resources */,
 				DFD52F372BDE16A0007A0E82 /* Assets.xcassets in Resources */,
 				DFD52F3A2BDE16A0007A0E82 /* Base in Resources */,
@@ -1603,6 +1616,7 @@
 				DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */,
 				DFAD2B142BE8BB730028A4B6 /* MainTabBarVC.m in Sources */,
 				DF78CA7A2C097AEF007ACC47 /* BLAssetsCollectionView.swift in Sources */,
+				DF4DF5AD2C2AC9810016AB95 /* BLShareView.swift in Sources */,
 				DFAC34F92BF2FE5D008CB9C7 /* BLAssetsDetailModel.swift in Sources */,
 				DFAC358D2BF4C32D008CB9C7 /* JXCategoryTitleImageCellModel.m in Sources */,
 				DFAD2B1A2BE9C0260028A4B6 /* BLTransactionHeaderView.swift in Sources */,
@@ -1739,9 +1753,11 @@
 				DFAC34722BEB4E27008CB9C7 /* BLExtension.swift in Sources */,
 				DFAC35A72BF4CE0A008CB9C7 /* TAPageControl.m in Sources */,
 				DFAC35A52BF4CE0A008CB9C7 /* TAAnimatedDotView.m in Sources */,
+				DF4DF5A92C2AAC070016AB95 /* BLUniverseAddressListCell.swift in Sources */,
 				DFAC357A2BF4C32D008CB9C7 /* JXCategoryImageView.m in Sources */,
 				DFAC35772BF4C32D008CB9C7 /* JXCategoryDotView.m in Sources */,
 				DFCD64C12C10366300ECA514 /* BLAssetsSendHisModel.swift in Sources */,
+				DF4DF5A72C2AAA9C0016AB95 /* BLUniverseAddressListView.swift in Sources */,
 				DFF612792BFF32D70041E4B7 /* NetworkManager.m in Sources */,
 				DFF612042BFDBFE70041E4B7 /* BLKeychain.m in Sources */,
 				DF78CA832C09CD42007ACC47 /* BLCollectionHisHeaderView.swift in Sources */,
@@ -1755,7 +1771,7 @@
 				DFD52F722BDE1F75007A0E82 /* BLLuanchVC.swift in Sources */,
 				DF0B92072C1946D3001330A1 /* BLCastOnHisCell.swift in Sources */,
 				DFAD2B182BE8D6310028A4B6 /* BLToolVC.swift in Sources */,
-				DFDB2FA22C1C1974001C8218 /* BLServerErrorDealModel.swift in Sources */,
+				DFDB2FA22C1C1974001C8218 /* BLServerErrorManger.swift in Sources */,
 				DFAC34FF2BF337DB008CB9C7 /* BLTransferCell.swift in Sources */,
 				DF78CA7F2C09CA79007ACC47 /* BLCollectionHisListCell.swift in Sources */,
 				DFAC34E32BF1B31F008CB9C7 /* BLAssetsDetailVC.swift in Sources */,

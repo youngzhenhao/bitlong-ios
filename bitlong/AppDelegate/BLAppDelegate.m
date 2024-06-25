@@ -2,7 +2,7 @@
 //  BLAppDelegate.m
 //  web3.0
 //
-//  Created by 微链通 on 2024/4/28.
+//  Created by slc on 2024/4/28.
 //
 
 #import "BLAppDelegate.h"
@@ -104,7 +104,7 @@
         //获取Tap服务状态，检测错误状态
         NSString * jsonStr = ApiGetInfoOfTap();
         __block NSTimer * timerCopy = timer;
-        [BLServerErrorDealModel dealTapErrorWithJsonStr:jsonStr callBack:^(BOOL isInvalidate) {
+        [BLServerErrorManger dealTapErrorWithJsonStr:jsonStr callBack:^(BOOL isInvalidate) {
             if(isInvalidate){
                 [timerCopy invalidate];
                 timerCopy = nil;
@@ -414,7 +414,7 @@
 //
 //        ApiCreateDir2();
 //        ApiVisit();
-        [self getAllName:@"----------ApiStartLitd2--------"];
+//        [self getAllName:@"----------ApiStartLitd2--------"];
         ApiStartLitd();
     });
 }

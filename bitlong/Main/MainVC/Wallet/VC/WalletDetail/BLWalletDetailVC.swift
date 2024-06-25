@@ -2,7 +2,7 @@
 //  BLWalletDetailVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/5/11.
+//  Created by slc on 2024/5/11.
 //
 
 import UIKit
@@ -58,7 +58,7 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
     }()
     
     lazy var walletItemList : NSArray = {
-        var list = ["导出助记词",["修改密码","重置密码"],"Nostr地址"]
+        var list = ["导出助记词",["修改密码"],"Nostr地址"]
         
         return list as NSArray
     }()
@@ -104,9 +104,6 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2{
-            return 2
-        }
         return 1
     }
     

@@ -25,6 +25,7 @@ PODS:
   - SVProgressHUD (2.3.1):
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
+  - WechatOpenSDK (2.0.4)
   - WKWebViewJavascriptBridge (1.2.2)
 
 DEPENDENCIES:
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - SDWebImage
   - SSZipArchive
   - SVProgressHUD
+  - WechatOpenSDK
   - WKWebViewJavascriptBridge
 
 SPEC REPOS:
@@ -48,6 +50,7 @@ SPEC REPOS:
     - SDWebImage
     - SSZipArchive
     - SVProgressHUD
+    - WechatOpenSDK
     - WKWebViewJavascriptBridge
 
 SPEC CHECKSUMS:
@@ -59,8 +62,9 @@ SPEC CHECKSUMS:
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  WechatOpenSDK: 290989072e87b79d52225a01bb4e5e58f6f88593
   WKWebViewJavascriptBridge: d7324badf8996486c71648f448617b09bf927b4b
 
-PODFILE CHECKSUM: 96dcbddecad15ad55badfc9224f7b38430765ff4
+PODFILE CHECKSUM: eb4fdb00938dd301924dd05880969613defdb391
 
 COCOAPODS: 1.15.2

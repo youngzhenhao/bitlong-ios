@@ -2,7 +2,7 @@
 //  BLAssetsDetailModel.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/5/14.
+//  Created by slc on 2024/5/14.
 //
 
 import UIKit

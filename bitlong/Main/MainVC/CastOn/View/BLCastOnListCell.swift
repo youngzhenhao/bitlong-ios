@@ -2,7 +2,7 @@
 //  BLCastOnListCell.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/5/16.
+//  Created byslc on 2024/5/16.
 //
 
 import UIKit

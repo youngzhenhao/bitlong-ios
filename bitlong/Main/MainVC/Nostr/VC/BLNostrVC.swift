@@ -2,13 +2,11 @@
 //  BLNostrVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/5/13.
+//  Created by slc on 2024/5/13.
 //
 
 import UIKit
 import WebKit
-
-//let JsCallHandle = "JsCallHandle";
 
 class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
 
@@ -50,8 +48,8 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
 //        WKWebViewJavascriptBridge
         self.initJavascriptBridge()
         
-//        self.setHtmlUrl(urlStr: "http://202.79.173.43/")
-        self.setHtmlUrl(urlStr: "http://192.168.110.36:8080/")
+        self.setHtmlUrl(urlStr: "http://202.79.173.43/")
+//        self.setHtmlUrl(urlStr: "http://192.168.110.36:8080/")
     }
     
     lazy var netWorkManager : NetworkManager = {
@@ -84,19 +82,6 @@ class BLNostrVC: BLBaseVC,WKNavigationDelegate,WKUIDelegate {
         let userController : WKUserContentController = WKUserContentController.init()
         config.userContentController = userController
         config.processPool = WKProcessPool.init()
-//        let source : NSString = Bundle.main.path(forResource: "js_brige", ofType: "js")! as NSString
-//        if let source = Bundle.main.path(forResource: "js_brige", ofType: "js") {
-//            do{
-//                let js = try String(contentsOfFile: source, encoding: .utf8)
-//                let script : WKUserScript = WKUserScript.init(source: js, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-//                userController.addUserScript(script)
-//            }catch{
-//                NSSLog(msg: "js_brige could not be loaded.")
-//            }
-//        }else{
-//            NSSLog(msg: "js_brige File not found")
-//        }
-//        userController.add(self, name: JsCallHandle)
         var view =  WKWebView.init(frame: .zero, configuration: config)
         view.backgroundColor = .white
         view.uiDelegate = self

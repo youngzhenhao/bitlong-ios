@@ -2,7 +2,7 @@
 //  BLCastOnHisHeaderView.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/12.
+//  Created by slc on 2024/6/12.
 //
 
 import UIKit

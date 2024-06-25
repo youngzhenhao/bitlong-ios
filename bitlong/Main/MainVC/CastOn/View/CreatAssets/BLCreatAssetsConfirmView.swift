@@ -2,7 +2,7 @@
 //  BLCreatAssetsConfirmView.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/11.
+//  Created by slc on 2024/6/11.
 //
 
 import UIKit

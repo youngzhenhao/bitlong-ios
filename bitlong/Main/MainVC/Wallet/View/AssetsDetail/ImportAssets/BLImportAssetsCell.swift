@@ -2,15 +2,15 @@
 //  BLImportAssetsCell.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/3.
+//  Created by slc on 2024/6/3.
 //
 
 import UIKit
 
 @objc protocol ImportAssetsDelegate : NSObjectProtocol {
     func scanAcation()
+    @objc optional func editBegin()
 }
-
 
 class BLImportAssetsCell: BLBaseTableViewCell {
     
@@ -150,8 +150,24 @@ class BLImportAssetsIDCell: BLImportAssetsCell,UITextViewDelegate {
         return true
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if delegate != nil && (delegate?.responds(to: #selector(delegate?.editBegin))) != nil{
+            delegate?.editBegin!()
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text == nil || textView.text.count <= 0{
+            placeholderLbl.isHidden = false
+        }else{
+            placeholderLbl.isHidden = true
+        }
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
-   
+        if textView.text == nil || textView.text.count <= 0{
+            placeholderLbl.isHidden = false
+        }
     }
     
     @objc func scanAcation(){

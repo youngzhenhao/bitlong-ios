@@ -31,5 +31,6 @@ target 'bitlong' do
   pod 'IQKeyboardManager'
   pod 'SVProgressHUD'
   pod 'SSZipArchive'
+  pod 'WechatOpenSDK'
   
 end

@@ -2,7 +2,7 @@
 //  BLZipManger.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/24.
+//  Created by slc on 2024/6/24.
 //
 
 import UIKit
@@ -59,7 +59,7 @@ class BLZipManger: NSObject,URLSessionDataDelegate {
         let param : NSMutableDictionary = NSMutableDictionary.init(dictionary: BLLoginManger.shared.getHeader())
         param.setValue("attachment; filename=data.zip", forKey: "Content-Disposition")
         param.setValue("application/octet-stream", forKey: "content-type")
-        NetworkManager.share().getBytesRequestUrlString(ApiSnapshotDownload, paramerers: nil, requestHeader: (param as! [AnyHashable : Any])) { resp in
+        NetworkManager.share().getBytesRequestUrlString(ApiSnapshotDownload, paramerers: nil, requestHeader: (param as! [AnyHashable : Any])) { [weak self] resp in
             BLTools.hideLoading()
             if resp is DispatchData{
                 let patchData : DispatchData = resp as! DispatchData
@@ -72,9 +72,9 @@ class BLZipManger: NSObject,URLSessionDataDelegate {
                     }
                     try data.write(to: URL.init(string: "file://" + fileCachesPath)!)
                     let toFilePath : String = KNSDocumentPath(name: UnZipFilePath)
-                    self.unZipWith(filePath: fileCachesPath, toFilePath: toFilePath)
+                    self?.unZipWith(filePath: fileCachesPath, toFilePath: toFilePath)
                 } catch {
-                    BLTools.showTost(tip: String.init(format: "Error writing zip file data to file: \(error)"), superView: BLTools.getCurrentVC().view)
+                    BLTools.showTost(tip: "Error writing zip file data: \(error)", superView: BLTools.getCurrentVC().view)
                 }
             }
         } onFailureBlock: { errorRespModel in

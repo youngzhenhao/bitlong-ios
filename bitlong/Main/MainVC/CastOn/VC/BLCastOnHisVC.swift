@@ -2,7 +2,7 @@
 //  BLCastOnHisVC.swift
 //  bitlong
 //
-//  Created by 微链通 on 2024/6/12.
+//  Created byslc on 2024/6/12.
 //
 
 import UIKit
