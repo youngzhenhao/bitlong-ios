@@ -278,7 +278,7 @@ class BLAssetsDetailHeader: BLBaseView {
                     }
                 }else if i == 2{
                     if balanceModel.locked_balance != nil{
-                        valueBt.setTitle(balanceModel.locked_balance, for: .normal)
+                        valueBt.setTitle(balanceModel.locked_balance as String?, for: .normal)
                     }
                 }
             }

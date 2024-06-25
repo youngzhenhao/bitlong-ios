@@ -36,6 +36,13 @@ let AssetsInvoiceCreatTime   = "AssetsInvoiceCreatTime"
 let Token  = "Token"
 //是否修改密码标志位
 let IsNeedChangePassWord     = "IsNeedChangePassWord"
+//zip文件压缩写入地址
+//主目录路径（固定）
+let LndFileBasePath          = ".lnd/data/chain/bitcoin/"
+//下载zip文件缓存路径
+let UnZipFileCachePath       = "UnZipFileCachePath"
+//zip文件解压缩路径
+let UnZipFilePath            = LndFileBasePath + BLTools.getEnvironmentalConfig()
 
 /*
  test

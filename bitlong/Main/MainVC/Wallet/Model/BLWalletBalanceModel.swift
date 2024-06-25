@@ -11,8 +11,8 @@ import UIKit
     var total_balance : NSString?
     var confirmed_balance : NSString?
     var unconfirmed_balance : NSString?
-    var locked_balance : String?
-    var reserved_balance_anchor_chan : String?
+    var locked_balance : NSString?
+    var reserved_balance_anchor_chan : NSString?
     var account_balance : NSDictionary?
 }
 

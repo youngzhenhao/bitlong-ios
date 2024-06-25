@@ -18,11 +18,12 @@
 		DF0B92072C1946D3001330A1 /* BLCastOnHisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92062C1946D3001330A1 /* BLCastOnHisCell.swift */; };
 		DF0B92092C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */; };
 		DF444D522C085228003B0418 /* BLAssetsDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */; };
-		DF4DF5972C29090C0016AB95 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4DF5962C29090C0016AB95 /* Api.xcframework */; };
 		DF4DF59C2C2923240016AB95 /* channel.db in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF5982C29231F0016AB95 /* channel.db */; };
 		DF4DF59D2C2923240016AB95 /* neutrino.db in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF5992C2923210016AB95 /* neutrino.db */; };
 		DF4DF59E2C2923240016AB95 /* reg_filter_headers.bin in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF59A2C2923220016AB95 /* reg_filter_headers.bin */; };
 		DF4DF59F2C2923240016AB95 /* block_headers.bin in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF59B2C2923240016AB95 /* block_headers.bin */; };
+		DF4DF5A22C2943B40016AB95 /* BLZipManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */; };
+		DF4DF5A42C295B590016AB95 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4DF5A32C295B590016AB95 /* Api.xcframework */; };
 		DF66A7252C1FD86700ED2BEA /* BLChangeWalletNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */; };
 		DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */; };
 		DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */; };
@@ -250,11 +251,12 @@
 		DF0B92062C1946D3001330A1 /* BLCastOnHisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCastOnHisCell.swift; sourceTree = "<group>"; };
 		DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLaunchQueryOwnMintModel.swift; sourceTree = "<group>"; };
 		DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsDetailItemView.swift; sourceTree = "<group>"; };
-		DF4DF5962C29090C0016AB95 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DF4DF5982C29231F0016AB95 /* channel.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = channel.db; sourceTree = "<group>"; };
 		DF4DF5992C2923210016AB95 /* neutrino.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = neutrino.db; sourceTree = "<group>"; };
 		DF4DF59A2C2923220016AB95 /* reg_filter_headers.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = reg_filter_headers.bin; sourceTree = "<group>"; };
 		DF4DF59B2C2923240016AB95 /* block_headers.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = block_headers.bin; sourceTree = "<group>"; };
+		DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLZipManger.swift; sourceTree = "<group>"; };
+		DF4DF5A32C295B590016AB95 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DF66A7242C1FD86700ED2BEA /* BLChangeWalletNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangeWalletNameView.swift; sourceTree = "<group>"; };
 		DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordVC.swift; sourceTree = "<group>"; };
 		DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordCell.swift; sourceTree = "<group>"; };
@@ -542,7 +544,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF4DF5972C29090C0016AB95 /* Api.xcframework in Frameworks */,
+				DF4DF5A42C295B590016AB95 /* Api.xcframework in Frameworks */,
 				DFAC34D92BEF0747008CB9C7 /* Foundation.framework in Frameworks */,
 				DFAC34D72BEF0736008CB9C7 /* UIKit.framework in Frameworks */,
 				DFAC34A92BEF05A2008CB9C7 /* libbz2.1.0.tbd in Frameworks */,
@@ -587,6 +589,14 @@
 				3CE6C9120FD670B9845AD5E2 /* Pods-bitlong.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF4DF5A02C2943940016AB95 /* ZipKit */ = {
+			isa = PBXGroup;
+			children = (
+				DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */,
+			);
+			path = ZipKit;
 			sourceTree = "<group>";
 		};
 		DF78CA7B2C099CF2007ACC47 /* BLAssetsCollection */ = {
@@ -708,6 +718,7 @@
 		DFAC346C2BEB24B5008CB9C7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				DF4DF5A02C2943940016AB95 /* ZipKit */,
 				DF990E332C0EA59D00448134 /* Permissions */,
 				DF990E342C0EA5B600448134 /* Login */,
 			);
@@ -1241,7 +1252,7 @@
 		DFD52F5F2BDE173B007A0E82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DF4DF5962C29090C0016AB95 /* Api.xcframework */,
+				DF4DF5A32C295B590016AB95 /* Api.xcframework */,
 				DFAC34D82BEF0747008CB9C7 /* Foundation.framework */,
 				DFAC34D62BEF0735008CB9C7 /* UIKit.framework */,
 				DFAC34D52BEF071E008CB9C7 /* libbz2.tbd */,
@@ -1648,6 +1659,7 @@
 				DFCD38BF2C22CC6C0070CC44 /* BLIDOJoinVC.swift in Sources */,
 				DFBDC08D2C0D6BE400F6DEE1 /* BLBatchTransferSelectView.swift in Sources */,
 				DFA4F3E52BFAEE870094D2AE /* BLTransactionListVC.swift in Sources */,
+				DF4DF5A22C2943B40016AB95 /* BLZipManger.swift in Sources */,
 				DFF6122C2BFEEE0D0041E4B7 /* BLCreatAssetTextInputCell.swift in Sources */,
 				DFFFEADD2BFC398100058F98 /* BLTranscationDetailMarketCell.swift in Sources */,
 				DFAD2B1E2BE9D5CA0028A4B6 /* BLCreatAssetsCell.swift in Sources */,

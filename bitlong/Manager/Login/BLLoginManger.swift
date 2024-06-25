@@ -56,10 +56,15 @@ import UIKit
     func getHeader() -> NSDictionary{
         let headerDic : NSMutableDictionary = NSMutableDictionary.init()
         let obj = userDefaults.object(forKey: Token)
-        if obj is String{
+        if obj is String && 0 < (obj as! String).count{
             let token : String = obj as! String
             let authorization : String = "Bearer " + token
             headerDic.setObject(authorization, forKey: "Authorization" as NSCopying)
+        }else{
+            self.getToken(callBack: { token in
+                let authorization : String = "Bearer " + token
+                headerDic.setObject(authorization, forKey: "Authorization" as NSCopying)
+            })
         }
         
         return headerDic

@@ -102,6 +102,15 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
                 userDefaults.synchronize()
             }
         }
+        
+        //上传BTC余额
+        let param  = [      "total_balance" : (walletBalanceModel?.total_balance?.intValue as Any),
+                        "confirmed_balance" : (walletBalanceModel?.confirmed_balance?.intValue as Any),
+                      "unconfirmed_balance" : (walletBalanceModel?.unconfirmed_balance?.intValue as Any),
+                           "locked_balance" : (walletBalanceModel?.locked_balance?.intValue as Any)] as [String : Any]
+        BLWalletViewModel.setBtcBalance(param: param as NSDictionary) { resObj in
+        } failed: { errorModel in
+        }
     }
     
     lazy var headerView : BLWalletHeaderView = {

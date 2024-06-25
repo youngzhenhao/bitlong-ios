@@ -187,4 +187,22 @@ class BLWalletViewModel: BLBaseModel {
             failed(error!)
         }, requestSerializerType: .jsonType)
     }
+    
+    //上传BTC余额
+    static func setBtcBalance(param : NSDictionary, successed: @escaping (_ respObj : NSDictionary) -> Void, failed: @escaping (_ error : ErrorRespModel) -> Void){
+        NetworkManager.share().postRequestUrlString(ApiBtcBalanceSet, paramerers:(param as! [AnyHashable : Any]), requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any]), onSuccessBlock: { respObj in
+            successed(respObj as! NSDictionary)
+        }, onFailureBlock: { (error : ErrorRespModel?) in
+            failed(error!)
+        }, requestSerializerType: .jsonType)
+    }
+    
+    //查询BTC余额
+    static func getBtcBalance(successed: @escaping (_ respObj : NSDictionary) -> Void, failed: @escaping (_ error : ErrorRespModel) -> Void){
+        NetworkManager.share().getBufRequestUrlString(ApiBtcBalanceGet, paramerers: nil, requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any])) { respObj in
+            
+        } onFailureBlock: { (error : ErrorRespModel?) in
+            
+        }
+    }
 }

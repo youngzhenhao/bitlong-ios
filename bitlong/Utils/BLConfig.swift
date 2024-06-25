@@ -91,6 +91,12 @@ func KNSDocumentPath(name : String) -> String{
     return pathStr.appendingPathComponent(name)
 }
 
+func KNSDocumentCachePath(name : String) -> String{
+    let pathArr : NSArray = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true) as NSArray
+    let pathStr : NSString = pathArr.lastObject as! NSString
+    return pathStr.appendingPathComponent(name)
+}
+
 
 /*
  typealias

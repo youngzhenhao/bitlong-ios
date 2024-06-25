@@ -200,7 +200,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -210,7 +210,6 @@
 -(void)GETBytesRequestUrlString:(NSString *)urlStr paramerers:(NSDictionary *)parameter requestHeader:(NSDictionary *)header onSuccessBlock:(OnSuccessBlock)onSuccess onFailureBlock:(OnFailureBlock)onFailure{
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-     
     NSURL * URL = [NSURL URLWithString:urlStr relativeToURL:self.manager.baseURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     // 设置请求头部，指定接收的数据类型
@@ -218,13 +217,14 @@
     for (NSString *headerField in header.keyEnumerator) {
         [request setValue:header[headerField] forHTTPHeaderField:headerField];
     }
+    
     NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:
                                    ^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
         if (error) {
             if(onFailure){
                 ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
-                errModel.msg = error.userInfo[@"NSDebugDescription"];
+                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -243,7 +243,6 @@
             }
         }
     }];
-    
     [task resume];
 }
 
@@ -296,7 +295,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -346,7 +345,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -421,7 +420,7 @@
                     NSLog(@"==请求超时==");
                 }
                 errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-                errModel.msg = error.userInfo[@"NSDebugDescription"];
+                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -458,7 +457,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -501,7 +500,7 @@
                 }else{
                     errModel.code = [NSString stringWithFormat:@"-1"];
                 }
-                errModel.msg = error.userInfo[@"NSDebugDescription"];
+                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
                 errModel.statusCode = httpRes.statusCode;
                 if (onFailure) {
                     onFailure(errModel);
@@ -568,7 +567,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -607,7 +606,7 @@
             }
             ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSDebugDescription"];
+            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
             errModel.statusCode = httpRes.statusCode;
             dispatch_async(dispatch_get_main_queue(), ^{
                 onFailure(errModel);

@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger,RequestMethodType){
 typedef void(^OnSuccessBlock)(id _Nullable respObj);
 //typedef void(^OnUploadProgressBlock)(id uploadProgress);
 //typedef void(^OnDownloadProgressBlock)(id downloadProgress);
-typedef void(^DownloadProgress)(id _Nullable progress);
+typedef void(^DownloadProgress)(NSProgress * _Nullable progress);
 typedef void(^OnRedirectBlock)(id _Nullable redirectBlock);
 typedef void(^OnFailureBlock)(ErrorRespModel * _Nullable resp);
 

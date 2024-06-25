@@ -46,7 +46,17 @@ let ApiFairLaunchQueryInventoryMintNumber     = "v1/fair_launch/query/inventory_
 /*
  下载证明文件
  */
+//proof 文件
 let ApiProofDownload                          = "proof/download"
+//db zip文件
+let ApiSnapshotDownload                       = "snapshot/download"
+
+
+//上传BTC余额(服务同步完成后操作)
+let ApiBtcBalanceSet                          = "btc_balance/set"
+//查询BTC余额
+let ApiBtcBalanceGet                          = "btc_balance/get"
+
 
 
 

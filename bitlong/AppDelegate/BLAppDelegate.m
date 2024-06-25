@@ -82,7 +82,7 @@
         }else if ([litStatus isEqualToString:@"UNLOCKED"]){//钱包已成功解锁，但 RPC 服务器尚未就绪
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
-                [BLTools showTostWithTip:@"钱包解锁成功" superView:weakSelf.window];
+                [BLTools showTostWithTip:@"钱包解锁成功" superView:[BLTools getCurrentVC].view];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf initMainTabBarVC];
                 });
@@ -129,14 +129,17 @@
 }
 
 -(void)unlockWallet{
-    Weak(weakSelf);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [BLTools showTostWithTip:@"开始解锁钱包" superView:weakSelf.luanchVC.view];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [BLTools showTostWithTip:@"开始解锁钱包" superView:[BLTools getCurrentVC].view];
+        });
         NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
         NSString * passWorld = walletInfo[@"WalletPassWorld"];
         if(!ApiUnlockWallet(passWorld)){
-            [BLTools showTostWithTip:@"解锁钱包失败" superView:weakSelf.luanchVC.view];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [BLTools showTostWithTip:@"解锁钱包失败" superView:[BLTools getCurrentVC].view];
+            });
         }
     });
 }
@@ -204,7 +207,6 @@
 //        NSString *SQLITETMPDIRPath = [cacheDirectory stringByAppendingPathComponent:@"SQLITE_TMPDIR"];
 //        int flg = setenv("SQLITE_TMPDIR", [SQLITETMPDIRPath UTF8String], 1);
 //        NSSLog(@"%d",flg);
-
         
         NSString *litPath = [documentsDirectory stringByAppendingPathComponent:@".lit"];
         NSString *lndPath = [documentsDirectory stringByAppendingPathComponent:@".lnd"];
@@ -313,83 +315,35 @@
         /*
          私链
          */
-//        [litText appendString:@"lnd-mode=integrated"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"uipassword=11111111"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"network=regtest"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"httpslisten=0.0.0.0:8443"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.alias=lnd1"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.active=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.rpcmiddleware.enable=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.db.bolt.auto-compact=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"autopilot.disable=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.regtest=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"taproot-assets.universe.federationserver=132.232.109.84:8443"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.neutrino.connect=132.232.109.84:18444"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"taproot-assets.network=regtest"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"taproot-assets.allow-public-uni-proof-courier=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"taproot-assets.allow-public-stats=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"taproot-assets.universe.public-access=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.neutrino.persistfilters=true"];
-//        [litText appendString:@"\n"];
-//        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
-        
-        
-        /*
-         主网
-         */
         [litText appendString:@"lnd-mode=integrated"];
         [litText appendString:@"\n"];
         [litText appendString:@"uipassword=11111111"];
         [litText appendString:@"\n"];
-        [litText appendString:@"network=mainnet"];
+        [litText appendString:@"network=regtest"];
         [litText appendString:@"\n"];
         [litText appendString:@"httpslisten=0.0.0.0:8443"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.alias=lnd1"];
         [litText appendString:@"\n"];
-        [litText appendString:@"autopilot.disable=true"];
+        [litText appendString:@"lnd.bitcoin.active=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.rpcmiddleware.enable=true"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.db.bolt.auto-compact=true"];
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoin.active=true"];
+        [litText appendString:@"autopilot.disable=true"];
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.bitcoin.mainnet=true"];
+        [litText appendString:@"lnd.bitcoin.regtest=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"taproot-assets.universe.federationserver=132.232.109.84:8443"];
         [litText appendString:@"\n"];
         [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
+        [litText appendString:@"lnd.neutrino.connect=132.232.109.84:18444"];
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.accept-keysend=true"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.accept-amp=true"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.neutrino.persistfilters=true"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
-        [litText appendString:@"\n"];
-        [litText appendString:@"taproot-assets.network=mainnet"];
+        [litText appendString:@"taproot-assets.network=regtest"];
         [litText appendString:@"\n"];
         [litText appendString:@"taproot-assets.allow-public-uni-proof-courier=true"];
         [litText appendString:@"\n"];
@@ -397,14 +351,62 @@
         [litText appendString:@"\n"];
         [litText appendString:@"taproot-assets.universe.public-access=true"];
         [litText appendString:@"\n"];
-        [litText appendString:@"lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"];
+        [litText appendString:@"lnd.neutrino.persistfilters=true"];
+        [litText appendString:@"\n"];
+        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
+        
+        
+        /*
+         主网
+         */
+//        [litText appendString:@"lnd-mode=integrated"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"uipassword=11111111"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"network=mainnet"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"httpslisten=0.0.0.0:8443"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.alias=lnd1"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"autopilot.disable=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.rpcmiddleware.enable=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.db.bolt.auto-compact=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.bitcoin.active=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.bitcoin.mainnet=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.bitcoin.node=neutrino"]; //中微子后端
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.rpclisten=0.0.0.0:10009"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.accept-keysend=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.accept-amp=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.neutrino.persistfilters=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.neutrino.broadcasttimeout=11s"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.network=mainnet"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.allow-public-uni-proof-courier=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.allow-public-stats=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"taproot-assets.universe.public-access=true"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json"];
+//        [litText appendString:@"\n"];
+//        [litText appendString:@"lnd.addpeer=027208d43d94fa830417a0e730d12cd11996d5cd62df2e210cdc48464feaafd3bc@132.232.109.84:9736"];
      
         [litText writeToFile:litFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
-//        ApiSetPath(documentsDirectory,@"testnet"); //内网
-//        ApiSetPath(documentsDirectory,@"regtest"); //私链
-        ApiSetPath(documentsDirectory,@"mainnet"); //主网
-        NSSLog(@"ApiGetPath:\n%@",ApiGetPath());
+        ApiSetPath(documentsDirectory,[BLTools getEnvironmentalConfig]); //私链
+//        NSSLog(@"ApiGetPath:\n%@",ApiGetPath());
         
 //        ApiReadConfigFile1();
 //        NSSLog(@"-------------ApiReadConfigFile2-------------:\n");
@@ -412,7 +414,7 @@
 //
 //        ApiCreateDir2();
 //        ApiVisit();
-//        [self getAllName:@"----------ApiStartLitd2--------"];
+        [self getAllName:@"----------ApiStartLitd2--------"];
         ApiStartLitd();
     });
 }

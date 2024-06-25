@@ -30,5 +30,6 @@ target 'bitlong' do
   pod 'WKWebViewJavascriptBridge'
   pod 'IQKeyboardManager'
   pod 'SVProgressHUD'
+  pod 'SSZipArchive'
   
 end

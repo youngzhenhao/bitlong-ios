@@ -21,6 +21,7 @@ PODS:
   - SDWebImage (5.19.2):
     - SDWebImage/Core (= 5.19.2)
   - SDWebImage/Core (5.19.2)
+  - SSZipArchive (2.4.3)
   - SVProgressHUD (2.3.1):
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - SDWebImage
+  - SSZipArchive
   - SVProgressHUD
   - WKWebViewJavascriptBridge
 
@@ -44,6 +46,7 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - SDWebImage
+    - SSZipArchive
     - SVProgressHUD
     - WKWebViewJavascriptBridge
 
@@ -54,9 +57,10 @@ SPEC CHECKSUMS:
   MJExtension: e97d164cb411aa9795cf576093a1fa208b4a8dd8
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   WKWebViewJavascriptBridge: d7324badf8996486c71648f448617b09bf927b4b
 
-PODFILE CHECKSUM: 228fbe00a2d297338d7a6d0f085df07c384a7aaa
+PODFILE CHECKSUM: 96dcbddecad15ad55badfc9224f7b38430765ff4
 
 COCOAPODS: 1.15.2

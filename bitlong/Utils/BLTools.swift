@@ -16,8 +16,16 @@ open class BLTools: NSObject {
     
     static let shared = BLTools()
     
+    @objc static func getEnvironmentalConfig() -> String{
+#if DEBUG
+        return "regtest" //私链
+#else
+        return "mainnet" //主网
+#endif
+    }
+    
     //获取当前屏幕显示的viewcontroller
-    static func getCurrentVC() -> UIViewController{
+    @objc static func getCurrentVC() -> UIViewController{
         //获得当前活动窗口的根视图
         var vc = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController
         if vc == nil{
@@ -150,23 +158,29 @@ open class BLTools: NSObject {
         SVProgressHUD.show(withStatus: status)
     }
     
-    // 显示消息图标和状态
+    //显示消息图标和状态
     @objc static func showInfo(status : String){
         SVProgressHUD.showInfo(withStatus: status)
     }
 
-    // 显示成功图标和状态
+    //显示成功图标和状态
     @objc static func showSucces(status : String){
         SVProgressHUD.showSuccess(withStatus: status)
     }
 
-    // 显示错误图标和状态
+    //显示错误图标和状态
     @objc static func showError(status : String){
         SVProgressHUD.showError(withStatus: status)
     }
-    // 显示自定义图标和状态
+    
+    //显示自定义图标和状态
     @objc static func showImage(image : UIImage,status : String){
         SVProgressHUD.show(image, status: status)
+    }
+    
+    //显示自定义进度和状态
+    @objc static func showProgress(progress : Float, status : String){
+        SVProgressHUD.showProgress(progress, status: status)
     }
     
     @objc static func hideLoading(){
