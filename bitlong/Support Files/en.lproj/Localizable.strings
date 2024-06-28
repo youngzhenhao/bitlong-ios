@@ -289,6 +289,17 @@
 "castOnCreatHisType"              = "type";
 "castOnCreatHisTime"              = "time";
 "castOnCreatHisState"             = "state";
+"castOnCreatHisStateNormal"       = "normal type";
+"castOnCreatHisStateNFT"          = "collection type";
+"castOnCreatHisStateUnkonw"       = "unknown";
+"castOnCreatHisStateWaiting"      = "waiting";
+"castOnCreatHisStateFrozen"       = "frozen";
+"castOnCreatHisStateSubmitted"    = "submitted";
+"castOnCreatHisStateBroadcast"    = "broadcast";
+"castOnCreatHisStateConfirmed"    = "confirmed";
+"castOnCreatHisStateSubmittedFinalize"    = "batch submitted through finalize";
+"castOnCreatHisStateSeedlingCancellation" = "seedling cancellation";
+"castOnCreatHisStateSproutCancellation"   = "sprout cancellation";
  
 //铸造
 "castOnSendNavTitle"              = "Casting";
@@ -323,3 +334,10 @@
 //发布历史记录
 "castOnSendHisNum"                = "num";
 "castOnSendHisGas"                = "Gas";
+"castOnSendUnpaid"                = "unpaid";
+"castOnSendPaing"                 = "in payment";
+"castOnSendPaidButNotIssued"      = "paid but not issued";
+"castOnSendIssueing"              = "in distribution";
+"castOnSendIssued"                = "issued";
+"castOnSendRetainedAssetsIssueing"= "retained assets in transit";
+"castOnSendRetainedAssetsIssued"  = "retained assets sent";

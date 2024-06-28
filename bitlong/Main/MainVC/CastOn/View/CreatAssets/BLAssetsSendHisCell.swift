@@ -42,9 +42,8 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
         
         coinLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(10*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(width)
-            make?.centerY.mas_equalTo()(0)
         }
         
         idLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -77,7 +76,7 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .center
-        lbl.numberOfLines = 2
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -97,7 +96,7 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .center
-        lbl.numberOfLines = 2
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -107,7 +106,7 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .center
-        lbl.numberOfLines = 2
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -115,7 +114,11 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
     lazy var statusLbl : UILabel = {
         var lbl = UILabel.init()
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
-        lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
+        if languageCode == .ZH{
+            lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
+        }else{
+            lbl.font = FONT_NORMAL(s: 10*Float(SCALE))
+        }
         lbl.textAlignment = .center
         lbl.numberOfLines = 0
         
@@ -133,9 +136,9 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
             //资产类型（0是正常类型，即同质化代币，1是收藏品类型，即非同质化代币）
             let type : Int32 = Int32(item.asset_type!)!
             if type == 0{
-                typeLbl.text = "正常类型"
+                typeLbl.text = NSLocalized(key: "castOnCreatHisStateNormal")
             }else{
-                typeLbl.text = "收藏品类型"
+                typeLbl.text = NSLocalized(key: "castOnCreatHisStateNFT")
             }
         }
         if item.issuance_time != nil{
@@ -153,42 +156,42 @@ class BLAssetsSendHisCell: BLBaseTableViewCell {
         if isFairLaunchIssuance{
             switch status {
             case 0://FairLaunchStateNoPay
-                return "未支付"
+                return NSLocalized(key: "castOnSendUnpaid")
             case 1://FairLaunchStatePaidPending
-                return "支付中"
+                return NSLocalized(key: "castOnSendPaing")
             case 2://FairLaunchStatePaidNoIssue
-                return "已支付还未发行"
+                return NSLocalized(key: "castOnSendPaidButNotIssued")
             case 3://FairLaunchStateIssuedPending
-                return "发行中"
+                return NSLocalized(key: "castOnSendIssueing")
             case 4://FairLaunchStateIssued
-                return "已发行"
+                return NSLocalized(key: "castOnSendIssued")
             case 5://FairLaunchStateReservedSentPending
-                return "保留资产发送中"
+                return NSLocalized(key: "castOnSendRetainedAssetsIssueing")
             case 6://FairLaunchStateReservedSent
-                return "保留资产已发送"
+                return NSLocalized(key: "castOnSendRetainedAssetsIssued")
             default:
                 return""
             }
         }else{
             switch status {
             case 0://BatchState_BATCH_STATE_UNKNOWN
-                return "未知"
+                return NSLocalized(key: "castOnCreatHisStateUnkonw")
             case 1://BatchState_BATCH_STATE_PENDING
-                return "等待中"
+                return NSLocalized(key: "castOnCreatHisStateWaiting")
             case 2://BatchState_BATCH_STATE_FROZEN
-                return "已冻结"
+                return NSLocalized(key: "castOnCreatHisStateFrozen")
             case 3://BatchState_BATCH_STATE_COMMITTED
-                return "已提交"
+                return NSLocalized(key: "castOnCreatHisStateSubmitted")
             case 4://BatchState_BATCH_STATE_BROADCAST
-                return "广播"
+                return NSLocalized(key: "castOnCreatHisStateBroadcast")
             case 5://BatchState_BATCH_STATE_CONFIRMED
-                return "已确认"
+                return NSLocalized(key: "castOnCreatHisStateConfirmed")
             case 6://BatchState_BATCH_STATE_FINALIZED
-                return "已通过finalize提交批次"
+                return NSLocalized(key: "castOnCreatHisStateSubmittedFinalize")
             case 7://BatchState_BATCH_STATE_SEEDLING_CANCELLED
-                return "幼苗取消"
+                return NSLocalized(key: "castOnCreatHisStateSeedlingCancellation")
             case 8://BatchState_BATCH_STATE_SPROUT_CANCELLED
-                return "萌芽取消"
+                return NSLocalized(key: "castOnCreatHisStateSproutCancellation")
             default:
                 return""
             }

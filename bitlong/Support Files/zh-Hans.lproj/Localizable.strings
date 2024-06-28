@@ -293,6 +293,17 @@
 "castOnCreatHisType"              = "类型";
 "castOnCreatHisTime"              = "时间";
 "castOnCreatHisState"             = "状态";
+"castOnCreatHisStateNormal"       = "正常类型";
+"castOnCreatHisStateNFT"          = "收藏品类型";
+"castOnCreatHisStateUnkonw"       = "未知";
+"castOnCreatHisStateWaiting"      = "等待中";
+"castOnCreatHisStateFrozen"       = "已冻结";
+"castOnCreatHisStateSubmitted"    = "已提交";
+"castOnCreatHisStateBroadcast"    = "广播";
+"castOnCreatHisStateConfirmed"    = "已确认";
+"castOnCreatHisStateSubmittedFinalize"    = "已通过finalize提交批次";
+"castOnCreatHisStateSeedlingCancellation" = "幼苗取消";
+"castOnCreatHisStateSproutCancellation"   = "萌芽取消";
 
 //铸造
 "castOnSendNavTitle"              = "铸造";
@@ -328,7 +339,7 @@
 "castOnSendHisNum"                = "数量";
 "castOnSendHisGas"                = "Gas";
 "castOnSendUnpaid"                = "未支付";
-"castOnSendPaing"                 = "支付进行中";
+"castOnSendPaing"                 = "支付中";
 "castOnSendPaidButNotIssued"      = "已支付未发行";
 "castOnSendIssueing"              = "发行中";
 "castOnSendIssued"                = "已发行";
