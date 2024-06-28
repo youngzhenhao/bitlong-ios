@@ -34,13 +34,13 @@ class BLAssetsDetailItemView: BLBaseView {
         changeIntoBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.size.mas_equalTo()(changeIntoBt.frame.size)
             make?.centerY.mas_equalTo()(0)
-            make?.centerX.mas_equalTo()(self.mas_centerX)?.offset()(-(width - changeIntoBt.frame.width/2))
+            make?.centerX.mas_equalTo()(self.mas_centerX)?.offset()(-(width - changeIntoBt.frame.width/2 + 10*SCALE))
         }
         
         changeOutBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.size.mas_equalTo()(changeIntoBt.frame.size)
             make?.centerY.mas_equalTo()(0)
-            make?.centerX.mas_equalTo()(self.mas_centerX)?.offset()(width - changeIntoBt.frame.width/2)
+            make?.centerX.mas_equalTo()(self.mas_centerX)?.offset()(width - changeIntoBt.frame.width/2 + 10*SCALE)
         }
         
         lineView.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -53,7 +53,7 @@ class BLAssetsDetailItemView: BLBaseView {
     
     lazy var changeIntoBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("转入", for: .normal)
+        bt.setTitle(NSLocalized(key: "assetsDetailsToChangeInto"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x2A82E4, a: 0.5), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x2A82E4, a: 1.0), for: .selected)
         bt.titleLabel?.font = FONT_BOLD(s: 14*Float(SCALE))
@@ -67,7 +67,7 @@ class BLAssetsDetailItemView: BLBaseView {
     
     lazy var changeOutBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("转出", for: .normal)
+        bt.setTitle(NSLocalized(key: "assetsDetailsTransferOut"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x2A82E4, a: 0.5), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x2A82E4, a: 1.0), for: .selected)
         bt.titleLabel?.font = FONT_BOLD(s: 14*Float(SCALE))

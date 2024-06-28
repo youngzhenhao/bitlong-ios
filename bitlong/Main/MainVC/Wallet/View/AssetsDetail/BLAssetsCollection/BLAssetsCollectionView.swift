@@ -162,24 +162,24 @@ class BLAssetsCollectionItemView: BLBaseView {
         }
         
         invoiceBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(14*SCALE)
+            make?.top.mas_equalTo()(10*SCALE)
             make?.left.mas_equalTo()(0)
             make?.width.mas_equalTo()(width)
-            make?.height.mas_equalTo()(44*SCALE)
+            make?.height.mas_equalTo()(50*SCALE)
         }
         
         LNRULBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(14*SCALE)
+            make?.top.mas_equalTo()(10*SCALE)
             make?.centerX.mas_equalTo()(0)
             make?.width.mas_equalTo()(width)
-            make?.height.mas_equalTo()(44*SCALE)
+            make?.height.mas_equalTo()(50*SCALE)
         }
         
         lightingAddrBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(14*SCALE)
+            make?.top.mas_equalTo()(10*SCALE)
             make?.right.mas_equalTo()(0)
             make?.width.mas_equalTo()(width)
-            make?.height.mas_equalTo()(44*SCALE)
+            make?.height.mas_equalTo()(50*SCALE)
         }
         
         backView.layoutIfNeeded()
@@ -210,12 +210,13 @@ class BLAssetsCollectionItemView: BLBaseView {
     
     lazy var invoiceBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("发票", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionInvoice"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 16*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
         bt.tag = 100
         bt.isSelected = true
+        bt.titleLabel?.numberOfLines = 0
         bt.addTarget(self, action: #selector(itemClickAcation(sender:)), for: .touchUpInside)
         
         return bt
@@ -223,11 +224,12 @@ class BLAssetsCollectionItemView: BLBaseView {
     
     lazy var LNRULBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("LNRUL", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionLNRUL"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_NORMAL(s: 16*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0xF2F2F2, a: 1.0)
         bt.tag = 101
+        bt.titleLabel?.numberOfLines = 0
         bt.addTarget(self, action: #selector(itemClickAcation(sender:)), for: .touchUpInside)
         
         return bt
@@ -235,11 +237,12 @@ class BLAssetsCollectionItemView: BLBaseView {
     
     lazy var lightingAddrBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("闪电地址", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionLightingAddress"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_NORMAL(s: 16*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0xF2F2F2, a: 1.0)
         bt.tag = 102
+        bt.titleLabel?.numberOfLines = 0
         bt.addTarget(self, action: #selector(itemClickAcation(sender:)), for: .touchUpInside)
         
         return bt

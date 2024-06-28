@@ -49,14 +49,13 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
         
         typeTitleLbl.mas_remakeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
-            make?.centerY.mas_equalTo()(0)
         }
         
         textField.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(12*SCALE)
-            make?.right.mas_equalTo()(-90*SCALE)
+            make?.right.mas_equalTo()(-12*SCALE)
             make?.bottom.mas_equalTo()(-10*SCALE)
             make?.top.mas_equalTo()(10*SCALE)
         }
@@ -76,26 +75,26 @@ class BLCreatAssetFieldCell: BLCreatAssetsCell,UITextFieldDelegate {
         switch type {
         case .assetsName:
             textField.keyboardType = .namePhonePad
-            typeTitleLbl.text = "名称"
-            textField.placeholder = "请输入名称"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatName")
+            textField.placeholder = NSLocalized(key: "castOnCreatNameHolder")
             break
         case .assetsNum:
             textField.keyboardType = .numberPad
             textField.returnKeyType = .done
-            typeTitleLbl.text = "总量"
-            textField.placeholder = "请输入总量"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatNum")
+            textField.placeholder = NSLocalized(key: "castOnCreatNumHolder")
             break
         case .assetsReserve:
             textField.keyboardType = .numberPad
             textField.returnKeyType = .done
-            typeTitleLbl.text = "项目方预留"
-            textField.placeholder = "0~100"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatReserve")
+            textField.placeholder = NSLocalized(key: "castOnCreatReserveHolder")
             break
         case .assetsMintNum:
             textField.keyboardType = .numberPad
             textField.returnKeyType = .done
-            typeTitleLbl.text = "单份Mint数量"
-            textField.placeholder = "单份Mint数量"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatMintNum")
+            textField.placeholder = NSLocalized(key: "castOnCreatMintNumHolder")
             break
         default:
             break

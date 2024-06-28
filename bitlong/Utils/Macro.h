@@ -25,6 +25,8 @@
 #define Weak(name)  __weak typeof (self) name = self;
 #define Strong(name,obj)  __strong typeof (obj) name = obj;
 
+#define NSLocalized(key)  NSLocalizedString(key, nil)
+
 //#define DSJAppDelegate  ((AppDelegate *)([UIApplication sharedApplication].delegate))
 
 /****************************************************************

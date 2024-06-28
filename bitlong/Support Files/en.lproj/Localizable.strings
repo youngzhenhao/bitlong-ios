@@ -1,0 +1,325 @@
+/* 
+  Localizable.strings
+  bitlong
+
+  Created by 微链通 on 2024/6/26.
+  
+*/
+
+/*
+ 基础信息-权限请求等
+ */
+"CFBundleDisplayName" = "bitlong";
+"NSCameraUsageDescription" = "App needs access to your camera to scan QR code binding devices";
+"NSContactsUsageDescription" = "App needs to access your address book to achieve address book backup";
+"NSPhotoLibraryAddUsageDescription" = "App needs access to your photo album to save images or videos";
+"NSPhotoLibraryUsageDescription" = "App needs to access your photo album to send pictures or scan QR code";
+"NSLocationWhenInUseUsageDescription" = "App requires you to allow positioning to save the location to the photo";
+
+/*
+ tabBar
+ */
+"tabBarItemOne"                  = "Wallet";
+"tabBarItemTwo"                  = "Casting";
+"tabBarItemThree"                = "Transaction";
+"tabBarItemFour"                 = "Tool";
+"tabBarItemFive"                 = "Nostr";
+
+
+/*
+ common
+ */
+//server status
+"serverStatusSynchronizing"        = "LND is currently synchronizing...";
+
+//tost
+"functionComingSoon"               = "coming soon...";
+
+
+/*
+ lunch
+ */
+"walletTypeAdTitle"                = "Ecological Wallet";
+
+
+/*
+ 创建钱包
+ */
+//选择钱包类型
+"creatWalletAdTitle"               = "Bitcoin Ecological Wallet";
+"creatWalletTitle"                 = "create a wallet";
+"creatWalletSubTitle"              = "using a new wallet";
+"ImportWalletTitle"                = "import Wallet";
+"ImportWalletSubTitle"             = "use my existing wallet";
+"HardwareWalletTitle"              = "hardware Wallet";
+"HardwareWalletSubTitle"           = "use my hardware wallet";
+"ObservingWalletTitle"             = "observing wallet";
+"ObservingWalletSubTitle"          = "observing wallet";
+
+//创建钱包
+"creatWalletNavTitle"              = "Create A Wallet";
+"creatWalletName"                  = "wallet name";
+"creatWalletNameHolder"            = "please enter 1-12 characters";
+"creatWalletPassword"              = "wallet password";
+"creatWalletHolder"                = "input password";
+"creatWalletRepeatHolder"          = "enter password again";
+"creatWalletPasswordTips"          = "password prompt (optional)";
+"creatWalletPasswordTipsHolder"    = "enter reminder text";
+"creatWalletConfirm"               = "confirm creation";
+//tost&alter
+"creatWalletNameWarn"              = "please enter wallet name";
+"creatWalletPasswordWarn"          = "please enter wallet password";
+"creatWalletPasswordLimitWarn"     = "the wallet password must be 8 digits or more";
+"creatWalletPasswordErrorWarn"     = "inconsistent wallet password verification twice";
+
+
+//助记词
+"genSeedTitle"                     = "backup mnemonics";
+"genSeedSubTitle"                  = "please copy the mnemonic words in order to ensure the backup is correct.";
+"genSeedWarnTitle"                 = "properly store mnemonic words in a secure location on an isolated network.";
+"genSeedWarnSubTitle"              = "do not share or store mnemonic words in an online environment, such as emails, albums, social apps, etc.";
+"genSeedManualBackupTitle"         = "manual backup";
+"genSeedCloudBackupTitle"          = "cloud backup";
+"genSeedLaterBackupTitle"          = "back up later";
+//tost&alter
+"walletCreating"                   = "creating in progress, please wait~";
+"walletCreatFailed"                = "wallet creation failed!";
+"walletCreatIllegal"               = "wallet input information is illegal! Unable to create!";
+
+
+
+/*
+ 首页
+ */
+//钱包
+"walletTotalAssets"              = "totalAssets";
+"walletAssetsCompany"            = "sats";
+"walletDetails"                  = "details";
+"walletNotice"                   = "this is an announcement";
+"walletItemOne"                  = "Assets";
+"walletItemTwo"                  = "NFT";
+"walletItemThree"                = "Channel";
+
+//钱包列表
+"walletTableTitle"               = "Wallet List";
+"walletTableCoinName"            = "bitcoin";
+
+//钱包详情
+"walletDetailsNavTitle"          = "Wallet Details";
+"walletDetailsExportGenSend"     = "export mnemonic words";
+"walletDetailsChangePassWord"    = "change password";
+"walletDetailsNostrAddress"      = "nostr address";
+"walletDetailsCurrentVersion"    = "current version";
+"walletDetailsDeleteWallet"      = "delete wallet";
+
+//二维码弹窗
+"walletDetailsAlterTitle"        = "Bitcoin Address";
+"walletDetailsCopyAddress"       = "copy address";
+
+//导入资产
+"importAssetsNavTitle"           = "Import Assets";
+"importAssetsId"                 = "asset ID";
+"importAssetsIdHolder"           = "please enter token asset ID";
+"importAssetsUniverseAddress"    = "universe address";
+"importAssetsAssetsDetails"      = "asset details";
+"importAssetsSendNum"            = "circulation";
+"importAssetsSendDate"           = "issue date";
+"importAssetsCoinType"           = "token types";
+"importAssetsCanAdd"             = "can additional be issued";
+"importAssetsOnChainRecords"     = "on chain records";
+"importAssetsCoinIntroduction"   = "token Introduction";
+"importAssetsConfirm"            = "confirm";
+
+//资产详情
+"assetsDetailsNavTitle"          = "Asset Details";
+"assetsDetailsBalance"           = "asset balance";
+"assetsDetailsAvailable"         = "available";
+"assetsDetailsToBeConfirmed"     = "need confirmed";
+"assetsDetailsLocked"            = "locking";
+"assetsDetailsTotal"             = "whole";
+"assetsDetailsToChangeInto"      = "transfer into";
+"assetsDetailsTransferOut"       = "transfer out";
+"assetsDetailsTransferAccounts"  = "transfer";
+"assetsDetailsCollection"        = "receipt";
+
+//代币详情
+"tokenDetailsNavTitle"           = "Token Details";
+"tokenDetailsName"               = "name:";
+"tokenDetailsAssetsId"           = "asset ID:";
+"tokenDetailsSendNum"            = "circulation:";
+"tokenDetailsSendDate"           = "issue date:";
+"tokenDetailsType"               = "token types:";
+"tokenDetailsCanAdd"             = "can additional be issued:";
+"tokenDetailsOnChainRecords"     = "on chain records:";
+"tokenDetailsIntroduction"       = "token Introduction:";
+"tokenDetailsQRCode"             = "Asset QR Code";
+
+//转账
+"transferNavTitle"               = "Transfer";
+"transferReceivingAddress"       = "receiving address";
+"transferReceivingAddressHolder" = " please manually enter the receiving address or scan the code for identification";
+"transferReceivingAddressTips"   = "· Please enter invoice, LNRUL, lightning address, or BTC address";
+"transferCoinType"               = "currency";
+"transferCoinTypeHolder"         = " automatically display without input";
+"transferAmount"                 = "amount of money";
+"transferAmountHolder"           = "total balance";
+"transferMinerFees"              = "miner's fees";
+"transferEstimatedTime"          = "estimated time of 10 minutes";
+"transferPostscript"             = "postscript";
+"transferPostscriptHolder"       = " Automatically display without input";
+"transferConfirm"                = "confirm transfer";
+//tost&alter
+"transferAddressError"           = "the address does not exist!";
+"transferAddressNil"             = "please fill in the receiving address!";
+"transferAmountNil"              = "please fill in the transfer amount!";
+"transferSeccuse"                = "transfer successful!";
+"transferFailed"                 = "transfer failed!";
+
+//收款-BTC
+"collectionNavTitle"             = "Collection";
+"collectionScanAndPayment"       = "scan and pay me";
+"collectionReceivingAddress"     = "receiving address";
+"collectionChangeAddress"        = "switching addresses";
+"collectionShare"                = "share";
+"collectionCopy"                 = "copy";
+//收款-资产
+"collectionInvoice"              = "invoice";
+"collectionLNRUL"                = "LNRUL";
+"collectionLightingAddress"      = "lightning address";
+"collectionCoinType"             = "currency";
+"collectionCoinTypeHolder"       = " automatically display without input";
+"collectionAmount"               = "amount";
+"collectionAmountHolder"         = "enter amount";
+"collectionPostscript"           = "postscript";
+"collectionPostscriptHolder"     = "please enter your message (limited to 50 characters)";
+"collectionInvoiceCreat"         = "create";
+"collectionInvoiceHisTitle"      = "history";
+"collectionInvoiceAmount"        = "amount";
+"collectionInvoiceStatus"        = "state";
+"collectionInvoiceDate"          = "date";
+"collectionInvoiceUnpaid"        = "unpaid";
+"collectionInvoicePaid"          = "paid";
+"collectionInvoiceInvalid"       = "invalid";
+"collectionInvoiceOther"         = "other";
+//tost&alter
+"collectionAssetsInvoiceQRTitle" = "Asset Invoice QR Code";
+"collectionInvoiceQRCode"        = "invoice QR code";
+"collectionAssetsIDNill"         = "asset ID cannot be empty";
+"collectionAmountWrongful"       = "the amount is illegal";
+"collectionInvoiceGetFailed"     = "invoice query failed";
+
+//地址选择
+"collectionAddressListNavTitle"  = "BTC Address Selection";
+"collectionAddressListAdd"       = "add address";
+
+//地址管理
+"addressMangerNavTitle"          = "Address Management";
+"addressMangerNavRightTitle"     = "refresh";
+"addressMangerTipsOne"           = "· BTC address types are divided into isolated witness, Taprot, and regular address";
+"addressMangerTipsTwo"           = "· a BTC wallet can generate a series of sub addresses to help you group addresses and protect privacy";
+"addressMangerRootAddress"       = "main root address";
+"addressMangerIsolationAddress"  = "isolation Witness Address";
+"addressMangerNestingAddress"    = "nested Isolation Witness Address";
+
+
+/*
+ 铸造
+ */
+//铸造
+"castOnSearchHolder"             = "search for name and ID";
+"castOnSearchSend"               = "issue";
+"castOnSearchCasting"            = "cast";
+"castOnItemMyFollowing"          = "MyFollowing";
+"castOnItemMyHotList"            = "HotList";
+"castOnItemCasting"              = "InCasting";
+"castOnItemFineshed"             = "Ended";
+"castOnListHeaderName"           = "name";
+"castOnListHeaderID"             = "ID";
+"castOnListHeaderReserve"        = "reserve";
+"castOnListHeaderCast"           = "cast";
+
+//发行
+"castOnCreatNavTitle"             = "Issue";
+"castOnCreatNavRightTitle"        = "history";
+"castOnCreatUploadLogo"           = "upload logo";
+"castOnCreatUploadYourLogo"       = "upload your logo";
+"castOnCreatSupportLogo"          = "supports PNG and JPEG formats";
+"castOnCreatName"                 = "name";
+"castOnCreatNameHolder"           = "please enter name";
+"castOnCreatType"                 = "type";
+"castOnCreatNum"                  = "total";
+"castOnCreatNumHolder"            = "please enter total amount";
+"castOnCreatReserve"              = "reserved by project";
+"castOnCreatReserveHolder"        = "0~100";
+"castOnCreatMintNum"              = "single Mint quantity";
+"castOnCreatMintNumHolder"        = "single Mint quantity";
+"castOnCreatBeignDate"            = "start date";
+"castOnCreatEndDate"              = "end date";
+"castOnCreatDateHolder"           = "please select a time";
+"castOnCreatLockCompartmentTime"  = "lockout time";
+"castOnCreatLockRelativeTime"     = "relative time";
+"castOnCreatLockAbsoluteTime"     = "absolute time";
+"castOnCreatIntroduce"            = "introduction information (within 100 words)";
+"castOnCreatIntroduceTips"        = "note: * The handling fee will be deducted from the Lightning Network Wallet";
+"castOnCreatIntroduceRate"        = " rate:";
+"castOnCreatIssue"                = " issue";
+"castOnCreatHandlingFees"         = "Issuance Fees:";
+"castOnCreatCancelIssuance"       = "cancel issuance";
+"castOnCreatConfirmIssuance"      = "confirm issuance";
+//tost&alter
+"castOnCreatLogoNil"              = "logo cannot be empty";
+"castOnCreatNameNil"              = "name cannot be empty";
+"castOnCreatTypeNil"              = "please select a category";
+"castOnCreatNumWrongful"          = "total amount illegal";
+"castOnCreatReserveWrongful"      = "the project party's reservation is illegal";
+"castOnCreatMinitNumWrongful"     = "the quantity of a single Minit is illegal";
+"castOnCreatBeignDateNil"         = "please select the start date";
+"castOnCreatEndDateNil"           = "please select the end date";
+"castOnCreatIntroduceLimit"       = "description exceeds the limit of 100 words";
+"castOnCreatAssetsSendFee"        = "asset issuance expenses:";
+"castOnCreatTokenWrongful"        = "token illegal";
+"castOnCreatSeccused"             = "successfully released";
+"castOnCreatPhotoWrongful"        = "the selected image is not available, please select another image";
+"castOnCreatFailed"               = "release failed";
+
+//发布历史记录
+"castOnCreatHisNavTitle"          = "Publishing History";
+"castOnCreatHisToken"             = "tokens";
+"castOnCreatHisID"                = "ID";
+"castOnCreatHisType"              = "type";
+"castOnCreatHisTime"              = "time";
+"castOnCreatHisState"             = "state";
+ 
+//铸造
+"castOnSendNavTitle"              = "Casting";
+"castOnSendNavRightTitle"         = "history";
+"castOnSendAssetsId"              = "asset ID";
+"castOnSendAssetsIdHolder"        = "please enter asset ID";
+"castOnSendName"                  = "name";
+"castOnSendNum"                   = "total";
+"castOnSendReserve"               = "reserved by project";
+"castOnSendReserveHolder"         = "0~100";
+"castOnSendMintNum"               = "single Mint quantity";
+"castOnSendMintNumHolder"         = "single Mint quantity";
+"castOnSendBeignDate"             = "start date";
+"castOnSendEndDate"               = "end date";
+"castOnSendCast"                  = "cast";
+"castOnSendHolder"                = "holder";
+"castOnSendNumberOfCopies"        = "number of copies";
+"castOnSendShare"                 = "share";
+"castOnSendIntroduceTips"         = "note: * The handling fee will be deducted from the Lightning Network Wallet";
+"castOnSendCast"                  = "casting";
+"castOnSendAssetCastingCosts"     = "asset casting costs:";
+//tost&alter
+"castOnSendTokenWrongful"         = "token illegal";
+"castOnSendInformationNotExist"   = "fair launch asset issuance information does not exist";
+"castOnSendFeeInformationNotExist"= "the casting rate information does not exist";
+"castOnSendCreatAddressFailed"    = "failed to generate asset address";
+"castOnSendCastSeccused"          = "casting successful";
+"castOnSendCastFailed"            = "casting failure";
+"castOnSendIntroduceRate"         = " rate:";
+"castOnSendSaechCastFailed"       = "check if casting failure can be performed";
+
+//发布历史记录
+"castOnSendHisNum"                = "num";
+"castOnSendHisGas"                = "Gas";

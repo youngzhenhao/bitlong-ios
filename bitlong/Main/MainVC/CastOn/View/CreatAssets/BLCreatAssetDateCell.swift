@@ -47,9 +47,8 @@ class BLCreatAssetDateCell: BLCreatAssetsCell,DatePickerDelegate {
         
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
-            make?.centerY.mas_equalTo()(0)
         }
         
         dateLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -76,13 +75,13 @@ class BLCreatAssetDateCell: BLCreatAssetsCell,DatePickerDelegate {
             containerView.tag = 102
             containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
             containerView.layer.borderWidth = 0.0
-            typeTitleLbl.text = "开始日期"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatBeignDate")
             break
         case .assetsEndDate:
             containerView.tag = 103
             containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
             containerView.layer.borderWidth = 0.0
-            typeTitleLbl.text = "结束日期"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatEndDate")
             break
         default:
             break
@@ -98,7 +97,7 @@ class BLCreatAssetDateCell: BLCreatAssetsCell,DatePickerDelegate {
     
     lazy var dateLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "请选择时间"
+        lbl.text = NSLocalized(key: "castOnCreatDateHolder")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.8)
         lbl.textAlignment = .left
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))

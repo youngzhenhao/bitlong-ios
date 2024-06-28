@@ -71,7 +71,7 @@ class BLWalletInfoAlterView: BLBaseView,UITableViewDelegate,UITableViewDataSourc
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "钱包列表"
+        lbl.text = NSLocalized(key: "walletTableTitle")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 18*Float(SCALE))
         lbl.textAlignment = .center
@@ -104,7 +104,7 @@ class BLWalletInfoAlterView: BLBaseView,UITableViewDelegate,UITableViewDataSourc
     }()
     
     lazy var headerList : NSArray = {
-        return ["比特币"]
+        return [NSLocalized(key: "walletTableCoinName")]
     }()
     
     func numberOfSections(in tableView: UITableView) -> Int {

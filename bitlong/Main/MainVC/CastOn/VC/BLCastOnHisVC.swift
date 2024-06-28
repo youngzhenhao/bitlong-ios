@@ -14,7 +14,7 @@ class BLCastOnHisVC: BLBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "历史记录"
+        self.title = NSLocalized(key: "castOnCreatHisNavTitle")
         
         self.initUI()
         self.loadData()

@@ -106,7 +106,7 @@ class BLCastOnHeaderView: BLBaseView,UITextFieldDelegate {
         var field = UITextField.init()
         field.textColor = .black
         field.font = UIFont.boldSystemFont(ofSize: 14)
-        field.attributedPlaceholder = NSAttributedString.init(string:"搜索name、ID", attributes: [NSAttributedString.Key.font:FONT_BOLD(s: 14*Float(SCALE)),NSAttributedString.Key.foregroundColor:UIColor(hex: "0x383838", alpha: 1.0)])
+        field.attributedPlaceholder = NSAttributedString.init(string:NSLocalized(key: "castOnSearchHolder"), attributes: [NSAttributedString.Key.font:FONT_BOLD(s: 14*Float(SCALE)),NSAttributedString.Key.foregroundColor:UIColor(hex: "0x383838", alpha: 1.0)])
         field.delegate = self
 
         return field
@@ -114,7 +114,7 @@ class BLCastOnHeaderView: BLBaseView,UITextFieldDelegate {
     
     lazy var creatAssetBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("发行", for: .normal)
+        bt.setTitle(NSLocalized(key: "castOnSearchSend"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 0.1)
@@ -128,7 +128,7 @@ class BLCastOnHeaderView: BLBaseView,UITextFieldDelegate {
     
     lazy var castONOutBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("铸造", for: .normal)
+        bt.setTitle(NSLocalized(key: "castOnSearchCasting"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x2A82E4, a: 0.1)

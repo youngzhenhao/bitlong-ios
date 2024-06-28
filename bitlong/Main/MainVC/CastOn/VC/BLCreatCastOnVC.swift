@@ -16,8 +16,8 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "铸造"
-        self.navgationRightBtn(picStr: "", title: "历史记录", titleColor: nil)
+        self.title = NSLocalized(key: "castOnSendNavTitle")
+        self.navgationRightBtn(picStr: "", title: NSLocalized(key: "castOnSendNavRightTitle"), titleColor: nil)
         
         self.initUI()
         self.loadData()
@@ -72,10 +72,11 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
     
     lazy var tipLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "注:*手续费从闪电网络钱包扣除"
+        lbl.text = NSLocalized(key: "castOnSendIntroduceTips")
         lbl.textColor = UIColorHex(hex: 0xEC3468, a: 1.0)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -165,7 +166,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
         if section == 9{
             let footerView : UIView = UIView.init()
             let bt : UIButton = UIButton.init()
-            bt.setTitle("铸造", for: .normal)
+            bt.setTitle(NSLocalized(key: "castOnSendCast"), for: .normal)
             bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
             bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
             bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
@@ -175,16 +176,16 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
             footerView.addSubview(tipLbl)
             footerView.addSubview(bt)
             tipLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-                make?.top.mas_equalTo()(15*SCALE)
+                make?.top.mas_equalTo()(13*SCALE)
                 make?.left.mas_equalTo()(30*SCALE)
                 make?.right.mas_equalTo()(-30*SCALE)
-                make?.height.mas_equalTo()(13*SCALE)
+                make?.height.mas_equalTo()(30*SCALE)
             }
             
             bt.mas_makeConstraints { (make : MASConstraintMaker?) in
                 make?.left.mas_equalTo()(24*SCALE)
-                make?.top.mas_equalTo()(tipLbl.mas_bottom)?.offset()(30*SCALE)
-                make?.bottom.mas_equalTo()(-SafeAreaBottomHeight - 20*SCALE)
+                make?.top.mas_equalTo()(tipLbl.mas_bottom)?.offset()(25*SCALE)
+                make?.bottom.mas_equalTo()(-SafeAreaBottomHeight - 15*SCALE)
                 make?.right.mas_equalTo()(-24*SCALE)
             }
             
@@ -199,6 +200,11 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
     
     //铸造
     @objc func creatCastOn(){
+        if queryIssuedItem == nil || queryIssuedItem?.ID == nil || queryIssuedItem?.asset_id == nil{
+            BLTools.showTost(tip: NSLocalized(key: "castOnSendInformationNotExist"), superView: self.view)
+            return
+        }
+
         //查询资产铸造费用
         let token = userDefaults.object(forKey: Token)
         if token is String{
@@ -207,7 +213,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
             if status == APISECCUSS{
                 let dic : NSDictionary = jsonStr.mj_JSONObject() as! NSDictionary
                 let data : NSNumber = dic["data"] as! NSNumber
-                confirmView.assignTransactionFee(title: "资产铸造费用:", fee: data.stringValue)
+                confirmView.assignTransactionFee(title: NSLocalized(key: "castOnSendAssetCastingCosts"), fee: data.stringValue)
                 
                 if confirmView.superview == nil{
                     self.view.addSubview(confirmView)
@@ -222,7 +228,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
                 BLTools.showTost(tip: status, superView: self.view)
             }
         }else{
-            BLTools.showTost(tip: "token非法!", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnSendTokenWrongful"), superView: self.view)
         }
     }
     
@@ -248,17 +254,17 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
     func confirmAcation() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
         //开始铸造
         if queryIssuedItem == nil || queryIssuedItem?.ID == nil || queryIssuedItem?.asset_id == nil{
-            BLTools.showTost(tip: "公平发射资产发行信息不存在", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnSendInformationNotExist"), superView: self.view)
             return
         }
         if mintModel == nil || mintModel?.calculated_fee_rate_sat_per_kw == nil || mintModel?.inventory_amount == nil{
-            BLTools.showTost(tip: "铸造费率信息不存在", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnSendFeeInformationNotExist"), superView: self.view)
             return
         }
         
@@ -271,7 +277,7 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
                 addressDecodeModel = BLAssetAddressDecodeModel.mj_object(withKeyValues: data)
             }
             if addressDecodeModel == nil || addressDecodeModel?.encoded == nil{
-                BLTools.showTost(tip: "生成资产地址失败", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "castOnSendCreatAddressFailed"), superView: self.view)
                 return
             }
             let param : NSDictionary = ["fair_launch_info_id": Int((queryIssuedItem?.ID)!) as Any,
@@ -281,10 +287,10 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
             BLCastOnViewModel.fairFaunchMint(param: param) { [weak self] resObj in
                 let success : Int = resObj["success"] as! Int
                 if success == 1{
-                    BLTools.showTost(tip: "铸造成功", superView: (self?.view)!)
+                    BLTools.showTost(tip: NSLocalized(key: "castOnSendCastSeccused"), superView: (self?.view)!)
                 }else{
                     let error = resObj["error"]
-                    BLTools.showTost(tip: (error ?? "铸造失败") as! String, superView: (self?.view)!)
+                    BLTools.showTost(tip: (error ?? NSLocalized(key: "castOnSendCastFailed")) as! String, superView: (self?.view)!)
                 }
             } failed: { [weak self] error in
                 BLTools.showTost(tip: error.msg, superView: (self?.view)!)
@@ -304,12 +310,12 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
                     if let data = resObj["data"]{
                         self?.mintModel = BLCastOnQueryMintModel.mj_object(withKeyValues: data)
                         if self?.mintModel!.calculated_fee_rate_sat_per_kw != nil{
-                            self?.tipLbl.text = "注:*手续费从闪电网络钱包扣除" + " 费率:" + (self?.mintModel?.calculated_fee_rate_sat_per_kw!)!
+                            self?.tipLbl.text = NSLocalized(key: "castOnSendIntroduceTips") + NSLocalized(key: "castOnSendIntroduceRate") + (self?.mintModel?.calculated_fee_rate_sat_per_kw!)!
                         }
                     }
                 }else{
                     let error = resObj["error"]
-                    BLTools.showTost(tip: (error ?? "查询是否可以进行铸造失败") as! String, superView: (self?.view)!)
+                    BLTools.showTost(tip: (error ?? NSLocalized(key: "castOnSendSaechCastFailed")) as! String, superView: (self?.view)!)
                 }
             } failed: { [weak self] error in
                 BLTools.showTost(tip:error.msg, superView: (self?.view)!)

@@ -33,7 +33,11 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
         self.contentView.addSubview(titleLbl)
         titleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(68*SCALE)
+            if languageCode == .ZH{
+                make?.width.mas_equalTo()(68*SCALE)
+            }else{
+                make?.width.mas_equalTo()(80*SCALE)
+            }
             make?.height.mas_equalTo()(16*SCALE)
             make?.top.mas_equalTo()(10*SCALE)
         }
@@ -42,7 +46,7 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
     func assignCoinTypeView(){
         containerView.backgroundColor = UIColorHex(hex: 0xF2F2F2, a: 1.0)
         containerView.layer.borderWidth = 0
-        titleLbl.text = "币种"
+        titleLbl.text = NSLocalized(key: "collectionCoinType")
         textField.keyboardType = .namePhonePad
 
         self.contentView.addSubview(containerView)
@@ -63,8 +67,8 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
     func assignAmountView(){
         containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         containerView.layer.borderWidth = 1*SCALE
-        titleLbl.text = "金额"
-        textField.placeholder = "请输入金额"
+        titleLbl.text = NSLocalized(key: "collectionAmount")
+        textField.placeholder = NSLocalized(key: "collectionAmountHolder")
         textField.keyboardType = .numberPad
 
         self.contentView.addSubview(containerView)
@@ -80,7 +84,7 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
         textField.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().mas_equalTo()(10*SCALE)
             make?.bottom.mas_equalTo()(-10*SCALE)
-            make?.right.mas_equalTo()(-100*SCALE)
+            make?.right.mas_equalTo()(-95*SCALE)
         }
         
         satsLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -94,7 +98,7 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
     func assignPostscriptView(){
         containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         containerView.layer.borderWidth = 1*SCALE
-        titleLbl.text = "附言"
+        titleLbl.text = NSLocalized(key: "collectionPostscript")
 
         self.contentView.addSubview(containerView)
         containerView.addSubview(textView)
@@ -113,7 +117,8 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
         
         pleaseHolderLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().mas_equalTo()(10*SCALE)
-            make?.size.mas_equalTo()(pleaseHolderLbl.frame.size)
+            make?.right.mas_equalTo()(-10*SCALE)
+            make?.height.mas_equalTo()(30*SCALE)
         }
     }
     
@@ -144,7 +149,7 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
     
     lazy var coinTypeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "自动显示不用输入"
+        lbl.text = NSLocalized(key: "collectionCoinTypeHolder")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.4)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .left
@@ -190,11 +195,11 @@ class BLCollectionInvoiceCell: BLBaseTableViewCell,UITextFieldDelegate,UITextVie
     
     lazy var pleaseHolderLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "请输入你的留言 (限制50个字符）"
+        lbl.text = NSLocalized(key: "collectionPostscriptHolder")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .left
-        lbl.sizeToFit()
+        lbl.numberOfLines = 0
         
         return lbl
     }()

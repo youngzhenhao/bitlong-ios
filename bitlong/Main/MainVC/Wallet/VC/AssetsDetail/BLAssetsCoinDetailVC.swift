@@ -15,7 +15,7 @@ class BLAssetsCoinDetailVC: BLBaseVC,CoinDetailViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "代币详情"
+        self.title = NSLocalized(key: "tokenDetailsNavTitle")
         
         self.initUI()
         self.loadData()
@@ -33,7 +33,7 @@ class BLAssetsCoinDetailVC: BLBaseVC,CoinDetailViewDelegate {
     override func loadData() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
@@ -74,6 +74,6 @@ class BLAssetsCoinDetailVC: BLBaseVC,CoinDetailViewDelegate {
         }
         let hisItem : BLCollectionHisItem = BLCollectionHisItem.init()
         hisItem.encoded = qrStr
-        invoiceQRView.assignHisItem(obj: hisItem, title: "资产二维码")
+        invoiceQRView.assignHisItem(obj: hisItem, title: NSLocalized(key: "tokenDetailsQRCode"))
     }
 }

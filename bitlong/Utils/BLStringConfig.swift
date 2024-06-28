@@ -45,20 +45,6 @@ let UnZipFileCachePath       = "UnZipFileCachePath"
 let UnZipFilePath            = LndFileBasePath + BLTools.getEnvironmentalConfig()
 
 /*
- test
- */
-//创建钱包
-let genSeedTitle              = "备份助记词"
-let genSeedSubTitle           = "请按顺序抄写助记词，确保备份正确。"
-let genSeedWarnTitle          = "妥善保管助记词至隔离网络的安全地方。"
-let genSeedWarnSubTitle       = "请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等。"
-
-let manualBackupTitle         = "手动备份"
-let cloudBackupTitle          = "云备份"
-let laterBackupTitle          = "稍后备份"
-
-
-/*
  file path
  */
 let Key_Assets           = "key_Assets"

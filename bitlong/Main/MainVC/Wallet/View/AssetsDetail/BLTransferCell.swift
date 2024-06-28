@@ -23,9 +23,10 @@ class BLTransferCell: BLBaseTableViewCell{
         self.contentView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         self.contentView.addSubview(titleLbl)
         titleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(26*SCALE)
+            make?.left.mas_equalTo()(10*SCALE)
             make?.top.mas_equalTo()(15*SCALE)
-            make?.size.mas_equalTo()(titleLbl.frame.size)
+            make?.width.mas_equalTo()(titleLbl.frame.width)
+            make?.height.mas_equalTo()(40*SCALE)
         }
         
         self.initUI()
@@ -52,11 +53,12 @@ class BLTransferCell: BLBaseTableViewCell{
 
     var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "收款地址"
+        lbl.text = "postscript"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 15*Float(SCALE))
         lbl.textAlignment = .right
         lbl.sizeToFit()
+        lbl.numberOfLines = 2
         
         return lbl
     }()
@@ -66,7 +68,7 @@ class BLTransferCell: BLBaseTableViewCell{
         field.textColor = .black
         field.backgroundColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
         field.font = UIFont.boldSystemFont(ofSize: 14)
-        field.attributedPlaceholder = NSAttributedString.init(string:" 请手动输入收款地址或扫码识别", attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize:14*SCALE),NSAttributedString.Key.foregroundColor:UIColor(hex: "0xA6A6A6", alpha: 1.0)])
+        field.attributedPlaceholder = NSAttributedString.init(string:NSLocalized(key: "transferReceivingAddressHolder"), attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize:14*SCALE),NSAttributedString.Key.foregroundColor:UIColor(hex: "0xA6A6A6", alpha: 1.0)])
         field.layer.cornerRadius = 4*SCALE
         field.clipsToBounds = true
         field.addTarget(self, action: #selector(textFieldAcation(field:)), for: .editingChanged)
@@ -111,30 +113,31 @@ class BLTransferAddressCell: BLTransferCell,UITextViewDelegate {
     }
 
     override func initUI(){
-        titleLbl.text = "收款地址"
+        titleLbl.text = NSLocalized(key: "transferReceivingAddress")
         self.contentView.addSubview(searchTextView)
-        searchTextView.addSubview(placeholderLbl)
+        self.contentView.addSubview(placeholderLbl)
         self.contentView.addSubview(scanImageView)
         self.contentView.addSubview(tipLbl)
         
         titleLbl.mas_remakeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(26*SCALE)
+            make?.left.mas_equalTo()(10*SCALE)
             make?.centerY.mas_equalTo()(searchTextView.mas_centerY)
-            make?.size.mas_equalTo()(titleLbl.frame.size)
+            make?.width.mas_equalTo()(titleLbl.frame.width)
+            make?.height.mas_equalTo()(40*SCALE)
         }
 
         searchTextView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(0)
+            make?.top.mas_equalTo()(10*SCALE)
             make?.left.mas_equalTo()(titleLbl.mas_right)?.offset()(10*SCALE)
             make?.right.mas_equalTo()(-52*SCALE)
-            make?.height.mas_equalTo()(100*SCALE)
+            make?.height.mas_equalTo()(90*SCALE)
         }
         
         placeholderLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(10*SCALE)
-            make?.height.mas_equalTo()(16*SCALE)
-            make?.centerY.mas_equalTo()(0)
-            make?.right.mas_equalTo()(-10*SCALE)
+            make?.left.mas_equalTo()(searchTextView.mas_left)?.offset()(10*SCALE)
+            make?.height.mas_equalTo()(60*SCALE)
+            make?.centerY.mas_equalTo()(searchTextView.mas_centerY)
+            make?.right.mas_equalTo()(searchTextView.mas_right)?.offset()(-10*SCALE)
         }
         
         scanImageView.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -167,7 +170,8 @@ class BLTransferAddressCell: BLTransferCell,UITextViewDelegate {
         var lbl = UILabel.init()
         lbl.textColor = UIColorHex(hex: 0xA6A6A6, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.text = "请手动输入收款地址或扫码识别"
+        lbl.text = NSLocalized(key: "transferReceivingAddressHolder")
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -189,7 +193,7 @@ class BLTransferAddressCell: BLTransferCell,UITextViewDelegate {
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.numberOfLines = 0
         lbl.textAlignment = .center
-        let str : NSString = "· 请输入发票、LNRUL、闪电地址或BTC地址 "
+        let str : NSString = NSLocalized(key: "transferReceivingAddressTips") as NSString
         let range : NSRange = str.range(of: "·")
         let attr : NSMutableAttributedString = NSMutableAttributedString.init(string: str as String)
         attr.addAttribute(.foregroundColor, value: UIColor(hex: "0x2A82E4", alpha: 1.0), range: range)
@@ -258,11 +262,11 @@ class BLTransferCoinTypeCell: BLTransferCell{
     }
     
     override func initUI(){
-        titleLbl.text = "币种"
+        titleLbl.text = NSLocalized(key: "transferCoinType")
         self.contentView.addSubview(coinTypeLbl)
         coinTypeLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(titleLbl.mas_right)?.offset()(10*SCALE)
-            make?.right.mas_equalTo()(-54*SCALE)
+            make?.right.mas_equalTo()(-20*SCALE)
             make?.height.mas_equalTo()(40*SCALE)
             make?.centerY.mas_equalTo()(titleLbl.mas_centerY)
         }
@@ -270,7 +274,7 @@ class BLTransferCoinTypeCell: BLTransferCell{
     
     lazy var coinTypeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "  自动显示不用输入"
+        lbl.text = NSLocalized(key: "transferCoinTypeHolder")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.4)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.backgroundColor = UIColorHex(hex: 0xF2F2F2, a: 1.0)
@@ -311,18 +315,16 @@ class BLTransferAmountCell: BLTransferCell{
     }
     
     override func initUI(){
-        titleLbl.text = "金额"
+        titleLbl.text = NSLocalized(key: "transferAmount")
         searchTextField.keyboardType = .numberPad
         self.contentView.addSubview(containerView)
         containerView.addSubview(searchTextField)
         self.contentView.addSubview(minerFee)
         self.contentView.addSubview(expectedTime)
-        
-        searchTextField.attributedPlaceholder = NSAttributedString.init(string:"请输入金额", attributes: [NSAttributedString.Key.font:UIFont.systemFont(ofSize:14*SCALE),NSAttributedString.Key.foregroundColor:UIColor(hex: "0xA6A6A6", alpha: 1.0)])
-        
+
         containerView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(titleLbl.mas_right)?.offset()(10*SCALE)
-            make?.right.mas_equalTo()(-54*SCALE)
+            make?.right.mas_equalTo()(-20*SCALE)
             make?.height.mas_equalTo()(40*SCALE)
             make?.centerY.mas_equalTo()(titleLbl.mas_centerY)
         }
@@ -335,21 +337,22 @@ class BLTransferAmountCell: BLTransferCell{
         
         minerFee.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(containerView.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(containerView.mas_left)?.offset()(30*SCALE)
+            make?.left.mas_equalTo()(containerView.mas_left)
             make?.size.mas_equalTo()(minerFee.frame.size)
         }
         
         expectedTime.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(minerFee.mas_right)?.offset()(30*SCALE)
+            make?.left.mas_equalTo()(minerFee.mas_right)?.offset()(15*SCALE)
             make?.centerY.mas_equalTo()(minerFee.mas_centerY)
-            make?.size.mas_equalTo()(expectedTime.frame.size)
+            make?.right.mas_equalTo()(-20*SCALE)
+            make?.height.mas_equalTo()(36*SCALE)
         }
         
         let model : BLWalletBalanceModel = BLWalletViewModel.getWalletBalance()
         if model.confirmed_balance != nil{
-            searchTextField.placeholder = String.init(format: "总余额%@ sats", model.confirmed_balance!)
+            searchTextField.placeholder = String.init(format: "%@%@ sats", NSLocalized(key: "transferAmountHolder"), model.confirmed_balance!)
         }else{
-            searchTextField.placeholder = "总余额0 sats"
+            searchTextField.placeholder = NSLocalized(key: "transferAmountHolder") + "0 sats"
         }
     }
     
@@ -365,7 +368,7 @@ class BLTransferAmountCell: BLTransferCell{
     
     lazy var minerFee : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "矿工费"
+        lbl.text = NSLocalized(key: "transferMinerFees")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.4)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.sizeToFit()
@@ -375,10 +378,10 @@ class BLTransferAmountCell: BLTransferCell{
     
     lazy var expectedTime : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "预计时间10分钟"
+        lbl.text = NSLocalized(key: "transferEstimatedTime")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.4)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
-        lbl.sizeToFit()
+        lbl.numberOfLines = 2
         
         return lbl
     }()
@@ -425,19 +428,19 @@ class BLTransferPostscriptCell: BLTransferCell{
     }
     
     override func initUI() {
-        titleLbl.text = "附言"
+        titleLbl.text = NSLocalized(key: "transferPostscript")
         self.contentView.addSubview(textView)
         textView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(5*SCALE)
+            make?.top.mas_equalTo()(10*SCALE)
             make?.left.mas_equalTo()(titleLbl.mas_right)?.offset()(15*SCALE)
-            make?.right.mas_equalTo()(-54*SCALE)
+            make?.right.mas_equalTo()(-20*SCALE)
             make?.bottom.mas_equalTo()(-10*SCALE)
         }
     }
     
     lazy var textView : UITextView = {
         var view = UITextView.init()
-        view.text = " 自动显示不用输入"
+        view.text = NSLocalized(key: "transferPostscriptHolder")
         view.font = FONT_NORMAL(s: 13*Float(SCALE))
         view.textColor = UIColorHex(hex: 0x383838, a: 0.4)
         view.backgroundColor = UIColorHex(hex: 0xF2F2F2, a: 1.0)

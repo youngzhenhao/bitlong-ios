@@ -19,6 +19,8 @@ class BLQRScanVC: BLBaseVC,AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "扫一扫"
+        
         // 设置 AVCaptureSession
         captureSession = AVCaptureSession()
         
@@ -60,6 +62,19 @@ class BLQRScanVC: BLBaseVC,AVCaptureMetadataOutputObjectsDelegate {
         }
         
         addMaskToScannerView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navgationLeftBtn(picStr: "ic_back_white")
+        self.setNavTitleColor(titleColor: UIColorHex(hex: 0xFFFFFF, a: 1.0), bgColor: UIColorHex(hex: 0xFFFFFF, a: 0.0), bgImage: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.setNavTitlNormal()
     }
     
     var scanningLine: UIView!

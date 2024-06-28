@@ -115,22 +115,22 @@ class BLCreatWalletCell: BLBaseTableViewCell,UITextFieldDelegate {
     func walletCellType(type : CreatWalletCellType){
         switch type {
         case .walletName:
-            textField.placeholder = "输入1-12个字符"
+            textField.placeholder = NSLocalized(key: "creatWalletNameHolder")
             passWorldVisibleBt.isHidden = true
             textField.isSecureTextEntry = false
             break
         case .walletPassWorld:
-            textField.placeholder = "输入密码"
+            textField.placeholder = NSLocalized(key: "creatWalletHolder")
             passWorldVisibleBt.isHidden = false
             textField.isSecureTextEntry = true
             break
         case .walletPassWorldAgain:
-            textField.placeholder = "重复输入密码"
+            textField.placeholder = NSLocalized(key: "creatWalletRepeatHolder")
             passWorldVisibleBt.isHidden = false
             textField.isSecureTextEntry = true
             break
         case .walletPassWorldNoti:
-            textField.placeholder = "输入提醒文字"
+            textField.placeholder = NSLocalized(key: "creatWalletPasswordTipsHolder")
             passWorldVisibleBt.isHidden = true
             textField.isSecureTextEntry = false
             break

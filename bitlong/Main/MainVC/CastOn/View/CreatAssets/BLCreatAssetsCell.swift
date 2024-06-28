@@ -66,6 +66,7 @@ class BLCreatAssetsCell: BLBaseTableViewCell {
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
         
         return lbl
     }()

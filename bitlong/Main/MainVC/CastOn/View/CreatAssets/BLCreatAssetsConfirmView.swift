@@ -70,7 +70,7 @@ class BLCreatAssetsConfirmView: BLBaseView {
     
     lazy var msgLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "发行手续费用:"
+        lbl.text = NSLocalized(key: "castOnCreatHandlingFees")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 15*Float(SCALE))
         lbl.textAlignment = .center
@@ -81,7 +81,7 @@ class BLCreatAssetsConfirmView: BLBaseView {
     
     lazy var cancelBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("取消发行", for: .normal)
+        bt.setTitle(NSLocalized(key: "castOnCreatCancelIssuance"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.backgroundColor = UIColorHex(hex: 0x7C70FF, a: 0.5)
         bt.layer.cornerRadius = 6*SCALE
@@ -93,7 +93,7 @@ class BLCreatAssetsConfirmView: BLBaseView {
     
     lazy var confirmBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("确认发行", for: .normal)
+        bt.setTitle(NSLocalized(key: "castOnCreatConfirmIssuance"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
         bt.layer.cornerRadius = 6*SCALE

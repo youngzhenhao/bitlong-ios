@@ -58,7 +58,7 @@ class BLCollectionView: BLBaseView {
         
         collectionAddressTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(12*SCALE)
-            make?.size.mas_equalTo()(titleLbl.frame.size)
+            make?.size.mas_equalTo()(collectionAddressTitleLbl.frame.size)
             make?.centerX.mas_equalTo()(0)
         }
         
@@ -71,7 +71,7 @@ class BLCollectionView: BLBaseView {
         
         changeAddressBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(collectionAddressLbl.mas_bottom)?.offset()(10*SCALE)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.width.mas_equalTo()(changeAddressBt.frame.width+20*SCALE)
             make?.height.mas_equalTo()(30*SCALE)
             make?.centerX.mas_equalTo()(0)
         }
@@ -79,16 +79,18 @@ class BLCollectionView: BLBaseView {
         shareBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(69*SCALE)
             make?.top.mas_equalTo()(containerView.mas_bottom)?.offset()(12*SCALE)
-            make?.width.mas_equalTo()(58*SCALE)
+            make?.width.mas_equalTo()(64*SCALE)
             make?.height.mas_equalTo()(24*SCALE)
         }
+        shareBt.iconInLeft(spacing: 5*SCALE)
         
         copyBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.right.mas_equalTo()(-69*SCALE)
             make?.centerY.mas_equalTo()(shareBt.mas_centerY)?.offset()(0)
-            make?.width.mas_equalTo()(58*SCALE)
+            make?.width.mas_equalTo()(64*SCALE)
             make?.height.mas_equalTo()(24*SCALE)
         }
+        copyBt.iconInLeft(spacing: 5*SCALE)
         
         self.layoutIfNeeded()
         viewHeight = CGRectGetMaxY(copyBt.frame) + 15*SCALE
@@ -96,7 +98,7 @@ class BLCollectionView: BLBaseView {
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "扫一扫，向我支付"
+        lbl.text = NSLocalized(key: "collectionScanAndPayment")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .center
@@ -124,7 +126,7 @@ class BLCollectionView: BLBaseView {
     
     lazy var collectionAddressTitleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "收款地址"
+        lbl.text = NSLocalized(key: "collectionReceivingAddress")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .center
@@ -145,7 +147,7 @@ class BLCollectionView: BLBaseView {
     
     lazy var changeAddressBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("切换地址", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionChangeAddress"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_NORMAL(s: 12*Float(SCALE))
         bt.layer.borderColor = UIColorHex(hex: 0x665AF0, a: 1.0).cgColor
@@ -161,7 +163,9 @@ class BLCollectionView: BLBaseView {
     
     lazy var shareBt : UIButton = {
         var bt = UIButton.init()
+        bt.setTitle(NSLocalized(key: "collectionShare"), for: .normal)
         bt.setImage(imagePic(name: "ic_walletDetail_share"), for: .normal)
+        bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.tag = 101
         bt.addTarget(self, action: #selector(clickAcation), for: .touchUpInside)
         
@@ -170,7 +174,9 @@ class BLCollectionView: BLBaseView {
     
     lazy var copyBt : UIButton = {
         var bt = UIButton.init()
+        bt.setTitle(NSLocalized(key: "collectionCopy"), for: .normal)
         bt.setImage(imagePic(name: "ic_walletDetail_copy"), for: .normal)
+        bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.tag = 102
         bt.addTarget(self, action: #selector(clickAcation), for: .touchUpInside)
         

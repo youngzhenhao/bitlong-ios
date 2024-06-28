@@ -121,7 +121,7 @@ class BLImportAssetsIDCell: BLImportAssetsCell,UITextViewDelegate {
         var lbl = UILabel.init()
         lbl.textColor = UIColorHex(hex: 0xA6A6A6, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.text = "请输入代币资产id"
+        lbl.text = NSLocalized(key: "importAssetsIdHolder")
         
         return lbl
     }()
@@ -315,8 +315,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         sendNumLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(titleLbl.mas_bottom)?.offset()(20*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(10*SCALE)
+            make?.width.mas_equalTo()(sendNumLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -329,8 +329,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         sendDateLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendNumLbl.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(sendNumLbl.mas_left)
+            make?.width.mas_equalTo()(sendDateLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -343,8 +343,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         sendCoinTypeLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendDateLbl.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(sendNumLbl.mas_left)
+            make?.width.mas_equalTo()(sendCoinTypeLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -357,8 +357,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         canAddLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendCoinTypeLbl.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(sendNumLbl.mas_left)
+            make?.width.mas_equalTo()(canAddLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -371,8 +371,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         recordsLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(canAddLbl.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(sendNumLbl.mas_left)
+            make?.width.mas_equalTo()(recordsLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -385,8 +385,8 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
         
         descriptionLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(recordsLbl.mas_bottom)?.offset()(15*SCALE)
-            make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.left.mas_equalTo()(sendNumLbl.mas_left)
+            make?.width.mas_equalTo()(descriptionLbl.frame.width)
             make?.height.mas_equalTo()(15*SCALE)
         }
         
@@ -400,10 +400,11 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "资产详情"
+        lbl.text = NSLocalized(key: "importAssetsAssetsDetails")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 18*Float(SCALE))
         lbl.textAlignment = .center
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -411,10 +412,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var sendNumLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "发行量:"
+        lbl.text = NSLocalized(key: "importAssetsSendNum") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -430,10 +431,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var sendDateLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "发行日期:"
+        lbl.text = NSLocalized(key: "importAssetsSendDate") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -449,10 +450,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var sendCoinTypeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "代币种类:"
+        lbl.text = NSLocalized(key: "importAssetsCoinType") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -468,10 +469,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var canAddLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "能否增发:"
+        lbl.text = NSLocalized(key: "importAssetsCanAdd") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -487,10 +488,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var recordsLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "链上记录:"
+        lbl.text = NSLocalized(key: "importAssetsOnChainRecords") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()
@@ -506,10 +507,10 @@ class BLImportAssetsDetailCell: BLImportAssetsCell {
     
     lazy var descriptionLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "代币简介:"
+        lbl.text = NSLocalized(key: "importAssetsCoinIntroduction") + ":"
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
-        lbl.textAlignment = .right
+        lbl.sizeToFit()
         
         return lbl
     }()

@@ -69,7 +69,7 @@ class BLCreatAssetTextInputCell: BLCreatAssetsCell,UITextViewDelegate {
     
     lazy var pleaseHolderLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "介绍信息"
+        lbl.text = NSLocalized(key: "castOnCreatIntroduce")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .left

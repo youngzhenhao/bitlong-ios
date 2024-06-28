@@ -66,7 +66,7 @@ class BLAssetsSendHisHeaderView: BLBaseView {
     
     lazy var coinLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "代币"
+        lbl.text = NSLocalized(key: "castOnCreatHisToken")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -76,7 +76,7 @@ class BLAssetsSendHisHeaderView: BLBaseView {
     
     lazy var idLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "ID"
+        lbl.text = NSLocalized(key: "castOnCreatHisID")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -86,7 +86,7 @@ class BLAssetsSendHisHeaderView: BLBaseView {
     
     lazy var typeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "类型"
+        lbl.text = NSLocalized(key: "castOnCreatHisType")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -96,7 +96,7 @@ class BLAssetsSendHisHeaderView: BLBaseView {
     
     lazy var timeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "时间"
+        lbl.text = NSLocalized(key: "castOnCreatHisTime")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -106,7 +106,7 @@ class BLAssetsSendHisHeaderView: BLBaseView {
     
     lazy var statusLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "状态"
+        lbl.text = NSLocalized(key: "castOnCreatHisState")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center

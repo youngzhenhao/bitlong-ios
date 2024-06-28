@@ -45,7 +45,7 @@ class BLLuanchVC: BLBaseVC {
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "Taproot Assets 生 态 钱 包"
+        lbl.text = "Taproot Assets" + " " + NSLocalized(key: "walletTypeAdTitle")
         lbl.textColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .center

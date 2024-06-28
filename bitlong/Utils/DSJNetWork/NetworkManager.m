@@ -150,6 +150,20 @@
     [logger debug:@"sub REQUEST_NUM -> %li", (long)num];
 }
 
+-(NSString *)getErrorMsg:(NSError *)error{
+    NSString * msg = error.userInfo[@"NSDebugDescription"];
+    if(!msg){
+        msg = error.userInfo[@"NSLocalizedDescription"];
+    }
+    if(!msg){
+        msg = error.domain;
+    }
+    if(!msg){
+        msg = @"请求失败";
+    }
+    return msg;
+}
+
 -(void)GETRequestUrlString:(NSString *)urlStr paramerers:(NSDictionary *)parameter requestHeader:(NSDictionary * _Nullable)header onSuccessBlock:(OnSuccessBlock _Nullable)onSuccess onFailureBlock:(OnFailureBlock _Nullable)onFailure requestSerializerType:(RequestSerializerType)type{
     self.manager.securityPolicy = [self securityPolicy:urlStr];
     [self GETRequestUrlString:urlStr paramerers:parameter requestHeader:header onSuccessBlock:^(id  _Nullable respObj) {
@@ -173,6 +187,7 @@
         [self.manager setRequestSerializer:[AFHTTPRequestSerializer serializer]];
     }
     
+    __weak typeof(self)weakSelf = self;
     [self.manager GET:urlStr parameters:parameter headers:header progress:^(NSProgress * _Nullable downloadProgress) {
         if(onProgress){
             onProgress(downloadProgress);
@@ -187,6 +202,9 @@
             ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
             NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
             errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+            if(!errModel.msg){
+                errModel.msg = @"请求失败";
+            }
             errModel.statusCode = httpRes.statusCode;
             if (onFailure) {
                 onFailure(errModel);
@@ -200,7 +218,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -218,13 +236,14 @@
         [request setValue:header[headerField] forHTTPHeaderField:headerField];
     }
     
+    __weak typeof(self)weakSelf = self;
     NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:
                                    ^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
         if (error) {
             if(onFailure){
                 ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
-                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+                errModel.msg = [weakSelf getErrorMsg:error];
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -237,6 +256,9 @@
                 if(onFailure){
                     ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
                     errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+                    if(!errModel.msg){
+                        errModel.msg = @"请求失败";
+                    }
                     errModel.statusCode = httpRes.statusCode;
                     onFailure(errModel);
                 }
@@ -270,6 +292,7 @@
     }
     self.manager.securityPolicy = [self securityPolicy:urlStr];
     
+    __weak typeof(self)weakSelf = self;
     [self.manager POST:urlStr parameters:parameter headers:header progress:^(NSProgress * _Nullable uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
@@ -282,6 +305,9 @@
             ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
             NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
             errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+            if(!errModel.msg){
+                errModel.msg = @"请求失败";
+            }
             errModel.statusCode = httpRes.statusCode;
             if (onFailure) {
                 onFailure(errModel);
@@ -295,7 +321,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -321,7 +347,7 @@
     [self.manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [self.manager.requestSerializer setValue:@"image/jpeg" forHTTPHeaderField:@"Content-Type"];
     
-
+    __weak typeof(self)weakSelf = self;
     [self.manager PUT:urlStr parameters:parameter headers:@{@"Content-Type":@"image/jpeg"} success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
         if (httpRes.statusCode == 200) {  //200请求成功 返回数据
@@ -332,6 +358,9 @@
             ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
             NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
             errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+            if(!errModel.msg){
+                errModel.msg = @"请求失败";
+            }
             errModel.statusCode = httpRes.statusCode;
             if (onFailure) {
                 onFailure(errModel);
@@ -345,7 +374,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -396,6 +425,7 @@
     }
     
     [req setHTTPBody:[mutStr dataUsingEncoding:NSUTF8StringEncoding]];
+    __weak typeof(self)weakSelf = self;
     [[self.urlManager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nullable uploadProgress) {
                 
     } downloadProgress:^(NSProgress * _Nullable downloadProgress) {
@@ -420,7 +450,7 @@
                     NSLog(@"==请求超时==");
                 }
                 errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+                errModel.msg = [weakSelf getErrorMsg:error];
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -433,6 +463,7 @@
 -(void)GETBufRequestUrlString:(NSString *)urlStr paramerers:(NSDictionary *)parameter requestHeader:(NSDictionary * _Nullable)header  onSuccessBlock:(OnSuccessBlock)onSuccess onFailureBlock:(OnFailureBlock)onFailure{
     [self setRequestHeader:header];
     self.bufManager.securityPolicy = [self securityPolicy:urlStr];
+    __weak typeof(self)weakSelf = self;
     [self.bufManager GET:urlStr parameters:parameter headers:header progress:^(NSProgress * _Nullable downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
@@ -445,6 +476,9 @@
                 ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
                 NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
                 errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+                if(!errModel.msg){
+                    errModel.msg = @"请求失败";
+                }
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -457,7 +491,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -477,8 +511,8 @@
         [urlRequest setValue:headDict[key] forHTTPHeaderField:key];
     }
     
+    __weak typeof(self)weakSelf = self;
     [urlRequest setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
     NSURLSessionDataTask *dataTask = [shareSessin dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
         
@@ -500,7 +534,7 @@
                 }else{
                     errModel.code = [NSString stringWithFormat:@"-1"];
                 }
-                errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+                errModel.msg = [weakSelf getErrorMsg:error];
                 errModel.statusCode = httpRes.statusCode;
                 if (onFailure) {
                     onFailure(errModel);
@@ -539,6 +573,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     manager.securityPolicy = [self securityPolicy:urlStr];
+    __weak typeof(self)weakSelf = self;
     [manager GET:urlStr parameters:nil headers:header progress:^(NSProgress * _Nullable downloadProgress) {
         if (onProgress && downloadProgress) {
             onProgress(downloadProgress);
@@ -555,6 +590,9 @@
                 ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
                 NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)task.response;
                 errModel.msg = [NSHTTPURLResponse localizedStringForStatusCode:httpRes.statusCode];
+                if(!errModel.msg){
+                    errModel.msg = @"请求失败";
+                }
                 errModel.statusCode = httpRes.statusCode;
                 onFailure(errModel);
             }
@@ -567,7 +605,7 @@
                 NSLog(@"==请求超时==");
             }
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             onFailure(errModel);
         }
@@ -588,7 +626,7 @@
         [urlRequest setValue:headDict[key] forHTTPHeaderField:key];
     }
     [urlRequest setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
+    __weak typeof(self)weakSelf = self;
     NSURLSessionDataTask *dataTask = [shareSessin dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
         
@@ -606,7 +644,7 @@
             }
             ErrorRespModel *errModel = [[ErrorRespModel alloc] init];
             errModel.code = [NSString stringWithFormat:@"%ld",(long)error.code];;
-            errModel.msg = error.userInfo[@"NSLocalizedDescription"];
+            errModel.msg = [weakSelf getErrorMsg:error];
             errModel.statusCode = httpRes.statusCode;
             dispatch_async(dispatch_get_main_queue(), ^{
                 onFailure(errModel);

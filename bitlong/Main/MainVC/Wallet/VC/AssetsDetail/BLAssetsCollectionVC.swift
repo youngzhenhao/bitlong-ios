@@ -14,7 +14,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "收款"
+        self.title = NSLocalized(key: "collectionNavTitle")
         self.view.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
         
         if pageType == .BTCType{
@@ -30,12 +30,15 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
         self.startWebService()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navgationLeftBtn(picStr: "ic_back_white")
+        self.setNavTitleColor(titleColor: UIColorHex(hex: 0xFFFFFF, a: 1.0), bgColor: UIColorHex(hex: 0x665AF0, a: 0.0), bgImage: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.setNavTitlNormal()
     }
     
     func startWebService(){
@@ -90,7 +93,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
                 self?.collectionView.assignCollectionInfo(address: address)
             }
         }else if sender.tag == 101{//分享
-            
+            BLTools.showTost(tip: NSLocalized(key: "functionComingSoon"), superView: self.view)
         }else if sender.tag == 102{//复制
             BLTools.pasteGeneral(string: address)
         }
@@ -174,7 +177,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
     
     lazy var creatBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("创建", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionInvoiceCreat"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x2A82E4, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
@@ -187,7 +190,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
     
     lazy var hisListLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "历史记录"
+        lbl.text = NSLocalized(key: "collectionInvoiceHisTitle")
         lbl.textColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .left
@@ -244,7 +247,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
         invoiceQRView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().right().bottom().mas_equalTo()(0)
         }
-        invoiceQRView.assignHisItem(obj: hisItem, title: pageType == .assetsType ? "资产发票二维码" : "发票二维码")
+        invoiceQRView.assignHisItem(obj: hisItem, title: pageType == .assetsType ? NSLocalized(key: "collectionAssetsInvoiceQRCode") : NSLocalized(key: "collectionInvoiceQRCode"))
     }
     
     @objc func creatAcation(){
@@ -252,11 +255,11 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
         
         if pageType == .assetsType{
             if assetsItem == nil || assetsItem?.asset_id == nil{
-                BLTools.showTost(tip: "资产id不能为空", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "collectionAssetsIDNill"), superView: self.view)
                 return
             }
             if amount <= 0 {
-                BLTools.showTost(tip: "金额不合法", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "collectionAmountWrongful"), superView: self.view)
                 return
             }
             
@@ -272,7 +275,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
             }
         }else if pageType == .channelBTCType{
             if amount <= 0 {
-                BLTools.showTost(tip: "金额不合法", superView: self.view)
+                BLTools.showTost(tip:NSLocalized(key: "collectionAmountWrongful"), superView: self.view)
                 return
             }
             
@@ -331,7 +334,7 @@ class BLAssetsCollectionVC: BLBaseVC,CollectionDelegate,ItemClickAcationDelegate
                 self?.removeNoDataView()
             }
         } failed: { [weak self] respModel in
-            BLTools.showTost(tip: "查询发票失败", superView: (self?.view)!)
+            BLTools.showTost(tip: NSLocalized(key: "collectionInvoiceGetFailed"), superView: (self?.view)!)
             
             self?.addNoDataView(superView: (self?.hisListView.tableView)!, isBig: false)
         }

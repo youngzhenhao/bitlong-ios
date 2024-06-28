@@ -39,13 +39,13 @@ class BLCreatAssetLogoCell: BLCreatAssetsCell {
         containerView.addSubview(titleLbl)
         containerView.addSubview(subTitleLbl)
         
-        typeTitleLbl.attributedText = setAttributed(text: "*上传logo")
+        typeTitleLbl.attributedText = setAttributed(text: NSLocalized(key: "castOnCreatUploadLogo") as NSString)
         containerView.backgroundColor = UIColorHex(hex: 0xE3E1FC, a: 1.0)
      
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(8*SCALE)
             make?.left.mas_equalTo()(60*SCALE)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.height.mas_equalTo()(16*SCALE)
             make?.width.mas_equalTo()(80*SCALE)
         }
         
@@ -90,7 +90,7 @@ class BLCreatAssetLogoCell: BLCreatAssetsCell {
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "上传你的logo"
+        lbl.text = NSLocalized(key: "castOnCreatUploadYourLogo")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -100,7 +100,7 @@ class BLCreatAssetLogoCell: BLCreatAssetsCell {
     
     lazy var subTitleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "支持PNG和JPEG格式"
+        lbl.text = NSLocalized(key: "castOnCreatSupportLogo")
         lbl.textColor = UIColorHex(hex: 0x808080, a: 1.0)
         lbl.font = FONT_NORMAL(s: 10*Float(SCALE))
         lbl.textAlignment = .center

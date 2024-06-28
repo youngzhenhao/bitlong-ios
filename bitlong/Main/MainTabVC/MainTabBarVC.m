@@ -216,27 +216,27 @@
     if (!_arrVC) {
         _arrVC = [NSMutableArray array];
         [_arrVC addObject:@{@"clsName" : @"bitlong.BLWalletVC" ,
-                            @"title" : @"钱包",
+                            @"title" : NSLocalized(@"tabBarItemOne"),
                             @"imageNor" :@"",
                             @"imageSel" : @"",
                           }];
         [_arrVC addObject:@{@"clsName" : @"bitlong.BLCastOnOutWellVC" ,
-                            @"title" :  @"铸造",
+                            @"title" :   NSLocalized(@"tabBarItemTwo"),
                             @"imageNor" : @"",
                             @"imageSel" : @"",
                           }];
         [_arrVC addObject:@{@"clsName" : @"bitlong.BLTransactionVC" ,
-                            @"title" :  @"交易",
+                            @"title" :  NSLocalized(@"tabBarItemThree"),
                             @"imageNor" : @"",
                             @"imageSel" : @"",
                           }];
         [_arrVC addObject:@{@"clsName" : @"bitlong.BLToolVC" ,
-                            @"title" :  @"工具",
+                            @"title" :  NSLocalized(@"tabBarItemFour"),
                             @"imageNor" : @"",
                             @"imageSel" : @"",
                           }];
         [_arrVC addObject:@{@"clsName" : @"bitlong.BLNostrVC" ,
-                            @"title" : @"Nostr",
+                            @"title" : NSLocalized(@"tabBarItemFive"),
                             @"imageNor" : @"",
                             @"imageSel" : @"",
                           }];

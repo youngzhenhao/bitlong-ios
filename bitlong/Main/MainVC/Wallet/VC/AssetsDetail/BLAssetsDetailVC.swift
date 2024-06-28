@@ -18,7 +18,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "资产详情"
+        self.title = NSLocalized(key: "assetsDetailsNavTitle")
         
         self.initUI()
         self.loadData()
@@ -128,7 +128,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
         if litstatus != .SERVER_ACTIVE{
             DispatchQueue.main.async { [weak self] in
                 self?.addNoDataView(superView: (self?.tableView)!, isBig: true)
-                BLTools.showTost(tip: "LND正在同步中...", superView: (self?.view)!)
+                BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: (self?.view)!)
             }
             return
         }
@@ -230,7 +230,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
     
     lazy var transferBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("转账", for: .normal)
+        bt.setTitle(NSLocalized(key: "assetsDetailsTransferAccounts"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 14*Float(SCALE))
         bt.setImage(imagePic(name: "ic_walletDetail_transfer"), for: .normal)
@@ -245,7 +245,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
     
     lazy var collectionBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("收款", for: .normal)
+        bt.setTitle(NSLocalized(key: "assetsDetailsCollection"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 14*Float(SCALE))
         bt.setImage(imagePic(name: "ic_walletDetail_inPut"), for: .normal)
@@ -260,7 +260,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
     
     lazy var allTitleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "全部"
+        lbl.text = NSLocalized(key: "assetsDetailsTotal")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .left
@@ -377,7 +377,7 @@ class BLAssetsDetailVC: BLBaseVC,DetailHeaderDelegate,DetailItemViewDelegate {
     func itemSelectAcation(sender: UIButton) {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         

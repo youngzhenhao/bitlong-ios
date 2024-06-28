@@ -105,14 +105,14 @@ class BLWalletHeaderView: BLBaseView {
         }
         
         noticeLinelbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(hornImgView.mas_right)?.offset()(16*SCALE)
+            make?.left.mas_equalTo()(44*SCALE)
             make?.top.mas_equalTo()(8*SCALE)
             make?.bottom.mas_equalTo()(-8*SCALE)
             make?.width.mas_equalTo()(0.5*SCALE)
         }
         
         noticeTitlelbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(noticeLinelbl.mas_right)?.offset()(16*SCALE)
+            make?.left.mas_equalTo()(60*SCALE)
             make?.right.mas_equalTo()(-16*SCALE)
             make?.centerY.mas_equalTo()(0)
             make?.height.mas_equalTo()(18*SCALE)
@@ -166,7 +166,7 @@ class BLWalletHeaderView: BLBaseView {
     
     lazy var detailBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("详情", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletDetails"), for: .normal)
         bt.titleLabel?.font = FONT_NORMAL(s: 13*Float(SCALE))
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.setImage(imagePic(name: "ic_next_white"), for: .normal)
@@ -179,7 +179,7 @@ class BLWalletHeaderView: BLBaseView {
 
     lazy var allAssetslbl : UILabel = {
         var lbl : UILabel = UILabel.init()
-        lbl.text = "总资产:0 sats"
+        lbl.text = NSLocalized(key: "walletTotalAssets") + ":0 " + NSLocalized(key: "walletAssetsCompany")
         lbl.textColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
         lbl.font = FONT_BOLD(s: 20*Float(SCALE))
         lbl.textAlignment = .left
@@ -212,16 +212,14 @@ class BLWalletHeaderView: BLBaseView {
     
     lazy var noticeLinelbl : UILabel = {
         var lbl : UILabel = UILabel.init()
-        lbl.text = "|"
-        lbl.textColor = UIColorHex(hex: 0xA985FF, a: 1.0)
-        lbl.textAlignment = .center
+        lbl.backgroundColor = UIColorHex(hex: 0xA985FF, a: 1.0)
         
         return lbl
     }()
     
     lazy var noticeTitlelbl : UILabel = {
         var lbl : UILabel = UILabel.init()
-        lbl.text = "这是一条公告~"
+        lbl.text = NSLocalized(key: "walletNotice")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_NORMAL(s: 13*Float(SCALE))
         lbl.textAlignment = .left
@@ -247,7 +245,7 @@ class BLWalletHeaderView: BLBaseView {
                 walletNamelbl.text = (obj as! NSDictionary)[WalletName] as? String
                 if let obj = (obj as! NSDictionary)[WalletBalance]{
                     let dic : NSDictionary = obj as! NSDictionary
-                    allAssetslbl.text = String.init(format: "总资产:%@ sats", (dic[TotalBalance] as? String)!)
+                    allAssetslbl.text = String.init(format: "%@:%@ %@",NSLocalized(key: "walletTotalAssets"), (dic[TotalBalance] as? String)!, NSLocalized(key: "walletAssetsCompany"))
                 }
             }
         }
@@ -255,7 +253,7 @@ class BLWalletHeaderView: BLBaseView {
     
     func assignWalletInfo(balanceModel : BLWalletBalanceModel){
         if balanceModel.total_balance != nil{
-            allAssetslbl.text = String.init(format: "总资产:%@ sats", balanceModel.total_balance!)
+            allAssetslbl.text = String.init(format: "%@:%@ %@",NSLocalized(key: "walletTotalAssets"), balanceModel.total_balance!, NSLocalized(key: "walletAssetsCompany"))
         }
     }
 }

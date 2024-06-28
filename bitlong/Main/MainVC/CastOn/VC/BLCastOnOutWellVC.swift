@@ -87,7 +87,10 @@ class BLCastOnOutWellVC: BLBaseVC,CastOnDelegate,JXCategoryListCollectionContain
     }()
     
     lazy var titleList : NSArray = {
-        var arr = ["我的关注","热门榜","铸造中","已结束"]
+        var arr = [NSLocalized(key: "castOnItemMyFollowing"),
+                   NSLocalized(key: "castOnItemMyHotList"),
+                   NSLocalized(key: "castOnItemCasting"),
+                   NSLocalized(key: "castOnItemFineshed")]
         
         return arr as NSArray
     }()

@@ -1,0 +1,336 @@
+/* 
+  Localizable.strings
+  bitlong
+
+  Created by 微链通 on 2024/6/26.
+  
+*/
+
+/*
+ 基础信息-权限请求等
+ */
+"CFBundleDisplayName" = "bitlong";
+"NSCameraUsageDescription" = "App 需要访问您的相机来扫描二维码绑定设备";
+"NSContactsUsageDescription" = "App 需要访问您的通讯录来实现通讯录备份";
+"NSPhotoLibraryAddUsageDescription" = "App 需要访问您的相册来保存图片或视频";
+"NSPhotoLibraryUsageDescription" = "App 需要访问您的相册来发送图片或扫描二维码";
+"NSLocationWhenInUseUsageDescription" = "App 需要您允许定位以把位置保存到照片中";
+
+/*
+ tabBar
+ */
+"tabBarItemOne"                   = "钱包";
+"tabBarItemTwo"                   = "铸造";
+"tabBarItemThree"                 = "交易";
+"tabBarItemFour"                  = "工具";
+"tabBarItemFive"                  = "Nostr";
+
+
+/*
+ common
+ */
+//server status
+"serverStatusSynchronizing"        = "LND正在同步中...";
+
+//tost
+"functionComingSoon"               = "敬请期待...";
+
+
+/*
+ lunch
+ */
+"walletTypeAdTitle"                = " 生 态 钱 包";
+
+
+/*
+ 创建钱包
+ */
+//选择钱包类型
+"creatWalletAdTitle"               = "比特币生态钱包";
+"creatWalletTitle"                 = "创建钱包";
+"creatWalletSubTitle"              = "使用新的钱包";
+"ImportWalletTitle"                = "导入钱包";
+"ImportWalletSubTitle"             = "使用我已有的钱包";
+"HardwareWalletTitle"              = "硬件钱包";
+"HardwareWalletSubTitle"           = "使用我的硬件钱包";
+"ObservingWalletTitle"             = "观察钱包";
+"ObservingWalletSubTitle"          = "观察钱包";
+
+//创建钱包
+"creatWalletNavTitle"              = "创建钱包";
+"creatWalletName"                  = "钱包名称";
+"creatWalletNameHolder"            = "请输入1~12个字符";
+"creatWalletPassword"              = "钱包密码";
+"creatWalletHolder"                = "输入密码";
+"creatWalletRepeatHolder"          = "再次输入密码";
+"creatWalletPasswordTips"          = "密码提示（可选）";
+"creatWalletPasswordTipsHolder"    = "输入提醒文字";
+"creatWalletConfirm"               = "确认创建";
+//tost&alter
+"creatWalletNameWarn"              = "请输入钱包名称";
+"creatWalletPasswordWarn"          = "请输入钱包密码";
+"creatWalletPasswordLimitWarn"     = "钱包密码必须为8位或以上";
+"creatWalletPasswordErrorWarn"     = "两次钱包密码校验不一致";
+
+
+//助记词
+"genSeedTitle"                     = "备份助记词";
+"genSeedSubTitle"                  = "请按顺序抄写助记词，确保备份正确。";
+"genSeedWarnTitle"                 = "妥善保管助记词至隔离网络的安全地方。";
+"genSeedWarnSubTitle"              = "请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等。";
+"genSeedManualBackupTitle"         = "手动备份";
+"genSeedCloudBackupTitle"          = "云备份";
+"genSeedLaterBackupTitle"          = "稍后备份";
+//tost&alter
+"walletCreating"                   = "正在创建中，请稍后~";
+"walletCreatFailed"                = "钱包创建失败!";
+"walletCreatIllegal"               = "钱包输入信息非法！无法创建！";
+
+
+
+/*
+ 钱包
+ */
+//钱包
+"walletTotalAssets"              = "总资产";
+"walletAssetsCompany"            = "sats";
+"walletDetails"                  = "详情";
+"walletNotice"                   = "这是一条公告";
+"walletItemOne"                  = "资产";
+"walletItemTwo"                  = "NFT";
+"walletItemThree"                = "通道";
+
+//钱包列表
+"walletTableTitle"               = "钱包列表";
+"walletTableCoinName"            = "比特币";
+
+//钱包详情
+"walletDetailsNavTitle"          = "钱包详情";
+"walletDetailsExportGenSend"     = "导出助记词";
+"walletDetailsChangePassWord"    = "修改密码";
+"walletDetailsNostrAddress"      = "Nostr地址";
+"walletDetailsCurrentVersion"    = "当前版本";
+"walletDetailsDeleteWallet"      = "删除钱包";
+
+//二维码弹窗
+"walletDetailsAlterTitle"        = "比特币地址";
+"walletDetailsCopyAddress"       = "复制地址";
+
+//导入资产
+"importAssetsNavTitle"           = "导入资产";
+"importAssetsId"                 = "资产id";
+"importAssetsIdHolder"           = "请输入代币资产id";
+"importAssetsUniverseAddress"    = "宇宙地址";
+"importAssetsAssetsDetails"      = "资产详情";
+"importAssetsSendNum"            = "发行量";
+"importAssetsSendDate"           = "发行日期";
+"importAssetsCoinType"           = "代币种类";
+"importAssetsCanAdd"             = "能否增发";
+"importAssetsOnChainRecords"     = "链上记录";
+"importAssetsCoinIntroduction"   = "代币简介";
+"importAssetsConfirm"            = "确认";
+
+//资产详情
+"assetsDetailsNavTitle"          = "资产详情";
+"assetsDetailsBalance"           = "资产余额";
+"assetsDetailsAvailable"         = "可用余额";
+"assetsDetailsToBeConfirmed"     = "待确认";
+"assetsDetailsLocked"            = "锁定";
+"assetsDetailsTotal"             = "全部";
+"assetsDetailsToChangeInto"      = "转入";
+"assetsDetailsTransferOut"       = "转出";
+"assetsDetailsTransferAccounts"  = "转账";
+"assetsDetailsCollection"        = "收款";
+
+//代币详情
+"tokenDetailsNavTitle"           = "代币详情";
+"tokenDetailsName"               = "名称:";
+"tokenDetailsAssetsId"           = "资产ID:";
+"tokenDetailsSendNum"            = "发行量:";
+"tokenDetailsSendDate"           = "发行日期:";
+"tokenDetailsType"               = "代币种类:";
+"tokenDetailsCanAdd"             = "能否增发:";
+"tokenDetailsOnChainRecords"     = "链上记录:";
+"tokenDetailsIntroduction"       = "代币简介:";
+"tokenDetailsQRCode"             = "资产二维码";
+
+//转账
+"transferNavTitle"               = "转账";
+"transferReceivingAddress"       = "收款地址";
+"transferReceivingAddressHolder" = " 请手动输入收款地址或扫码识别";
+"transferReceivingAddressTips"   = "· 请输入发票、LNRUL、闪电地址或BTC地址";
+"transferCoinType"               = "币种";
+"transferCoinTypeHolder"         = " 自动显示不用输入";
+"transferAmount"                 = "金额";
+"transferAmountHolder"           = "总余额";
+"transferMinerFees"              = "矿工费";
+"transferEstimatedTime"          = "预计时间10分钟";
+"transferPostscript"             = "附言";
+"transferPostscriptHolder"       = " 自动显示不用输入";
+"transferConfirm"                = "确认转账";
+//tost&alter
+"transferAddressError"           = "地址不存在！";
+"transferAddressNil"             = "请填写收款地址！";
+"transferAmountNil"              = "请填写转账金额！";
+"transferSeccuse"                = "转账成功！";
+"transferFailed"                 = "转账失败！";
+
+//收款-BTC
+"collectionNavTitle"             = "收款";
+"collectionScanAndPayment"       = "扫一扫，向我支付";
+"collectionReceivingAddress"     = "收款地址";
+"collectionChangeAddress"        = "切换地址";
+"collectionShare"                = "分享";
+"collectionCopy"                 = "复制";
+//收款-资产
+"collectionInvoice"              = "发票";
+"collectionLNRUL"                = "LNRUL";
+"collectionLightingAddress"      = "闪电地址";
+"collectionCoinType"             = "币种";
+"collectionCoinTypeHolder"       = " 自动显示不用输入";
+"collectionAmount"               = "金额";
+"collectionAmountHolder"         = "请输入金额";
+"collectionPostscript"           = "附言";
+"collectionPostscriptHolder"     = "请输入你的留言（限制50个字符）";
+"collectionInvoiceCreat"         = "创建";
+"collectionInvoiceHisTitle"      = "历史记录";
+"collectionInvoiceAmount"        = "金额";
+"collectionInvoiceStatus"        = "状态";
+"collectionInvoiceDate"          = "时间";
+"collectionInvoiceUnpaid"        = "未支付";
+"collectionInvoicePaid"          = "已支付";
+"collectionInvoiceInvalid"       = "已失效";
+"collectionInvoiceOther"         = "其它";
+//tost&alter
+"collectionAssetsInvoiceQRCode"  = "资产发票二维码";
+"collectionInvoiceQRCode"        = "发票二维码";
+"collectionAssetsIDNill"         = "资产id不能为空";
+"collectionAmountWrongful"       = "金额不合法";
+"collectionInvoiceGetFailed"     = "查询发票失败";
+
+//地址选择
+"collectionAddressListNavTitle"  = "BTC地址选择";
+"collectionAddressListAdd"       = "添加地址";
+//tost&alter
+"collectionAddressAddSeccuse"    = "添加成功！";
+
+//地址管理
+"addressMangerNavTitle"          = "地址管理";
+"addressMangerNavRightTitle"     = "刷新";
+"addressMangerTipsOne"           = "· BTC地址类型分为隔离见证、Taproot和普通地址";
+"addressMangerTipsTwo"           = "· 一个BTC钱包可以生成一系列子地址，以帮助您进行地址分组及隐私保护";
+"addressMangerRootAddress"       = "主根地址";
+"addressMangerIsolationAddress"  = "隔离见证地址";
+"addressMangerNestingAddress"    = "嵌套隔离见证地址";
+
+
+/*
+ 铸造
+ */
+//铸造
+"castOnSearchHolder"             = "搜索name、ID";
+"castOnSearchSend"               = "发行";
+"castOnSearchCasting"            = "铸造";
+"castOnItemMyFollowing"          = "我的关注";
+"castOnItemMyHotList"            = "热门榜";
+"castOnItemCasting"              = "铸造中";
+"castOnItemFineshed"             = "已结束";
+"castOnListHeaderName"           = "名称";
+"castOnListHeaderID"             = "ID";
+"castOnListHeaderReserve"        = "预留";
+"castOnListHeaderCast"           = "已铸造";
+
+
+//发行
+"castOnCreatNavTitle"             = "发行";
+"castOnCreatNavRightTitle"        = "历史记录";
+"castOnCreatUploadLogo"           = "上传logo";
+"castOnCreatUploadYourLogo"       = "上传你的logo";
+"castOnCreatSupportLogo"          = "支持PNG和JPEG格式";
+"castOnCreatName"                 = "名称";
+"castOnCreatNameHolder"           = "请输入名称";
+"castOnCreatType"                 = "类别";
+"castOnCreatNum"                  = "总量";
+"castOnCreatNumHolder"            = "请输入总量";
+"castOnCreatReserve"              = "项目方预留";
+"castOnCreatReserveHolder"        = "0~100";
+"castOnCreatMintNum"              = "单份Mint数量";
+"castOnCreatMintNumHolder"        = "单份Mint数量";
+"castOnCreatBeignDate"            = "开始日期";
+"castOnCreatEndDate"              = "结束日期";
+"castOnCreatDateHolder"           = "请选择时间";
+"castOnCreatLockCompartmentTime"  = "锁仓时间";
+"castOnCreatLockRelativeTime"     = "相对时间";
+"castOnCreatLockAbsoluteTime"     = "绝对时间";
+"castOnCreatIntroduce"            = "介绍信息(100字内)";
+"castOnCreatIntroduceTips"        = "注:*手续费从闪电网络钱包扣除";
+"castOnCreatIntroduceRate"        = " 费率:";
+"castOnCreatIssue"                = " 发行";
+"castOnCreatHandlingFees"         = "发行手续费用:";
+"castOnCreatCancelIssuance"       = "取消发行";
+"castOnCreatConfirmIssuance"      = "确认发行";
+//tost&alter
+"castOnCreatLogoNil"              = "Logo不能为空";
+"castOnCreatNameNil"              = "名称不能为空";
+"castOnCreatTypeNil"              = "请选择类别";
+"castOnCreatNumWrongful"          = "总量不合法";
+"castOnCreatReserveWrongful"      = "项目方预留不合法";
+"castOnCreatMinitNumWrongful"     = "单份Minit数量不合法";
+"castOnCreatBeignDateNil"         = "请选择开始日期";
+"castOnCreatEndDateNil"           = "请选择结束日期";
+"castOnCreatLocakTimeNil"         = "请选择锁仓时间";
+"castOnCreatIntroduceLimit"       = "描述字数超过100限制";
+"castOnCreatAssetsSendFee"        = "资产发行费用:";
+"castOnCreatTokenWrongful"        = "token非法";
+"castOnCreatSeccused"             = "发行成功";
+"castOnCreatPhotoWrongful"        = "选择的图片不可用，请另选图片";
+"castOnCreatFailed"               = "发行失败";
+
+//发布历史记录
+"castOnCreatHisNavTitle"          = "发布历史记录";
+"castOnCreatHisToken"             = "代币";
+"castOnCreatHisID"                = "ID";
+"castOnCreatHisType"              = "类型";
+"castOnCreatHisTime"              = "时间";
+"castOnCreatHisState"             = "状态";
+
+//铸造
+"castOnSendNavTitle"              = "铸造";
+"castOnSendNavRightTitle"         = "历史记录";
+"castOnSendAssetsId"              = "资产ID";
+"castOnSendAssetsIdHolder"        = "请输入资产ID";
+"castOnSendName"                  = "名称";
+"castOnSendNum"                   = "总量";
+"castOnSendReserve"               = "项目方预留";
+"castOnSendReserveHolder"         = "0~100";
+"castOnSendMintNum"               = "单份Mint数量";
+"castOnSendMintNumHolder"         = "单份Mint数量";
+"castOnSendBeignDate"             = "开始日期";
+"castOnSendEndDate"               = "结束日期";
+"castOnSendCast"                  = "已铸造";
+"castOnSendHolder"                = "持有人";
+"castOnSendNumberOfCopies"        = "份数";
+"castOnSendShare"                 = "份";
+"castOnSendIntroduceTips"         = "注:*手续费从闪电网络钱包扣除";
+"castOnSendCast"                  = "铸造";
+"castOnSendAssetCastingCosts"     = "资产铸造费用:";
+//tost&alter
+"castOnSendTokenWrongful"         = "token非法";
+"castOnSendInformationNotExist"   = "公平发射资产发行信息不存在";
+"castOnSendFeeInformationNotExist"= "铸造费率信息不存在";
+"castOnSendCreatAddressFailed"    = "生成资产地址失败";
+"castOnSendCastSeccused"          = "铸造成功";
+"castOnSendCastFailed"            = "铸造失败";
+"castOnSendIntroduceRate"         = " 费率:";
+"castOnSendSaechCastFailed"       = "查询是否可以进行铸造失败";
+
+//发布历史记录
+"castOnSendHisNum"                = "数量";
+"castOnSendHisGas"                = "Gas";
+"castOnSendUnpaid"                = "未支付";
+"castOnSendPaing"                 = "支付进行中";
+"castOnSendPaidButNotIssued"      = "已支付未发行";
+"castOnSendIssueing"              = "发行中";
+"castOnSendIssued"                = "已发行";
+"castOnSendRetainedAssetsIssueing"= "保留资产发送中";
+"castOnSendRetainedAssetsIssued"  = "保留资产已发送";

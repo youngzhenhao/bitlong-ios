@@ -144,19 +144,19 @@ class BLCastOnHisCell: BLBaseTableViewCell {
         let state : Int32 = Int32(state)!
         switch state {
         case 0:
-            return "未支付"
+            return NSLocalized(key: "castOnSendUnpaid")
         case 1:
-            return "支付进行中"
+            return NSLocalized(key: "castOnSendPaing")
         case 2:
-            return "已支付未发行"
+            return NSLocalized(key: "castOnSendPaidButNotIssued")
         case 3:
-            return "发行中"
+            return NSLocalized(key: "castOnSendIssueing")
         case 4:
-            return "已发行"
+            return NSLocalized(key: "castOnSendIssued")
         case 5:
-            return "保留资产发送中"
+            return NSLocalized(key: "castOnSendRetainedAssetsIssueing")
         case 6:
-            return "保留资产已发送"
+            return NSLocalized(key: "castOnSendRetainedAssetsIssued")
         default:
             return"--"
         }

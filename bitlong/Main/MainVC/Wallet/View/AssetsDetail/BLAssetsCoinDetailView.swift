@@ -45,10 +45,9 @@ class BLAssetsCoinDetailView: BLBaseView {
         self.addSubview(descriptionValueLbl)
         
         assetsNameLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(40*SCALE)
+            make?.top.mas_equalTo()(20*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(18*SCALE)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.size.mas_equalTo()(assetsNameLbl.frame.size)
         }
         
         assetsNameValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -61,8 +60,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         assetsIdLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(assetsNameLbl.mas_bottom)?.offset()(20*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(18*SCALE)
-            make?.width.mas_equalTo()(80*SCALE)
+            make?.size.mas_equalTo()(assetsIdLbl.frame.size)
         }
         
         assetsIdValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -81,8 +79,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         sendNumLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(assetsIdLbl.mas_bottom)?.offset()(20*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(sendNumLbl.frame.size)
         }
         
         sendNumValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -95,8 +92,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         sendDateLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendNumLbl.mas_bottom)?.offset()(15*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(sendDateLbl.frame.size)
         }
         
         sendDateValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -109,8 +105,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         sendCoinTypeLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendDateLbl.mas_bottom)?.offset()(15*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(sendCoinTypeLbl.frame.size)
         }
         
         sendCoinTypeValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -123,8 +118,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         canAddLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(sendCoinTypeLbl.mas_bottom)?.offset()(15*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(canAddLbl.frame.size)
         }
         
         canAddValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -137,8 +131,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         recordsLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(canAddLbl.mas_bottom)?.offset()(15*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(recordsLbl.frame.size)
         }
         
         recordsValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -151,8 +144,7 @@ class BLAssetsCoinDetailView: BLBaseView {
         descriptionLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(recordsLbl.mas_bottom)?.offset()(15*SCALE)
             make?.left.mas_equalTo()(0)
-            make?.width.mas_equalTo()(80*SCALE)
-            make?.height.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(descriptionLbl.frame.size)
         }
         
         descriptionValueLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -169,10 +161,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var assetsNameLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "名称:"
+        lbl.text = NSLocalized(key: "tokenDetailsName")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -188,10 +187,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var assetsIdLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "资产ID:"
+        lbl.text = NSLocalized(key: "tokenDetailsAssetsId")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -212,10 +218,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var sendNumLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "发行量:"
+        lbl.text = NSLocalized(key: "tokenDetailsSendNum")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -231,10 +244,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var sendDateLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "发行日期:"
+        lbl.text = NSLocalized(key: "tokenDetailsSendDate")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -250,10 +270,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var sendCoinTypeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "代币种类:"
+        lbl.text = NSLocalized(key: "tokenDetailsType")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -269,10 +296,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var canAddLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "能否增发:"
+        lbl.text = NSLocalized(key: "tokenDetailsCanAdd")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -288,10 +322,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var recordsLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "链上记录:"
+        lbl.text = NSLocalized(key: "tokenDetailsOnChainRecords")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height)
+        }
         
         return lbl
     }()
@@ -308,10 +349,17 @@ class BLAssetsCoinDetailView: BLBaseView {
     
     lazy var descriptionLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "代币简介:"
+        lbl.text = NSLocalized(key: "tokenDetailsIntroduction")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
+        if languageCode == .ZH{
+            lbl.frame.size = CGSize.init(width: 80*SCALE, height: 18*SCALE)
+        }else{
+            let height : CGFloat = BLTools.textHeight(text: lbl.text!, font: lbl.font, width: 120*SCALE)
+            lbl.frame.size = CGSize.init(width: 120*SCALE, height: height+5*SCALE)
+        }
         
         return lbl
     }()

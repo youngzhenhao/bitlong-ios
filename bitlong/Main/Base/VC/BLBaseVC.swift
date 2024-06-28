@@ -13,9 +13,7 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        self.navgationLeftBtn(picStr: "ic_back_black")
-        let bgColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
-        self.setNavTitleColor(titleColor: UIColorHex(hex: 0x383838, a: 1.0), bgColor: bgColor, bgImage: nil)
+        self.setNavTitlNormal()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +48,12 @@ class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScr
     
     func setNavigationBar(isHidden : Bool){
         self.navigationController?.isNavigationBarHidden = isHidden
+    }
+    
+    func setNavTitlNormal(){
+        self.navgationLeftBtn(picStr: "ic_back_black")
+        let bgColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
+        self.setNavTitleColor(titleColor: UIColorHex(hex: 0x383838, a: 1.0), bgColor: bgColor, bgImage: nil)
     }
     
     @objc lazy var tableView : UITableView = {

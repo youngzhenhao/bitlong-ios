@@ -11,7 +11,7 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "钱包详情"
+        self.title = NSLocalized(key: "walletDetailsNavTitle")
         
         self.initUI()
     }
@@ -45,7 +45,7 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
     
     lazy var deleteWalletBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("删除钱包", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletDetailsDeleteWallet"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s:18*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 0.1)
@@ -58,7 +58,9 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
     }()
     
     lazy var walletItemList : NSArray = {
-        var list = ["导出助记词",["修改密码"],"Nostr地址"]
+        var list = [NSLocalized(key: "walletDetailsExportGenSend"),
+                    NSLocalized(key: "walletDetailsChangePassWord"),
+                    NSLocalized(key: "walletDetailsNostrAddress")]
         
         return list as NSArray
     }()
@@ -162,7 +164,7 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
         if section == 3{
             let footerView : UIView = UIView.init()
             let versionLbl : UILabel = UILabel.init()
-            versionLbl.text = String.init(format: "当前版本:%@", BLTools.getAppVersion())
+            versionLbl.text = String.init(format: "%@:%@", NSLocalized(key: "walletDetailsCurrentVersion"), BLTools.getAppVersion())
             versionLbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
             versionLbl.font = FONT_NORMAL(s: 13*Float(SCALE))
             versionLbl.textAlignment = .center
@@ -225,6 +227,6 @@ class BLWalletDetailVC: BLBaseVC,WalletDetailCellDelegate {
         }
         let hisItem : BLCollectionHisItem = BLCollectionHisItem.init()
         hisItem.encoded = addr
-        invoiceQRView.assignHisItem(obj: hisItem, title: "比特币地址")
+        invoiceQRView.assignHisItem(obj: hisItem, title: NSLocalized(key: "walletDetailsAlterTitle"))
     }
 }

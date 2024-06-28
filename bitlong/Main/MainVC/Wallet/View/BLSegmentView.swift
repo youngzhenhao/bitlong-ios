@@ -32,25 +32,22 @@ class BLSegmentView: BLBaseView {
         self.addSubview(addBt)
         self.addSubview(bottomLineView)
         
-        var leftSpeding : CGFloat = 30*SCALE
         mainLinkBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(8*SCALE)
-            make?.left.mas_equalTo()(leftSpeding)
+            make?.left.mas_equalTo()(30*SCALE)
             make?.bottom.mas_equalTo()(-16*SCALE)
             make?.width.mas_equalTo()(mainLinkBt.frame.width)
         }
         
-        leftSpeding += (NFTBt.frame.width + 27*SCALE)
         NFTBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(8*SCALE)
-            make?.left.mas_equalTo()(leftSpeding)
+            make?.centerY.mas_equalTo()(mainLinkBt.mas_centerY)
+            make?.left.mas_equalTo()(mainLinkBt.mas_right)?.offset()(27*SCALE)
             make?.bottom.mas_equalTo()(-16*SCALE)
             make?.width.mas_equalTo()(NFTBt.frame.width)
         }
         
-        leftSpeding += (creatChannelBt.frame.width + 27*SCALE)
         creatChannelBt.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.left.mas_equalTo()(leftSpeding)
+            make?.left.mas_equalTo()(NFTBt.mas_right)?.offset()(27*SCALE)
             make?.centerY.mas_equalTo()(mainLinkBt.mas_centerY)
             make?.width.mas_equalTo()(creatChannelBt.frame.width)
             make?.height.mas_equalTo()(16*SCALE)
@@ -72,7 +69,7 @@ class BLSegmentView: BLBaseView {
     
     lazy var mainLinkBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("资产", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletItemOne"), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 16*Float(SCALE))
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.sizeToFit()
@@ -84,7 +81,7 @@ class BLSegmentView: BLBaseView {
     
     lazy var NFTBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("NFT", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletItemTwo"), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 16*Float(SCALE))
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.sizeToFit()
@@ -96,7 +93,7 @@ class BLSegmentView: BLBaseView {
     
     lazy var creatChannelBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("通道", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletItemThree"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x383838, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 16*Float(SCALE))
         bt.setImage(imagePic(name: "ic_home_channel"), for: .normal)

@@ -13,7 +13,7 @@ class BLCreatWalletVC: BLBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "创建钱包"
+        self.title = NSLocalized(key: "creatWalletNavTitle")
         
         self.initUI()
     }
@@ -108,7 +108,7 @@ class BLCreatWalletVC: BLBaseVC {
     
     lazy var creatBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("确认创建", for: .normal)
+        bt.setTitle(NSLocalized(key: "creatWalletConfirm"), for: .normal)
         bt.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         bt.setTitleColor(.white, for: .normal)
         bt.backgroundColor = .blue
@@ -120,27 +120,29 @@ class BLCreatWalletVC: BLBaseVC {
     }()
     
     lazy var headerList : NSArray = {
-        var array = NSArray.init(objects: "钱包名称","创建密码","密码提示（可选）")
+        var array = NSArray.init(objects: NSLocalized(key: "creatWalletName"),
+                                 NSLocalized(key: "creatWalletPassword"),
+                                 NSLocalized(key: "creatWalletPasswordTips"))
         
         return array
     }()
 
     @objc func creatWalletAcation(){
         if (nameField?.text?.count)! <= 0{
-            BLTools.showTost(tip: "请输入钱包名称", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "creatWalletNameWarn"), superView: self.view)
             return
         }
         if (passWorldField?.text?.count)! < 8{
             if (passWorldField?.text?.count)! <= 0{
-                BLTools.showTost(tip: "请输入钱包密码", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "creatWalletPasswordWarn"), superView: self.view)
                 return
             }
-            BLTools.showTost(tip: "钱包密码必须为8位或以上", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "creatWalletPasswordLimitWarn"), superView: self.view)
             return
         }
  
         if passWorldField?.text != passWorldAgainField?.text{
-            BLTools.showTost(tip: "两次钱包密码校验不一致", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "creatWalletPasswordErrorWarn"), superView: self.view)
             return
         }
         

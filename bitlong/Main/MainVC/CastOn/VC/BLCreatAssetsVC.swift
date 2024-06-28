@@ -17,8 +17,8 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "发行"
-        self.navgationRightBtn(picStr: "", title: "历史记录", titleColor: nil)
+        self.title = NSLocalized(key: "castOnCreatNavTitle")
+        self.navgationRightBtn(picStr: "", title: NSLocalized(key: "castOnCreatNavRightTitle"), titleColor: nil)
         
         self.initUI()
         self.getFeeQueryRate()
@@ -56,7 +56,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
             self?.rateModel = model
             
             if model.sat_per_b != nil{
-                self?.tipLbl.text = "注:*手续费从闪电钱包扣除" + " 费率:" + model.sat_per_b!
+                self?.tipLbl.text = NSLocalized(key: "castOnCreatIntroduceTips") + NSLocalized(key: "castOnCreatIntroduceRate") + model.sat_per_b!
             }
         } failed: { error in
         }
@@ -64,10 +64,11 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
     
     lazy var tipLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "注:*手续费从闪电钱包扣除"
+        lbl.text = NSLocalized(key: "castOnCreatIntroduceTips")
         lbl.textColor = UIColorHex(hex: 0xEC3468, a: 1.0)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -214,7 +215,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         if section == 9{
             let footerView : UIView = UIView.init()
             let bt : UIButton = UIButton.init()
-            bt.setTitle("发行", for: .normal)
+            bt.setTitle(NSLocalized(key: "castOnCreatIssue"), for: .normal)
             bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
             bt.titleLabel?.font = FONT_BOLD(s: 18*Float(SCALE))
             bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
@@ -225,16 +226,16 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
             footerView.addSubview(bt)
             
             tipLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-                make?.top.mas_equalTo()(15*SCALE)
+                make?.top.mas_equalTo()(13*SCALE)
                 make?.left.mas_equalTo()(30*SCALE)
                 make?.right.mas_equalTo()(-30*SCALE)
-                make?.height.mas_equalTo()(13*SCALE)
+                make?.height.mas_equalTo()(30*SCALE)
             }
             
             bt.mas_makeConstraints { (make : MASConstraintMaker?) in
                 make?.left.mas_equalTo()(24*SCALE)
-                make?.top.mas_equalTo()(tipLbl.mas_bottom)?.offset()(30*SCALE)
-                make?.bottom.mas_equalTo()(-SafeAreaBottomHeight - 20*SCALE)
+                make?.top.mas_equalTo()(tipLbl.mas_bottom)?.offset()(25*SCALE)
+                make?.bottom.mas_equalTo()(-SafeAreaBottomHeight - 15*SCALE)
                 make?.right.mas_equalTo()(-24*SCALE)
             }
             
@@ -311,52 +312,52 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
     @objc func creatAssets(){
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
         if assetsImgData == nil{
-            BLTools.showTost(tip: "Logo不能为空", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatLogoNil"), superView: self.view)
             return
         }
         if assetsName.count <= 0{
-            BLTools.showTost(tip: "名称不能为空", superView: self.view)
+            BLTools.showTost(tip:  NSLocalized(key: "castOnCreatNameNil"), superView: self.view)
             return
         }
         if assetsTypeIndex < 0{
-            BLTools.showTost(tip: "请选择类别", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatTypeNil"), superView: self.view)
             return
         }
         if assetsNum <= 0{
-            BLTools.showTost(tip: "总量不合法", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatNumWrongful"), superView: self.view)
             return
         }
         if assetsReserve < 0 || 100 < assetsReserve{
-            BLTools.showTost(tip: "项目方预留不合法", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatReserveWrongful"), superView: self.view)
             return
         }
         
         if assetsReserve < 100{
             if assetsMintNum <= 0{
-                BLTools.showTost(tip: "单份Minit数量不合法", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "castOnCreatMinitNumWrongful"), superView: self.view)
                 return
             }
             if assetsBegainDate.count <= 0{
-                BLTools.showTost(tip: "请选择开始日期", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "castOnCreatBeignDateNil"), superView: self.view)
                 return
             }
             if assetsEndDate.count <= 0{
-                BLTools.showTost(tip: "请选择结束日期", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "castOnCreatEndDateNil"), superView: self.view)
                 return
             }
 //            if assetsLockTimeIndex < 0{
-//                BLTools.showTost(tip: "请选择锁仓时间", superView: self.view)
+//                BLTools.showTost(tip: NSLocalized(key: "castOnCreatLocakTimeNil"), superView: self.view)
 //                return
 //            }
         }
         
         if 100 < assetsDescription.count{
-            BLTools.showTost(tip: "描述字数超过100限制", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatIntroduceLimit"), superView: self.view)
             return
         }
         
@@ -384,7 +385,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
                 if status == APISECCUSS{
                     let dic : NSDictionary = jsonStr.mj_JSONObject() as! NSDictionary
                     let data : NSNumber = dic["data"] as! NSNumber
-                    confirmView.assignTransactionFee(title: "资产发行费用:", fee: data.stringValue)
+                    confirmView.assignTransactionFee(title: NSLocalized(key: "castOnCreatAssetsSendFee"), fee: data.stringValue)
                     
                     if confirmView.superview == nil{
                         self.view.addSubview(confirmView)
@@ -399,13 +400,13 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
                     BLTools.showTost(tip: status, superView: self.view)
                 }
             }else{
-                BLTools.showTost(tip: "token非法!", superView: self.view)
+                BLTools.showTost(tip: NSLocalized(key: "castOnCreatTokenWrongful"), superView: self.view)
             }
         }
     }
     
     func saveLocalDatas(){
-        BLTools.showTost(tip: "发行成功", superView: self.view)
+        BLTools.showTost(tip: NSLocalized(key: "castOnCreatSeccused"), superView: self.view)
         
         let assetsList : NSMutableArray?
         if userDefaults.object(forKey: AssetsInfo) is NSArray{
@@ -445,7 +446,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
             
             picker.dismiss(animated: true, completion: nil)
         }else{
-            BLTools.showTost(tip: "选择的图片不可用，请另选图片", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "castOnCreatPhotoWrongful"), superView: self.view)
         }
     }
     
@@ -480,7 +481,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
                 self?.saveLocalDatas()
             }else{
                 let error = resObj["error"]
-                BLTools.showTost(tip: (error ?? "发行失败!") as! String, superView: (self?.view)!)
+                BLTools.showTost(tip: (error ??  BLTools.showTost(tip: NSLocalized(key:"castOnCreatFailed"), superView: (self?.view)!)) as! String, superView: (self?.view)!)
             }
         } failed: { [weak self] error in
             BLTools.showTost(tip: error.msg, superView: (self?.view)!)

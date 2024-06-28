@@ -101,7 +101,7 @@ class BLCollectionHisListCell: BLBaseTableViewCell {
             amount = hisItem.amount
             timeKey = hisItem.asset_id as? NSString
             
-            statusLbl.text = "其它"
+            statusLbl.text = NSLocalized(key: "collectionInvoiceOther")
         }else if hisObj is BLInvoicesHisItem{
             let hisItem : BLInvoicesHisItem = hisObj as! BLInvoicesHisItem
             amount = hisItem.amount
@@ -139,13 +139,13 @@ class BLCollectionHisListCell: BLBaseTableViewCell {
     func setStatus(status : String){
         //status： int 发票状态，0表示未支付，1表示已支付，2表示已失效
         if status == "0"{
-            statusLbl.text = "未支付"
+            statusLbl.text = NSLocalized(key: "collectionInvoiceUnpaid")
         }else if status == "1"{
-            statusLbl.text = "已支付"
+            statusLbl.text = NSLocalized(key: "collectionInvoicePaid")
         }else if status == "2"{
-            statusLbl.text = "已失效"
+            statusLbl.text = NSLocalized(key: "collectionInvoiceInvalid")
         }else{
-            statusLbl.text = "其它"
+            statusLbl.text = NSLocalized(key: "collectionInvoiceOther")
         }
     }
 }

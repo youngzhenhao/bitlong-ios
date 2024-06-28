@@ -52,7 +52,7 @@ class BLAssetsDetailHeader: BLBaseView {
         detailBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.right.mas_equalTo()(-15*SCALE)
             make?.height.mas_equalTo()(18*SCALE)
-            make?.width.mas_equalTo()(40*SCALE)
+            make?.width.mas_equalTo()(detailBt.frame.width)
             make?.centerY.mas_equalTo()(titleLbl.mas_centerY)
         }
         
@@ -106,11 +106,12 @@ class BLAssetsDetailHeader: BLBaseView {
     
     lazy var detailBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("详情", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletDetails"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0x665AF0, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 13*Float(SCALE))
         bt.setImage(imagePic(name: "ic_wallet_next"), for: .normal)
         bt.addTarget(self, action: #selector(assetsDetailClicked), for: .touchUpInside)
+        bt.sizeToFit()
         
         return bt
     }()
@@ -124,7 +125,7 @@ class BLAssetsDetailHeader: BLBaseView {
     
     lazy var assetsBalanceLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "资产余额"
+        lbl.text = NSLocalized(key: "assetsDetailsBalance")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 16*Float(SCALE))
         lbl.textAlignment = .left
@@ -199,7 +200,9 @@ class BLAssetsDetailHeader: BLBaseView {
     }()
     
     lazy var itemList : NSArray = {
-        var list = NSArray.init(objects: "可用余额","待确认","锁定")
+        var list = NSArray.init(objects: NSLocalized(key: "assetsDetailsAvailable"),
+                                NSLocalized(key: "assetsDetailsToBeConfirmed"),
+                                NSLocalized(key: "assetsDetailsLocked"))
         
         return list
     }()

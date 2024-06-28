@@ -74,7 +74,7 @@ class BLCastOnHisHeaderView: BLAssetsSendHisHeaderView {
 
     lazy var numLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "数量"
+        lbl.text = NSLocalized(key: "castOnSendHisNum")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -84,7 +84,7 @@ class BLCastOnHisHeaderView: BLAssetsSendHisHeaderView {
     
     lazy var gasLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "Gas"
+        lbl.text = NSLocalized(key: "castOnSendHisGas")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
         lbl.font = FONT_NORMAL(s: 14*Float(SCALE))
         lbl.textAlignment = .center

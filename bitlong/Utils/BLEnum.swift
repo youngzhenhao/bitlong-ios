@@ -90,3 +90,9 @@ enum AddressType : NSInteger {
     case addressAssets             //Assets
     case addressInvoice            //发票
 }
+
+//语言类型
+enum LanguageType : String{
+    case ZH = "zh" //中文
+    case EN = "en" //英文
+}

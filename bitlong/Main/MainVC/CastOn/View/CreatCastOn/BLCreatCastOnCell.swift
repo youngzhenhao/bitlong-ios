@@ -50,28 +50,29 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         case .assetsID:
             initTextViewCell()
             
-            typeTitleLbl.text = "资产ID"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendAssetsId")
             break
         case .assetsName:
             initNameCell()
         
-            typeTitleLbl.text = "名称"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendName")
             break
         case .assetsNum:
             initNameCell()
             
-            typeTitleLbl.text = "总量"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendNum")
             break
         case .assetsReserve:
             initNameCell()
             
-            typeTitleLbl.text = "项目方预留"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendReserve")
             textLbl.text = "0~100"
             break
         case .assetsMintNum:
             initNameCell()
             
-            textLbl.text = "单份Mint数量"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendMintNum")
+            textLbl.text = NSLocalized(key: "castOnSendMintNum")
             break
         case .assetsBegainDate:
             initDateCell()
@@ -79,8 +80,8 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
             containerView.isUserInteractionEnabled = false
             containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
             containerView.layer.borderWidth = 0.0
-            typeTitleLbl.text = "开始日期"
-            dateLbl.text = "开始日期"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendBeignDate")
+            dateLbl.text = NSLocalized(key: "castOnSendBeignDate")
             break
         case .assetsEndDate:
             initDateCell()
@@ -88,24 +89,24 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
             containerView.isUserInteractionEnabled = false
             containerView.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
             containerView.layer.borderWidth = 0.0
-            typeTitleLbl.text = "结束日期"
-            dateLbl.text = "结束日期"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendEndDate")
+            dateLbl.text = NSLocalized(key: "castOnSendEndDate")
             break
         case .assetsHadCastOn:
             initNameCell()
             
-            typeTitleLbl.text = "已铸造"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendCast")
             break
         case .assetsHolder:
             initNameCell()
             
-            typeTitleLbl.text = "持有人"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendHolder")
             break
         case .assetsCopies:
             initCopiesCell()
             
-            typeTitleLbl.text = "份数"
-            textLbl.text = "1份"
+            typeTitleLbl.text = NSLocalized(key: "castOnSendNumberOfCopies")
+            textLbl.text = "1"+NSLocalized(key: "castOnSendShare")
             textLbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
             break
         default:
@@ -130,6 +131,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .right
+        lbl.numberOfLines = 0
         
         return lbl
     }()
@@ -151,7 +153,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         
         typeTitleLbl.mas_remakeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
@@ -176,6 +178,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         view.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         view.font = FONT_NORMAL(s: 13*Float(SCALE))
         view.delegate = self
+        view.keyboardType = .asciiCapable
        
         return view
     }()
@@ -192,7 +195,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
     
     lazy var pleaseHolderLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "请输入资产ID"
+        lbl.text = NSLocalized(key: "castOnSendAssetsIdHolder")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 0.6)
         lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
         lbl.textAlignment = .left
@@ -234,7 +237,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
@@ -274,7 +277,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
@@ -313,7 +316,7 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
         containerView.addSubview(dateImgView)
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
@@ -345,7 +348,11 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
                 BLTools.getCurrentVC().view.addSubview(pickerView)
                 pickerView.mas_remakeConstraints { (make : MASConstraintMaker?) in
                     make?.height.mas_equalTo()(180*SCALE)
-                    make?.width.mas_equalTo()(90*SCALE)
+                    if languageCode == .ZH{
+                        make?.width.mas_equalTo()(90*SCALE)
+                    }else{
+                        make?.width.mas_equalTo()(120*SCALE)
+                    }
                     make?.bottom.mas_equalTo()(containerView.mas_top)?.offset()(-5*SCALE)
                     make?.right.mas_equalTo()(containerView.mas_right)
                 }
@@ -393,15 +400,15 @@ class BLCreatCastOnCell: BLBaseTableViewCell,UIPickerViewDataSource,UIPickerView
     
     //UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String.init(format: "%ld份", row+1)
+        return String.init(format: "%ld%@", row+1, NSLocalized(key: "castOnSendShare"))
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: String.init(format: "%ld份", row+1), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return NSAttributedString(string: String.init(format: "%ld%@", row+1, NSLocalized(key: "castOnSendShare")), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
         
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textLbl.text = String.init(format: "%ld份", row+1)
+        textLbl.text = String.init(format: "%ld%@", row+1, NSLocalized(key: "castOnSendShare"))
         
         UIView.animate(withDuration: 0.3) {
             pickerView.alpha = 0.0

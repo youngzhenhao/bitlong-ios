@@ -48,7 +48,7 @@ class BLToolVC: BLBaseVC,ToolItemClickDelegate {
     func itemsClicked(sender: UIButton) {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         

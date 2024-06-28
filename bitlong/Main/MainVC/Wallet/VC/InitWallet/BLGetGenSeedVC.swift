@@ -20,15 +20,15 @@ class BLGetGenSeedVC: BLBaseVC {
         super.viewDidLoad()
         
         if pageType == .exportGenSeed{
-            self.title = "助记词"
+            self.title = NSLocalized(key: "genSeedTitle")
         }
         
         self.initUI()
-        self.loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadData()
     }
     
     func initUI(){
@@ -102,10 +102,10 @@ class BLGetGenSeedVC: BLBaseVC {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return BLTools.textHeight(text: pageType == .backupsGenSeed ? genSeedTitle : "导出助记词", font: UIFont.boldSystemFont(ofSize: 14*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
+            return BLTools.textHeight(text: pageType == .backupsGenSeed ? NSLocalized(key: "genSeedTitle") : "导出助记词", font: UIFont.boldSystemFont(ofSize: 14*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
         }else if indexPath.row == 1{
             if pageType == .backupsGenSeed{
-                return BLTools.textHeight(text: genSeedSubTitle, font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
+                return BLTools.textHeight(text: NSLocalized(key: "genSeedSubTitle"), font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
             }else{
                 return 0.0
             }
@@ -116,9 +116,9 @@ class BLGetGenSeedVC: BLBaseVC {
             
             return 0.01
         }else if indexPath.row == 3{
-            return BLTools.textHeight(text: genSeedWarnTitle, font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
+            return BLTools.textHeight(text: NSLocalized(key: "genSeedWarnTitle"), font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
         }else if indexPath.row == 4{
-            return BLTools.textHeight(text: genSeedWarnSubTitle, font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
+            return BLTools.textHeight(text: NSLocalized(key: "genSeedWarnSubTitle"), font: UIFont.systemFont(ofSize: 13*SCALE), width: SCREEN_WIDTH - 48*SCALE)+9*SCALE
         }
         
         return 0.01
@@ -128,16 +128,16 @@ class BLGetGenSeedVC: BLBaseVC {
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4{
             let cell : BLGenSeedNoticeCell = tableView.dequeueReusableCell(withIdentifier: GenSeedNoticeCellId, for: indexPath) as! BLGenSeedNoticeCell
             if indexPath.row == 0{
-                cell.titleLbl.text = genSeedTitle
+                cell.titleLbl.text = NSLocalized(key: "genSeedTitle")
                 cell.titleLbl.font = UIFont.boldSystemFont(ofSize: 14*SCALE)
             }else if indexPath.row == 1{
-                cell.titleLbl.text = genSeedSubTitle
+                cell.titleLbl.text = NSLocalized(key: "genSeedSubTitle")
                 cell.titleLbl.font = UIFont.systemFont(ofSize: 13*SCALE)
             }else if indexPath.row == 3{
-                cell.titleLbl.text = genSeedWarnTitle
+                cell.titleLbl.text = NSLocalized(key: "genSeedWarnTitle")
                 cell.titleLbl.font = UIFont.systemFont(ofSize: 13*SCALE)
             }else if indexPath.row == 4{
-                cell.titleLbl.text = genSeedWarnSubTitle
+                cell.titleLbl.text = NSLocalized(key: "genSeedWarnSubTitle")
                 cell.titleLbl.font = UIFont.systemFont(ofSize: 13*SCALE)
             }
             
@@ -167,11 +167,11 @@ class BLGetGenSeedVC: BLBaseVC {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view : UIView = UIView.init()
         if pageType == .backupsGenSeed{
-            let manualBackupBt : UIButton = self.getButton(title: manualBackupTitle, titleColor: .white, titleFont: UIFont.boldSystemFont(ofSize: 14*SCALE), backColor: .brown, radius: 22*SCALE)
+            let manualBackupBt : UIButton = self.getButton(title: NSLocalized(key: "genSeedManualBackupTitle"), titleColor: .white, titleFont: UIFont.boldSystemFont(ofSize: 14*SCALE), backColor: .brown, radius: 22*SCALE)
             manualBackupBt.tag = 100
-            let cloudBackupBt : UIButton = self.getButton(title: cloudBackupTitle, titleColor: .white, titleFont: UIFont.systemFont(ofSize: 13*SCALE), backColor: .blue, radius: 22*SCALE)
+            let cloudBackupBt : UIButton = self.getButton(title: NSLocalized(key: "genSeedCloudBackupTitle"), titleColor: .white, titleFont: UIFont.systemFont(ofSize: 13*SCALE), backColor: .blue, radius: 22*SCALE)
             cloudBackupBt.tag = 101
-            let laterBackupBt : UIButton = self.getButton(title: laterBackupTitle, titleColor: .white, titleFont: UIFont.systemFont(ofSize: 13*SCALE), backColor: .purple, radius: 22*SCALE)
+            let laterBackupBt : UIButton = self.getButton(title: NSLocalized(key: "genSeedLaterBackupTitle"), titleColor: .white, titleFont: UIFont.systemFont(ofSize: 13*SCALE), backColor: .purple, radius: 22*SCALE)
             laterBackupBt.tag = 102
             
             view.addSubview(manualBackupBt)
@@ -226,7 +226,7 @@ class BLGetGenSeedVC: BLBaseVC {
                 userDefaults.synchronize()
                 
                 if walletInfo != nil{
-                    BLTools.showLoading(status: "正在创建中，请稍后~")
+                    BLTools.showLoading(status: NSLocalized(key: "walletCreating"))
                     DispatchQueue.global().async { [weak self] in
                         let passWorld : String = self?.walletInfo!.object(forKey: WalletPassWorld) as! String
                         let isCreatSuccess : Bool = ApiInitWallet(self?.genSeed, passWorld)
@@ -241,11 +241,11 @@ class BLGetGenSeedVC: BLBaseVC {
                                 }
                             }
                         }else{
-                            BLTools.showError(status: "钱包创建失败!")
+                            BLTools.showError(status: NSLocalized(key: "walletCreatFailed"))
                         }
                     }
                 }else{
-                    BLTools.showTost(tip: "钱包输入信息非法！无法创建！", superView: self.view)
+                    BLTools.showTost(tip: NSLocalized(key: "walletCreatIllegal"), superView: self.view)
                 }
             }
            

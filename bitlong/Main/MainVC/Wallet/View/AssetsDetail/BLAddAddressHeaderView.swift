@@ -52,7 +52,7 @@ class BLAddAddressHeaderView: BLBaseView {
     
     lazy var tipLblOne : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "· BTC地址类型分为隔离见证、Taproot和普通地址"
+        lbl.text = NSLocalized(key: "addressMangerTipsOne")
         lbl.font = FONT_BOLD(s: 12*Float(SCALE))
         lbl.textAlignment = .left
         lbl.numberOfLines = 2
@@ -64,7 +64,7 @@ class BLAddAddressHeaderView: BLBaseView {
     
     lazy var tipLblTwo : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "· 一个BTC钱包可以生成一系列子地址，以帮助您进行地址分组及隐私保护"
+        lbl.text = NSLocalized(key: "addressMangerTipsTwo")
         lbl.font = FONT_BOLD(s: 12*Float(SCALE))
         lbl.textAlignment = .left
         lbl.numberOfLines = 2

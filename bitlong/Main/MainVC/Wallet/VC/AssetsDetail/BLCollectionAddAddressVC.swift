@@ -12,8 +12,8 @@ class BLCollectionAddAddressVC: BLBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "地址管理"
-        self.navgationRightBtn(picStr:"", title: "刷新", titleColor: nil)
+        self.title = NSLocalized(key: "addressMangerNavTitle")
+        self.navgationRightBtn(picStr:"", title: NSLocalized(key: "addressMangerNavRightTitle"), titleColor: nil)
    
         self.initUI()
         self.loadData()
@@ -44,7 +44,7 @@ class BLCollectionAddAddressVC: BLBaseVC {
     override func loadData() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
@@ -65,7 +65,9 @@ class BLCollectionAddAddressVC: BLBaseVC {
     }()
     
     lazy var headerList : NSArray = {
-        var arr = ["主根地址","隔离见证地址","嵌套隔离见证地址"]
+        var arr = [NSLocalized(key: "addressMangerRootAddress"),
+                   NSLocalized(key: "addressMangerIsolationAddress"),
+                   NSLocalized(key: "addressMangerNestingAddress")]
         
         return arr as NSArray
     }()
@@ -143,7 +145,7 @@ class BLCollectionAddAddressVC: BLBaseVC {
             let status : String = BLTools.getResaultStatus(jsonStr: jsonStr as String)
             if status == APISECCUSS{
                 self.back()
-                BLTools.showTost(tip: "添加成功！", superView: appDelegate.window)
+                BLTools.showTost(tip: NSLocalized(key: "collectionAddressAddSeccuse"), superView: appDelegate.window)
             }else{
                 BLTools.showTost(tip: status, superView: appDelegate.window)
             }

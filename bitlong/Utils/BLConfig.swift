@@ -26,6 +26,24 @@ var appDelegate : BLAppDelegate = UIApplication.shared.delegate as! BLAppDelegat
 
 var userDefaults = UserDefaults.standard
 
+let languageCode = getCurrentLanguage()
+
+func getCurrentLanguage() -> LanguageType{
+    if let languageCode = Locale.current.languageCode {
+        if languageCode == LanguageType.ZH.rawValue{
+            return .ZH
+        }else if languageCode == LanguageType.EN.rawValue{
+            return .EN
+        }
+    }
+    
+    return .ZH
+}
+
+func NSLocalized(key : String) -> String{
+    return NSLocalizedString(key, comment: "")
+}
+
 func COLORFROMRGB(r:CGFloat,_ g:CGFloat,_ b:CGFloat, alpha:CGFloat) -> UIColor{
     return UIColor(red: (r)/255.0, green: (g)/255.0, blue: (b)/255.0, alpha: alpha)
 }

@@ -93,7 +93,7 @@ class BLInitWalletVC: BLBaseVC {
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "比特币生态钱包"
+        lbl.text = NSLocalized(key: "creatWalletAdTitle")
         lbl.font = UIFont.systemFont(ofSize: 20)
         lbl.textColor = .black
         lbl.textAlignment = .center
@@ -102,7 +102,11 @@ class BLInitWalletVC: BLBaseVC {
     }()
     
     lazy var list : NSArray = {
-        var arr = NSArray.init(objects: ["创建钱包" : "使用新的钱包"],["导入钱包" : "使用我已有的钱包"],["硬件钱包" : "使用我的硬件钱包"],["观察钱包" : "观察钱包"])
+        var arr = NSArray.init(objects: 
+                                [NSLocalized(key: "creatWalletTitle") : NSLocalized(key: "creatWalletSubTitle")],
+                                [NSLocalized(key: "ImportWalletTitle") : NSLocalized(key: "ImportWalletSubTitle")],
+                                [NSLocalized(key: "HardwareWalletTitle") : NSLocalized(key: "HardwareWalletSubTitle")],
+                                [NSLocalized(key: "ObservingWalletTitle") : NSLocalized(key: "ObservingWalletSubTitle")])
         
         return arr
     }()

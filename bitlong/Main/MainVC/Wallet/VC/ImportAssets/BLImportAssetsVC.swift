@@ -18,7 +18,7 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate,AddressSelectDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "导入资产"
+        self.title = NSLocalized(key: "importAssetsNavTitle")
         
         self.initUI()
     }
@@ -51,7 +51,7 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate,AddressSelectDelegate {
     }()
     
     lazy var headerList : NSArray = {
-        var arr = ["资产id","宇宙地址"]
+        var arr = [NSLocalized(key: "importAssetsId"),NSLocalized(key: "importAssetsUniverseAddress")]
         
         return arr as NSArray
     }()
@@ -135,7 +135,7 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate,AddressSelectDelegate {
         if section == headerList.count{
             let view : UIView = UIView.init()
             let bt = UIButton.init()
-            bt.setTitle("确认", for: .normal)
+            bt.setTitle(NSLocalized(key: "importAssetsConfirm"), for: .normal)
             bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
             bt.titleLabel?.font = FONT_NORMAL(s: 18*Float(SCALE))
             bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
@@ -212,7 +212,7 @@ class BLImportAssetsVC: BLBaseVC,ImportAssetsDelegate,AddressSelectDelegate {
     func scanAcation(){
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         

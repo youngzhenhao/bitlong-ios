@@ -42,9 +42,8 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
         
         typeTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(0)
-            make?.height.mas_equalTo()(14*SCALE)
+            make?.top.bottom().mas_equalTo()(0)
             make?.width.mas_equalTo()(100*SCALE)
-            make?.centerY.mas_equalTo()(0)
         }
 
         switchBtTwo.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -81,7 +80,7 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
         
         switch type {
         case .assetsType:
-            typeTitleLbl.text = "类别"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatType")
             switchLblOne.text = "Tap20"
             switchLblTwo.text = "NFT"
             
@@ -96,9 +95,9 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
             self.switchAcation(sender: switchBtOne)
             break
         case .assetsLockoutTime:
-            typeTitleLbl.text = "锁仓时间"
-            switchLblOne.text = "相对时间"
-            switchLblTwo.text = "绝对时间"
+            typeTitleLbl.text = NSLocalized(key: "castOnCreatLockCompartmentTime")
+            switchLblOne.text = NSLocalized(key: "castOnCreatLockRelativeTime")
+            switchLblTwo.text = NSLocalized(key: "castOnCreatLockAbsoluteTime")
             
             typeTitleLbl.textColor = UIColorHex(hex: 0x383838, a: 0.5)
             switchLblOne.textColor = UIColorHex(hex: 0x383838, a: 0.5)
@@ -133,7 +132,7 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
         
         switchLblTwo.mas_updateConstraints { (make : MASConstraintMaker?) in
             if cellType == .assetsLockoutTime{
-                make?.width.mas_equalTo()(50*SCALE)
+                make?.width.mas_equalTo()(languageCode == .ZH ? 50*SCALE : 80*SCALE)
             }else{
                 make?.width.mas_equalTo()(40*SCALE)
             }
@@ -141,7 +140,7 @@ class BLCreatAssetSwitchCell: BLCreatAssetsCell {
         
         switchBtOne.mas_updateConstraints { (make : MASConstraintMaker?) in
             if cellType == .assetsLockoutTime{
-                make?.right.mas_equalTo()(switchLblTwo.mas_left)?.offset()(-50*SCALE)
+                make?.right.mas_equalTo()(switchLblTwo.mas_left)?.offset()(languageCode == .ZH ? -50*SCALE : -20*SCALE)
             }else{
                 make?.right.mas_equalTo()(switchLblTwo.mas_left)?.offset()(-20*SCALE)
             }

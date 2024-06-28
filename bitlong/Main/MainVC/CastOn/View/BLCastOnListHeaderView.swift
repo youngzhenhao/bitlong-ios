@@ -47,7 +47,10 @@ class BLCastOnListHeaderView: BLBaseView {
     }
     
     lazy var itemList : NSArray = {
-        var arr = ["名称","ID","预留","已铸造"]
+        var arr = [NSLocalized(key: "castOnListHeaderName"),
+                   NSLocalized(key: "castOnListHeaderID"),
+                   NSLocalized(key: "castOnListHeaderReserve"),
+                   NSLocalized(key: "castOnListHeaderCast")]
         
         return arr as NSArray
     }()

@@ -38,6 +38,7 @@
 		DF78CA832C09CD42007ACC47 /* BLCollectionHisHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA822C09CD42007ACC47 /* BLCollectionHisHeaderView.swift */; };
 		DF78CA852C09D93E007ACC47 /* BLCollectionHisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA842C09D93E007ACC47 /* BLCollectionHisModel.swift */; };
 		DF78CA872C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA862C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift */; };
+		DF881D5F2C2BA6F7004C690C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF881D5E2C2BA6F7004C690C /* Localizable.strings */; };
 		DF8DA41C2C07124600E121F2 /* BLQRScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DA41B2C07124600E121F2 /* BLQRScanVC.swift */; };
 		DF990E2F2C0DC63F00448134 /* BLImportAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E2E2C0DC63F00448134 /* BLImportAssetsVC.swift */; };
 		DF990E322C0DC7FB00448134 /* BLImportAssetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E312C0DC7FB00448134 /* BLImportAssetsCell.swift */; };
@@ -273,6 +274,9 @@
 		DF78CA822C09CD42007ACC47 /* BLCollectionHisHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisHeaderView.swift; sourceTree = "<group>"; };
 		DF78CA842C09D93E007ACC47 /* BLCollectionHisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisModel.swift; sourceTree = "<group>"; };
 		DF78CA862C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionInvoiceQRView.swift; sourceTree = "<group>"; };
+		DF881D5D2C2BA6F7004C690C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DF881D602C2BA7EC004C690C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		DF881D612C2BA7EC004C690C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DF8DA41B2C07124600E121F2 /* BLQRScanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLQRScanVC.swift; sourceTree = "<group>"; };
 		DF990E2E2C0DC63F00448134 /* BLImportAssetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLImportAssetsVC.swift; sourceTree = "<group>"; };
 		DF990E312C0DC7FB00448134 /* BLImportAssetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLImportAssetsCell.swift; sourceTree = "<group>"; };
@@ -708,6 +712,7 @@
 				DFAC34DE2BEF59AC008CB9C7 /* InitWallet */,
 				DFB0FC3C2BE0813E00B68F8C /* GenSeed */,
 				DFAC34DF2BEF59BB008CB9C7 /* WalletDetail */,
+				DF990E302C0DC7B400448134 /* ImportAssets */,
 				DFAC34F22BF1FB7B008CB9C7 /* AssetsDetail */,
 			);
 			path = View;
@@ -918,7 +923,6 @@
 				DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */,
 				DFAC34E42BF1B467008CB9C7 /* BLAssetsDetailCell.swift */,
 				DFDDBBC42C0EF282002E563E /* BLAssetsCoinDetailView.swift */,
-				DF990E302C0DC7B400448134 /* ImportAssets */,
 				DFAC34FE2BF337DB008CB9C7 /* BLTransferCell.swift */,
 				DFAC35022BF35843008CB9C7 /* BLCollectionView.swift */,
 				DF78CA7B2C099CF2007ACC47 /* BLAssetsCollection */,
@@ -1368,6 +1372,7 @@
 				DFD52F362BDE16A0007A0E82 /* Assets.xcassets */,
 				DFD52F382BDE16A0007A0E82 /* LaunchScreen.storyboard */,
 				DFD52F692BDE1B27007A0E82 /* bitlong-Bridging-Header.h */,
+				DF881D5E2C2BA6F7004C690C /* Localizable.strings */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -1539,6 +1544,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = DFD52F1E2BDE169E007A0E82;
 			productRefGroup = DFD52F282BDE169E007A0E82 /* Products */;
@@ -1558,6 +1564,7 @@
 				DF4DF59F2C2923240016AB95 /* block_headers.bin in Resources */,
 				DFD52F372BDE16A0007A0E82 /* Assets.xcassets in Resources */,
 				DFD52F3A2BDE16A0007A0E82 /* Base in Resources */,
+				DF881D5F2C2BA6F7004C690C /* Localizable.strings in Resources */,
 				DF4DF59D2C2923240016AB95 /* neutrino.db in Resources */,
 				DF4DF59C2C2923240016AB95 /* channel.db in Resources */,
 				DF4DF59E2C2923240016AB95 /* reg_filter_headers.bin in Resources */,
@@ -1810,10 +1817,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		DF881D5E2C2BA6F7004C690C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF881D5D2C2BA6F7004C690C /* en */,
+				DF881D612C2BA7EC004C690C /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DFD52F382BDE16A0007A0E82 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DFD52F392BDE16A0007A0E82 /* Base */,
+				DF881D602C2BA7EC004C690C /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1826,6 +1843,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1887,6 +1905,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

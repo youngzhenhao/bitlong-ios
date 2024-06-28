@@ -16,7 +16,7 @@ class BLCollectionBTCAddresVC: BLBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "BTC地址选择"
+        self.title = NSLocalized(key: "collectionAddressListNavTitle")
         
         self.initUI()
     }
@@ -54,7 +54,7 @@ class BLCollectionBTCAddresVC: BLBaseVC {
     override func loadData() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
@@ -79,7 +79,7 @@ class BLCollectionBTCAddresVC: BLBaseVC {
     
     lazy var addAddressBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("添加地址", for: .normal)
+        bt.setTitle(NSLocalized(key: "collectionAddressListAdd"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_BOLD(s: 16*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)

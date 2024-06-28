@@ -129,7 +129,7 @@ class BLCollectionInvoiceQRView: BLBaseView {
     
     lazy var copyBt : UIButton = {
         var bt = UIButton.init()
-        bt.setTitle("复制地址", for: .normal)
+        bt.setTitle(NSLocalized(key: "walletDetailsCopyAddress"), for: .normal)
         bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
         bt.titleLabel?.font = FONT_NORMAL(s: 16*Float(SCALE))
         bt.backgroundColor = UIColorHex(hex: 0x2A82E4, a: 1.0)

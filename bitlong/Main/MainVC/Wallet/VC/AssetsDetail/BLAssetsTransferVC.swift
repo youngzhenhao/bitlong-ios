@@ -19,7 +19,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "转账"
+        self.title = NSLocalized(key: "transferNavTitle")
         
         self.initUI()
         self.loadData()
@@ -129,7 +129,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
         if section == 3{
             let view : UIView = UIView.init()
             let bt = UIButton.init()
-            bt.setTitle("确认转账", for: .normal)
+            bt.setTitle(NSLocalized(key: "transferConfirm"), for: .normal)
             bt.setTitleColor(UIColorHex(hex: 0xFFFFFF, a: 1.0), for: .normal)
             bt.titleLabel?.font = FONT_NORMAL(s: 18*Float(SCALE))
             bt.backgroundColor = UIColorHex(hex: 0x665AF0, a: 1.0)
@@ -165,7 +165,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
     func scanAcation() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
@@ -173,7 +173,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
         vc.callBack = { [weak self] codeStr in
             self?.getDecodeAddr(codeStr: codeStr)
         }
-        self.setNavigationBar(isHidden: true)
+        self.pushBaseVC(vc: vc, animated: true)
     }
 
     func getDecodeAddr(codeStr : String){
@@ -213,7 +213,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
                 
                 self.tableView.reloadData()
             }else{
-                BLTools.showTost(tip: "地址不存在！", superView: (self.view)!)
+                BLTools.showTost(tip: NSLocalized(key: "transferAddressError"), superView: (self.view)!)
             }
         }
     }
@@ -222,7 +222,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
     @objc func transferConfirmAcation(){
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
-            BLTools.showTost(tip: "LND正在同步中...", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
             return
         }
         
@@ -230,7 +230,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
         let feeRate : Int64 = 0
         
         if addressStr == nil || addressStr!.count <= 0{
-            BLTools.showTost(tip: "请填写收款地址！", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "transferAddressNil"), superView: self.view)
             return
         }
         
@@ -239,7 +239,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
         }
         
         if amount <= 0{
-            BLTools.showTost(tip: "请填写转账金额！", superView: self.view)
+            BLTools.showTost(tip: NSLocalized(key: "transferAmountNil"), superView: self.view)
             return
         }
         
@@ -248,7 +248,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
             let status = BLTools.getResaultStatus(jsonStr: sendCoins as String)
             if status == APISECCUSS{
                 self.back()
-                BLTools.showTost(tip: "转账成功！", superView: appDelegate.window)
+                BLTools.showTost(tip: NSLocalized(key: "transferSeccuse"), superView: appDelegate.window)
             }else{
                 BLTools.showTost(tip: status, superView: self.view)
             }
@@ -258,7 +258,7 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
             let status : String = ApiSendAssets(addrs.mj_JSONString(), feeRate)
             if status == APISECCUSS{
                 self.back()
-                BLTools.showTost(tip: "转账成功！", superView: appDelegate.window)
+                BLTools.showTost(tip: NSLocalized(key: "transferSeccuse"), superView: appDelegate.window)
             }else{
                 BLTools.showTost(tip: status, superView: self.view)
             }
@@ -268,12 +268,12 @@ class BLAssetsTransferVC: BLBaseVC,TransferDelegate {
                 if let payment = respObj["payment"]{
                     if payment is String{
                         if payment as! String == "success"{
-                            BLTools.showTost(tip: "转账成功！", superView: (self?.view)!)
+                            BLTools.showTost(tip: NSLocalized(key: "transferSeccuse"), superView: (self?.view)!)
                         }
                     }
                 }
             } failed: { [weak self] error in
-                BLTools.showTost(tip: "转账失败！", superView: (self?.view)!)
+                BLTools.showTost(tip: NSLocalized(key: "transferFailed"), superView: (self?.view)!)
             }
         }
     }

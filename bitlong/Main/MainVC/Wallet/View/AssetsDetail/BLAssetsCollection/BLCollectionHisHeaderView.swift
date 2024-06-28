@@ -48,7 +48,7 @@ class BLCollectionHisHeaderView: BLBaseView {
     
     lazy var amountLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "金额"
+        lbl.text = NSLocalized(key: "collectionInvoiceAmount")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .left
@@ -58,7 +58,7 @@ class BLCollectionHisHeaderView: BLBaseView {
     
     lazy var statusLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "状态"
+        lbl.text = NSLocalized(key: "collectionInvoiceStatus")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .center
@@ -68,7 +68,7 @@ class BLCollectionHisHeaderView: BLBaseView {
     
     lazy var timeLbl : UILabel = {
         var lbl = UILabel.init()
-        lbl.text = "时间"
+        lbl.text = NSLocalized(key: "collectionInvoiceDate")
         lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
         lbl.font = FONT_BOLD(s: 14*Float(SCALE))
         lbl.textAlignment = .right
