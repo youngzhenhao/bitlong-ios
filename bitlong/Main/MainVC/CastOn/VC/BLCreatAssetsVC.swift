@@ -375,7 +375,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
             ApiFinalizeBatch(0)
         
             self.saveLocalDatas()
-//            let listAssetsStr : String = ApiListAssets(false, false, false)
+//            let listAssetsStr : String = ApiListAssetsAll()
         }else{
             self.getFeeQueryRate()
             
@@ -466,7 +466,7 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         }
        
         
-        let param : NSDictionary = ["image_data":meta.image_Data as Any,
+        let param : NSDictionary = ["image_data":meta.imageData as Any,
                                     "name":assetsName,
                                     "asset_type":assetsTypeIndex,
                                     "amount":assetsNum,

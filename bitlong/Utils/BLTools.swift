@@ -601,7 +601,7 @@ open class BLTools: NSObject {
     static func setAssetIconMeta(assetId : String, isImageData : Bool) -> Data?{
         let meta : ApiMeta = ApiMeta.init(nil)!
         if isImageData{
-            meta.image_Data = assetId
+            meta.imageData = assetId
         }else{
             meta.fetchAssetMeta(false, data: assetId)
         }

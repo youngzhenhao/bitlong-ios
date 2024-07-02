@@ -235,7 +235,7 @@
 		DFF612772BFF32D70041E4B7 /* ErrorRespModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF6126C2BFF32D70041E4B7 /* ErrorRespModel.m */; };
 		DFF612782BFF32D70041E4B7 /* NSBundle+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF6126E2BFF32D70041E4B7 /* NSBundle+Category.m */; };
 		DFF612792BFF32D70041E4B7 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF612722BFF32D70041E4B7 /* NetworkManager.m */; };
-		DFFAE9152C33A5B8007D3DFA /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFAE9142C33A5B7007D3DFA /* Api.xcframework */; };
+		DFFAE9172C33A92F007D3DFA /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFAE9162C33A92F007D3DFA /* Api.xcframework */; };
 		DFFFEAD92BFC2EA800058F98 /* BLTranscationChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEAD82BFC2EA800058F98 /* BLTranscationChartsView.swift */; };
 		DFFFEADB2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEADA2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift */; };
 		DFFFEADD2BFC398100058F98 /* BLTranscationDetailMarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEADC2BFC398100058F98 /* BLTranscationDetailMarketCell.swift */; };
@@ -548,7 +548,7 @@
 		DFF6126F2BFF32D70041E4B7 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		DFF612712BFF32D70041E4B7 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		DFF612722BFF32D70041E4B7 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
-		DFFAE9142C33A5B7007D3DFA /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
+		DFFAE9162C33A92F007D3DFA /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DFFFEAD82BFC2EA800058F98 /* BLTranscationChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationChartsView.swift; sourceTree = "<group>"; };
 		DFFFEADA2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationDetailMarketVC.swift; sourceTree = "<group>"; };
 		DFFFEADC2BFC398100058F98 /* BLTranscationDetailMarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationDetailMarketCell.swift; sourceTree = "<group>"; };
@@ -591,7 +591,7 @@
 				DFAC34A72BEF0583008CB9C7 /* libc++abi.tbd in Frameworks */,
 				DFAC34A42BEF0563008CB9C7 /* CoreMotion.framework in Frameworks */,
 				DFAC34A22BEF055A008CB9C7 /* libswiftCoreGraphics.tbd in Frameworks */,
-				DFFAE9152C33A5B8007D3DFA /* Api.xcframework in Frameworks */,
+				DFFAE9172C33A92F007D3DFA /* Api.xcframework in Frameworks */,
 				DFAC34A02BEF0545008CB9C7 /* MobileCoreServices.framework in Frameworks */,
 				DFD52F782BDE2591007A0E82 /* libarchive.tbd in Frameworks */,
 				B3D91A745F023F5DC9E08C3A /* Pods_bitlong.framework in Frameworks */,
@@ -1343,7 +1343,7 @@
 		DFD52F5F2BDE173B007A0E82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DFFAE9142C33A5B7007D3DFA /* Api.xcframework */,
+				DFFAE9162C33A92F007D3DFA /* Api.xcframework */,
 				DFAC34D82BEF0747008CB9C7 /* Foundation.framework */,
 				DFAC34D62BEF0735008CB9C7 /* UIKit.framework */,
 				DFAC34D52BEF071E008CB9C7 /* libbz2.tbd */,
