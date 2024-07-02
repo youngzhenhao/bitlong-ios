@@ -27,7 +27,8 @@ class BLAssetsListVC: BLBaseVC {
         self.view.addSubview(self.tableView)
         self.tableView.mj_header = self.gifHeader
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.left().right().bottom().mas_equalTo()(0)
+            make?.top.left().right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         self.tableView.register(BLCoinAssetsCell.self, forCellReuseIdentifier: BLCoinAssetsCellId)
     }
@@ -116,7 +117,7 @@ class BLAssetsListVC: BLBaseVC {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45*SCALE
+        return 50*SCALE
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

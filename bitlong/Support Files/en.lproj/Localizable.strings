@@ -95,7 +95,7 @@
 "walletTotalAssets"              = "totalAssets";
 "walletAssetsCompany"            = "sats";
 "walletDetails"                  = "details";
-"walletNotice"                   = "this is an announcement";
+"walletNotice"                   = "no announcement information";
 "walletItemOne"                  = "Assets";
 "walletItemTwo"                  = "NFT";
 "walletItemThree"                = "Channel";

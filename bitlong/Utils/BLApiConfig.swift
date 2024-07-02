@@ -58,6 +58,9 @@ let ApiBtcBalanceSet                          = "btc_balance/set"
 let ApiBtcBalanceGet                          = "btc_balance/get"
 
 
-
+//查询公告
+let ApiGetNotice                              = "http://192.168.110.14:7040/notice"
+//轮播图
+let ApiGetBanner                              = "http://192.168.110.14:7040/banner"
 
 

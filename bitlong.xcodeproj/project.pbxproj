@@ -17,13 +17,14 @@
 		DF0B92052C1944B8001330A1 /* BLCastOnHisHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92042C1944B8001330A1 /* BLCastOnHisHeaderView.swift */; };
 		DF0B92072C1946D3001330A1 /* BLCastOnHisCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92062C1946D3001330A1 /* BLCastOnHisCell.swift */; };
 		DF0B92092C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */; };
+		DF2FBB4A2C2E9EC400CB42F5 /* BLNoticeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FBB492C2E9EC400CB42F5 /* BLNoticeListCell.swift */; };
+		DF2FBB4C2C2EA74D00CB42F5 /* BLNoticeContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FBB4B2C2EA74D00CB42F5 /* BLNoticeContentVC.swift */; };
 		DF444D522C085228003B0418 /* BLAssetsDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */; };
 		DF4DF59C2C2923240016AB95 /* channel.db in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF5982C29231F0016AB95 /* channel.db */; };
 		DF4DF59D2C2923240016AB95 /* neutrino.db in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF5992C2923210016AB95 /* neutrino.db */; };
 		DF4DF59E2C2923240016AB95 /* reg_filter_headers.bin in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF59A2C2923220016AB95 /* reg_filter_headers.bin */; };
 		DF4DF59F2C2923240016AB95 /* block_headers.bin in Resources */ = {isa = PBXBuildFile; fileRef = DF4DF59B2C2923240016AB95 /* block_headers.bin */; };
 		DF4DF5A22C2943B40016AB95 /* BLZipManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */; };
-		DF4DF5A42C295B590016AB95 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4DF5A32C295B590016AB95 /* Api.xcframework */; };
 		DF4DF5A72C2AAA9C0016AB95 /* BLUniverseAddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A62C2AAA9C0016AB95 /* BLUniverseAddressListView.swift */; };
 		DF4DF5A92C2AAC070016AB95 /* BLUniverseAddressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5A82C2AAC070016AB95 /* BLUniverseAddressListCell.swift */; };
 		DF4DF5AD2C2AC9810016AB95 /* BLShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4DF5AC2C2AC9810016AB95 /* BLShareView.swift */; };
@@ -31,6 +32,14 @@
 		DF66A7272C20121A00ED2BEA /* BLChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */; };
 		DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */; };
 		DF66A72B2C2036A600ED2BEA /* BLWalletInfoAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */; };
+		DF66FAA12C32383A009052B9 /* BLBannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAA02C32383A009052B9 /* BLBannerModel.swift */; };
+		DF66FAA42C323D3F009052B9 /* UIImageView+GifView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAA32C323D3F009052B9 /* UIImageView+GifView.m */; };
+		DF66FAA62C32520D009052B9 /* BLBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAA52C32520D009052B9 /* BLBannerView.swift */; };
+		DF66FAAB2C32555A009052B9 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAA82C32555A009052B9 /* XRCarouselView.m */; };
+		DF66FAAF2C327ECF009052B9 /* BLPersionalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAAE2C327ECF009052B9 /* BLPersionalInfoVC.swift */; };
+		DF66FAB22C328325009052B9 /* BLPersionalInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAB12C328325009052B9 /* BLPersionalInfoCell.swift */; };
+		DF66FAB42C328F64009052B9 /* BLHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAB32C328F64009052B9 /* BLHeaderView.swift */; };
+		DF66FAB62C328F71009052B9 /* BLBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66FAB52C328F71009052B9 /* BLBottomView.swift */; };
 		DF78CA7A2C097AEF007ACC47 /* BLAssetsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA792C097AEF007ACC47 /* BLAssetsCollectionView.swift */; };
 		DF78CA7D2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA7C2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift */; };
 		DF78CA7F2C09CA79007ACC47 /* BLCollectionHisListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA7E2C09CA79007ACC47 /* BLCollectionHisListCell.swift */; };
@@ -38,6 +47,11 @@
 		DF78CA832C09CD42007ACC47 /* BLCollectionHisHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA822C09CD42007ACC47 /* BLCollectionHisHeaderView.swift */; };
 		DF78CA852C09D93E007ACC47 /* BLCollectionHisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA842C09D93E007ACC47 /* BLCollectionHisModel.swift */; };
 		DF78CA872C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CA862C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift */; };
+		DF7EB8382C2E8A7200D0773C /* BLNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB8372C2E8A7200D0773C /* BLNoticeModel.swift */; };
+		DF7EB8402C2E90EA00D0773C /* LMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB83B2C2E90E900D0773C /* LMJVerticalScrollText.m */; };
+		DF7EB8412C2E90EA00D0773C /* UILabel+ForLMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB83C2C2E90E900D0773C /* UILabel+ForLMJVerticalScrollText.m */; };
+		DF7EB8422C2E90EA00D0773C /* UIView+ForLMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB83E2C2E90EA00D0773C /* UIView+ForLMJVerticalScrollText.m */; };
+		DF7EB8452C2E996300D0773C /* BLNoticeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EB8442C2E996300D0773C /* BLNoticeListVC.swift */; };
 		DF881D5F2C2BA6F7004C690C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DF881D5E2C2BA6F7004C690C /* Localizable.strings */; };
 		DF8DA41C2C07124600E121F2 /* BLQRScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DA41B2C07124600E121F2 /* BLQRScanVC.swift */; };
 		DF990E2F2C0DC63F00448134 /* BLImportAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF990E2E2C0DC63F00448134 /* BLImportAssetsVC.swift */; };
@@ -152,13 +166,6 @@
 		DFAC35902BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35652BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomCellModel.m */; };
 		DFAC35912BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35672BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomView.m */; };
 		DFAC35932BF4C873008CB9C7 /* BLCastOnListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35922BF4C873008CB9C7 /* BLCastOnListVC.swift */; };
-		DFAC35A42BF4CE0A008CB9C7 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35952BF4CE0A008CB9C7 /* TAAbstractDotView.m */; };
-		DFAC35A52BF4CE0A008CB9C7 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35972BF4CE0A008CB9C7 /* TAAnimatedDotView.m */; };
-		DFAC35A62BF4CE0A008CB9C7 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35992BF4CE0A008CB9C7 /* TADotView.m */; };
-		DFAC35A72BF4CE0A008CB9C7 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC359B2BF4CE0A008CB9C7 /* TAPageControl.m */; };
-		DFAC35A82BF4CE0A008CB9C7 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC359E2BF4CE0A008CB9C7 /* SDCollectionViewCell.m */; };
-		DFAC35A92BF4CE0A008CB9C7 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35A02BF4CE0A008CB9C7 /* SDCycleScrollView.m */; };
-		DFAC35AA2BF4CE0A008CB9C7 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35A22BF4CE0A008CB9C7 /* UIView+SDExtension.m */; };
 		DFAC35AC2BF5A8B7008CB9C7 /* BLCastOnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC35AB2BF5A8B7008CB9C7 /* BLCastOnListCell.swift */; };
 		DFAD2B142BE8BB730028A4B6 /* MainTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DFAD2B112BE8BB730028A4B6 /* MainTabBarVC.m */; };
 		DFAD2B182BE8D6310028A4B6 /* BLToolVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD2B172BE8D6310028A4B6 /* BLToolVC.swift */; };
@@ -211,7 +218,6 @@
 		DFD52F812BDE3173007A0E82 /* BLEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD52F802BDE3173007A0E82 /* BLEnum.swift */; };
 		DFD52F842BDE3BF0007A0E82 /* BLInitWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD52F832BDE3BF0007A0E82 /* BLInitWalletVC.swift */; };
 		DFD52F882BDE404C007A0E82 /* BLWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD52F872BDE404C007A0E82 /* BLWalletCell.swift */; };
-		DFDB2F9E2C1BE9DA001C8218 /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDB2F9D2C1BE9DA001C8218 /* Api.xcframework */; };
 		DFDB2FA02C1C14E2001C8218 /* BLDestructionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB2F9F2C1C14E2001C8218 /* BLDestructionVC.swift */; };
 		DFDB2FA22C1C1974001C8218 /* BLServerErrorManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB2FA12C1C1974001C8218 /* BLServerErrorManger.swift */; };
 		DFDDBBC12C0ED425002E563E /* BLAssetsCoinDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDDBBC02C0ED425002E563E /* BLAssetsCoinDetailVC.swift */; };
@@ -229,6 +235,7 @@
 		DFF612772BFF32D70041E4B7 /* ErrorRespModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF6126C2BFF32D70041E4B7 /* ErrorRespModel.m */; };
 		DFF612782BFF32D70041E4B7 /* NSBundle+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF6126E2BFF32D70041E4B7 /* NSBundle+Category.m */; };
 		DFF612792BFF32D70041E4B7 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DFF612722BFF32D70041E4B7 /* NetworkManager.m */; };
+		DFFAE9152C33A5B8007D3DFA /* Api.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFAE9142C33A5B7007D3DFA /* Api.xcframework */; };
 		DFFFEAD92BFC2EA800058F98 /* BLTranscationChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEAD82BFC2EA800058F98 /* BLTranscationChartsView.swift */; };
 		DFFFEADB2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEADA2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift */; };
 		DFFFEADD2BFC398100058F98 /* BLTranscationDetailMarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFEADC2BFC398100058F98 /* BLTranscationDetailMarketCell.swift */; };
@@ -253,13 +260,14 @@
 		DF0B92042C1944B8001330A1 /* BLCastOnHisHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCastOnHisHeaderView.swift; sourceTree = "<group>"; };
 		DF0B92062C1946D3001330A1 /* BLCastOnHisCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCastOnHisCell.swift; sourceTree = "<group>"; };
 		DF0B92082C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLaunchQueryOwnMintModel.swift; sourceTree = "<group>"; };
+		DF2FBB492C2E9EC400CB42F5 /* BLNoticeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLNoticeListCell.swift; sourceTree = "<group>"; };
+		DF2FBB4B2C2EA74D00CB42F5 /* BLNoticeContentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLNoticeContentVC.swift; sourceTree = "<group>"; };
 		DF444D512C085228003B0418 /* BLAssetsDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsDetailItemView.swift; sourceTree = "<group>"; };
 		DF4DF5982C29231F0016AB95 /* channel.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = channel.db; sourceTree = "<group>"; };
 		DF4DF5992C2923210016AB95 /* neutrino.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = neutrino.db; sourceTree = "<group>"; };
 		DF4DF59A2C2923220016AB95 /* reg_filter_headers.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = reg_filter_headers.bin; sourceTree = "<group>"; };
 		DF4DF59B2C2923240016AB95 /* block_headers.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = block_headers.bin; sourceTree = "<group>"; };
 		DF4DF5A12C2943B40016AB95 /* BLZipManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLZipManger.swift; sourceTree = "<group>"; };
-		DF4DF5A32C295B590016AB95 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DF4DF5A62C2AAA9C0016AB95 /* BLUniverseAddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUniverseAddressListView.swift; sourceTree = "<group>"; };
 		DF4DF5A82C2AAC070016AB95 /* BLUniverseAddressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLUniverseAddressListCell.swift; sourceTree = "<group>"; };
 		DF4DF5AC2C2AC9810016AB95 /* BLShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLShareView.swift; sourceTree = "<group>"; };
@@ -267,6 +275,16 @@
 		DF66A7262C20121A00ED2BEA /* BLChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordVC.swift; sourceTree = "<group>"; };
 		DF66A7282C2012AF00ED2BEA /* BLChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLChangePasswordCell.swift; sourceTree = "<group>"; };
 		DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLWalletInfoAlterView.swift; sourceTree = "<group>"; };
+		DF66FAA02C32383A009052B9 /* BLBannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBannerModel.swift; sourceTree = "<group>"; };
+		DF66FAA22C323D3F009052B9 /* UIImageView+GifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+GifView.h"; sourceTree = "<group>"; };
+		DF66FAA32C323D3F009052B9 /* UIImageView+GifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+GifView.m"; sourceTree = "<group>"; };
+		DF66FAA52C32520D009052B9 /* BLBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBannerView.swift; sourceTree = "<group>"; };
+		DF66FAA72C32555A009052B9 /* XRCarouselView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRCarouselView.h; sourceTree = "<group>"; };
+		DF66FAA82C32555A009052B9 /* XRCarouselView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRCarouselView.m; sourceTree = "<group>"; };
+		DF66FAAE2C327ECF009052B9 /* BLPersionalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLPersionalInfoVC.swift; sourceTree = "<group>"; };
+		DF66FAB12C328325009052B9 /* BLPersionalInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLPersionalInfoCell.swift; sourceTree = "<group>"; };
+		DF66FAB32C328F64009052B9 /* BLHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLHeaderView.swift; sourceTree = "<group>"; };
+		DF66FAB52C328F71009052B9 /* BLBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBottomView.swift; sourceTree = "<group>"; };
 		DF78CA792C097AEF007ACC47 /* BLAssetsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCollectionView.swift; sourceTree = "<group>"; };
 		DF78CA7C2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionInvoiceCell.swift; sourceTree = "<group>"; };
 		DF78CA7E2C09CA79007ACC47 /* BLCollectionHisListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisListCell.swift; sourceTree = "<group>"; };
@@ -274,6 +292,14 @@
 		DF78CA822C09CD42007ACC47 /* BLCollectionHisHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisHeaderView.swift; sourceTree = "<group>"; };
 		DF78CA842C09D93E007ACC47 /* BLCollectionHisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionHisModel.swift; sourceTree = "<group>"; };
 		DF78CA862C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCollectionInvoiceQRView.swift; sourceTree = "<group>"; };
+		DF7EB8372C2E8A7200D0773C /* BLNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLNoticeModel.swift; sourceTree = "<group>"; };
+		DF7EB83A2C2E90E900D0773C /* UIView+ForLMJVerticalScrollText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ForLMJVerticalScrollText.h"; sourceTree = "<group>"; };
+		DF7EB83B2C2E90E900D0773C /* LMJVerticalScrollText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJVerticalScrollText.m; sourceTree = "<group>"; };
+		DF7EB83C2C2E90E900D0773C /* UILabel+ForLMJVerticalScrollText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ForLMJVerticalScrollText.m"; sourceTree = "<group>"; };
+		DF7EB83D2C2E90E900D0773C /* LMJVerticalScrollText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJVerticalScrollText.h; sourceTree = "<group>"; };
+		DF7EB83E2C2E90EA00D0773C /* UIView+ForLMJVerticalScrollText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ForLMJVerticalScrollText.m"; sourceTree = "<group>"; };
+		DF7EB83F2C2E90EA00D0773C /* UILabel+ForLMJVerticalScrollText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ForLMJVerticalScrollText.h"; sourceTree = "<group>"; };
+		DF7EB8442C2E996300D0773C /* BLNoticeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLNoticeListVC.swift; sourceTree = "<group>"; };
 		DF881D5D2C2BA6F7004C690C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DF881D602C2BA7EC004C690C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		DF881D612C2BA7EC004C690C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -438,20 +464,6 @@
 		DFAC35672BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleVerticalZoomView.m; sourceTree = "<group>"; };
 		DFAC35692BF4C32D008CB9C7 /* JXCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryView.h; sourceTree = "<group>"; };
 		DFAC35922BF4C873008CB9C7 /* BLCastOnListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCastOnListVC.swift; sourceTree = "<group>"; };
-		DFAC35942BF4CE0A008CB9C7 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
-		DFAC35952BF4CE0A008CB9C7 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
-		DFAC35962BF4CE0A008CB9C7 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
-		DFAC35972BF4CE0A008CB9C7 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
-		DFAC35982BF4CE0A008CB9C7 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
-		DFAC35992BF4CE0A008CB9C7 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
-		DFAC359A2BF4CE0A008CB9C7 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
-		DFAC359B2BF4CE0A008CB9C7 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
-		DFAC359D2BF4CE0A008CB9C7 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
-		DFAC359E2BF4CE0A008CB9C7 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
-		DFAC359F2BF4CE0A008CB9C7 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
-		DFAC35A02BF4CE0A008CB9C7 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
-		DFAC35A12BF4CE0A008CB9C7 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
-		DFAC35A22BF4CE0A008CB9C7 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
 		DFAC35AB2BF5A8B7008CB9C7 /* BLCastOnListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLCastOnListCell.swift; sourceTree = "<group>"; };
 		DFAD2B102BE8BB730028A4B6 /* MainTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarVC.h; sourceTree = "<group>"; };
 		DFAD2B112BE8BB730028A4B6 /* MainTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarVC.m; sourceTree = "<group>"; };
@@ -510,7 +522,6 @@
 		DFD52F802BDE3173007A0E82 /* BLEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEnum.swift; sourceTree = "<group>"; };
 		DFD52F832BDE3BF0007A0E82 /* BLInitWalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLInitWalletVC.swift; sourceTree = "<group>"; };
 		DFD52F872BDE404C007A0E82 /* BLWalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLWalletCell.swift; sourceTree = "<group>"; };
-		DFDB2F9D2C1BE9DA001C8218 /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DFDB2F9F2C1C14E2001C8218 /* BLDestructionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLDestructionVC.swift; sourceTree = "<group>"; };
 		DFDB2FA12C1C1974001C8218 /* BLServerErrorManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLServerErrorManger.swift; sourceTree = "<group>"; };
 		DFDDBBC02C0ED425002E563E /* BLAssetsCoinDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLAssetsCoinDetailVC.swift; sourceTree = "<group>"; };
@@ -537,6 +548,7 @@
 		DFF6126F2BFF32D70041E4B7 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		DFF612712BFF32D70041E4B7 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		DFF612722BFF32D70041E4B7 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		DFFAE9142C33A5B7007D3DFA /* Api.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Api.xcframework; sourceTree = "<group>"; };
 		DFFFEAD82BFC2EA800058F98 /* BLTranscationChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationChartsView.swift; sourceTree = "<group>"; };
 		DFFFEADA2BFC33B000058F98 /* BLTranscationDetailMarketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationDetailMarketVC.swift; sourceTree = "<group>"; };
 		DFFFEADC2BFC398100058F98 /* BLTranscationDetailMarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTranscationDetailMarketCell.swift; sourceTree = "<group>"; };
@@ -552,7 +564,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF4DF5A42C295B590016AB95 /* Api.xcframework in Frameworks */,
 				DFAC34D92BEF0747008CB9C7 /* Foundation.framework in Frameworks */,
 				DFAC34D72BEF0736008CB9C7 /* UIKit.framework in Frameworks */,
 				DFAC34A92BEF05A2008CB9C7 /* libbz2.1.0.tbd in Frameworks */,
@@ -580,7 +591,7 @@
 				DFAC34A72BEF0583008CB9C7 /* libc++abi.tbd in Frameworks */,
 				DFAC34A42BEF0563008CB9C7 /* CoreMotion.framework in Frameworks */,
 				DFAC34A22BEF055A008CB9C7 /* libswiftCoreGraphics.tbd in Frameworks */,
-				DFDB2F9E2C1BE9DA001C8218 /* Api.xcframework in Frameworks */,
+				DFFAE9152C33A5B8007D3DFA /* Api.xcframework in Frameworks */,
 				DFAC34A02BEF0545008CB9C7 /* MobileCoreServices.framework in Frameworks */,
 				DFD52F782BDE2591007A0E82 /* libarchive.tbd in Frameworks */,
 				B3D91A745F023F5DC9E08C3A /* Pods_bitlong.framework in Frameworks */,
@@ -597,6 +608,14 @@
 				3CE6C9120FD670B9845AD5E2 /* Pods-bitlong.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF2FBB482C2E9EAA00CB42F5 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				DF2FBB492C2E9EC400CB42F5 /* BLNoticeListCell.swift */,
+			);
+			path = Notice;
 			sourceTree = "<group>";
 		};
 		DF4DF5A02C2943940016AB95 /* ZipKit */ = {
@@ -623,6 +642,39 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		DF66FA9F2C32381C009052B9 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				DF66FAA02C32383A009052B9 /* BLBannerModel.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		DF66FAAA2C32555A009052B9 /* XRCarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				DF66FAA72C32555A009052B9 /* XRCarouselView.h */,
+				DF66FAA82C32555A009052B9 /* XRCarouselView.m */,
+			);
+			path = XRCarouselView;
+			sourceTree = "<group>";
+		};
+		DF66FAAD2C327E8B009052B9 /* PersionalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DF66FAAE2C327ECF009052B9 /* BLPersionalInfoVC.swift */,
+			);
+			path = PersionalInfo;
+			sourceTree = "<group>";
+		};
+		DF66FAB02C32830A009052B9 /* PersionalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DF66FAB12C328325009052B9 /* BLPersionalInfoCell.swift */,
+			);
+			path = PersionalInfo;
+			sourceTree = "<group>";
+		};
 		DF78CA7B2C099CF2007ACC47 /* BLAssetsCollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +686,36 @@
 				DF78CA862C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift */,
 			);
 			path = BLAssetsCollection;
+			sourceTree = "<group>";
+		};
+		DF7EB8362C2E8A3B00D0773C /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EB8372C2E8A7200D0773C /* BLNoticeModel.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		DF7EB8392C2E90D800D0773C /* LMJVerticalScrollText */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EB83D2C2E90E900D0773C /* LMJVerticalScrollText.h */,
+				DF7EB83B2C2E90E900D0773C /* LMJVerticalScrollText.m */,
+				DF7EB83F2C2E90EA00D0773C /* UILabel+ForLMJVerticalScrollText.h */,
+				DF7EB83C2C2E90E900D0773C /* UILabel+ForLMJVerticalScrollText.m */,
+				DF7EB83A2C2E90E900D0773C /* UIView+ForLMJVerticalScrollText.h */,
+				DF7EB83E2C2E90EA00D0773C /* UIView+ForLMJVerticalScrollText.m */,
+			);
+			path = LMJVerticalScrollText;
+			sourceTree = "<group>";
+		};
+		DF7EB8432C2E994C00D0773C /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				DF7EB8442C2E996300D0773C /* BLNoticeListVC.swift */,
+				DF2FBB4B2C2EA74D00CB42F5 /* BLNoticeContentVC.swift */,
+			);
+			path = Notice;
 			sourceTree = "<group>";
 		};
 		DF8DA41A2C07121000E121F2 /* QR */ = {
@@ -706,9 +788,12 @@
 			isa = PBXGroup;
 			children = (
 				DFAC346F2BEB4A71008CB9C7 /* BLWalletHeaderView.swift */,
+				DF66FAA52C32520D009052B9 /* BLBannerView.swift */,
 				DF66A72A2C2036A600ED2BEA /* BLWalletInfoAlterView.swift */,
 				DFAC34732BEB60B2008CB9C7 /* BLSegmentView.swift */,
 				DFAC34752BEB6D28008CB9C7 /* BLCoinAssetsCell.swift */,
+				DF66FAB02C32830A009052B9 /* PersionalInfo */,
+				DF2FBB482C2E9EAA00CB42F5 /* Notice */,
 				DFAC34DE2BEF59AC008CB9C7 /* InitWallet */,
 				DFB0FC3C2BE0813E00B68F8C /* GenSeed */,
 				DFAC34DF2BEF59BB008CB9C7 /* WalletDetail */,
@@ -725,6 +810,8 @@
 				DFCD64C52C104EB900ECA514 /* BLAssetsListVC.swift */,
 				DFCD64C72C104ECB00ECA514 /* BLNFTListVC.swift */,
 				DFCD64C92C104EDC00ECA514 /* BLChannelListVC.swift */,
+				DF66FAAD2C327E8B009052B9 /* PersionalInfo */,
+				DF7EB8432C2E994C00D0773C /* Notice */,
 				DF990E2D2C0DC61700448134 /* ImportAssets */,
 				DFAC34DA2BEF0E08008CB9C7 /* InitWallet */,
 				DFAC34DB2BEF0E1B008CB9C7 /* WalletDetail */,
@@ -759,6 +846,8 @@
 				DFAC347A2BEC699A008CB9C7 /* BLAssetsModel.swift */,
 				DFAC34862BECBF71008CB9C7 /* BLWalletBalanceModel.swift */,
 				DFAC34F72BF2FE3E008CB9C7 /* AssetsDetail */,
+				DF7EB8362C2E8A3B00D0773C /* Notice */,
+				DF66FA9F2C32381C009052B9 /* Banner */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -850,6 +939,8 @@
 			children = (
 				DFD52F872BDE404C007A0E82 /* BLWalletCell.swift */,
 				DFB0FC2D2BDF477B00B68F8C /* BLCreatWalletCell.swift */,
+				DF66FAB32C328F64009052B9 /* BLHeaderView.swift */,
+				DF66FAB52C328F71009052B9 /* BLBottomView.swift */,
 			);
 			path = InitWallet;
 			sourceTree = "<group>";
@@ -1149,35 +1240,6 @@
 			path = JXCategoryView;
 			sourceTree = "<group>";
 		};
-		DFAC359C2BF4CE0A008CB9C7 /* PageControl */ = {
-			isa = PBXGroup;
-			children = (
-				DFAC35942BF4CE0A008CB9C7 /* TAAbstractDotView.h */,
-				DFAC35952BF4CE0A008CB9C7 /* TAAbstractDotView.m */,
-				DFAC35962BF4CE0A008CB9C7 /* TAAnimatedDotView.h */,
-				DFAC35972BF4CE0A008CB9C7 /* TAAnimatedDotView.m */,
-				DFAC35982BF4CE0A008CB9C7 /* TADotView.h */,
-				DFAC35992BF4CE0A008CB9C7 /* TADotView.m */,
-				DFAC359A2BF4CE0A008CB9C7 /* TAPageControl.h */,
-				DFAC359B2BF4CE0A008CB9C7 /* TAPageControl.m */,
-			);
-			path = PageControl;
-			sourceTree = "<group>";
-		};
-		DFAC35A32BF4CE0A008CB9C7 /* SDCycleScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				DFAC359C2BF4CE0A008CB9C7 /* PageControl */,
-				DFAC359D2BF4CE0A008CB9C7 /* SDCollectionViewCell.h */,
-				DFAC359E2BF4CE0A008CB9C7 /* SDCollectionViewCell.m */,
-				DFAC359F2BF4CE0A008CB9C7 /* SDCycleScrollView.h */,
-				DFAC35A02BF4CE0A008CB9C7 /* SDCycleScrollView.m */,
-				DFAC35A12BF4CE0A008CB9C7 /* UIView+SDExtension.h */,
-				DFAC35A22BF4CE0A008CB9C7 /* UIView+SDExtension.m */,
-			);
-			path = SDCycleScrollView;
-			sourceTree = "<group>";
-		};
 		DFB0FC312BDF8BB300B68F8C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1232,6 +1294,8 @@
 		DFCFF8E92C0482F600FC248D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DF66FAA22C323D3F009052B9 /* UIImageView+GifView.h */,
+				DF66FAA32C323D3F009052B9 /* UIImageView+GifView.m */,
 				DFCFF8EA2C04835700FC248D /* BLUIViewExtension.swift */,
 			);
 			path = Extension;
@@ -1279,7 +1343,7 @@
 		DFD52F5F2BDE173B007A0E82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DF4DF5A32C295B590016AB95 /* Api.xcframework */,
+				DFFAE9142C33A5B7007D3DFA /* Api.xcframework */,
 				DFAC34D82BEF0747008CB9C7 /* Foundation.framework */,
 				DFAC34D62BEF0735008CB9C7 /* UIKit.framework */,
 				DFAC34D52BEF071E008CB9C7 /* libbz2.tbd */,
@@ -1315,7 +1379,6 @@
 				DFD52F772BDE2591007A0E82 /* libarchive.tbd */,
 				DFD52F602BDE173B007A0E82 /* libresolv.9.tbd */,
 				CB5759DD560047C543193480 /* Pods_bitlong.framework */,
-				DFDB2F9D2C1BE9DA001C8218 /* Api.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1408,7 +1471,8 @@
 				DFCFF8E92C0482F600FC248D /* Extension */,
 				DFF612732BFF32D70041E4B7 /* DSJNetWork */,
 				DFAC356A2BF4C32D008CB9C7 /* JXCategoryView */,
-				DFAC35A32BF4CE0A008CB9C7 /* SDCycleScrollView */,
+				DF7EB8392C2E90D800D0773C /* LMJVerticalScrollText */,
+				DF66FAAA2C32555A009052B9 /* XRCarouselView */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1634,7 +1698,6 @@
 				DFAC34FB2BF33255008CB9C7 /* BLAssetsTransferVC.swift in Sources */,
 				DF0B92052C1944B8001330A1 /* BLCastOnHisHeaderView.swift in Sources */,
 				DF66A7292C2012AF00ED2BEA /* BLChangePasswordCell.swift in Sources */,
-				DFAC35A62BF4CE0A008CB9C7 /* TADotView.m in Sources */,
 				DFCFF8EB2C04835700FC248D /* BLUIViewExtension.swift in Sources */,
 				DFCD64CA2C104EDC00ECA514 /* BLChannelListVC.swift in Sources */,
 				DFAC35032BF35843008CB9C7 /* BLCollectionView.swift in Sources */,
@@ -1662,18 +1725,21 @@
 				DFAC357D2BF4C32D008CB9C7 /* JXCategoryIndicatorComponentView.m in Sources */,
 				DFAC34EF2BF1F813008CB9C7 /* BLNostrVC.swift in Sources */,
 				DFAC35802BF4C32D008CB9C7 /* JXCategoryIndicatorLineView.m in Sources */,
+				DF66FAB42C328F64009052B9 /* BLHeaderView.swift in Sources */,
 				DFAC35732BF4C32D008CB9C7 /* JXCategoryViewAnimator.m in Sources */,
 				DF78CA872C0B00DC007ACC47 /* BLCollectionInvoiceQRView.swift in Sources */,
 				DFAC35762BF4C32D008CB9C7 /* JXCategoryDotCellModel.m in Sources */,
 				DFBDC08F2C0D6CA100F6DEE1 /* BLBatchTransferSelectCell.swift in Sources */,
 				DFA887CA2BE08F5500758A91 /* BLGenSeedListCell.swift in Sources */,
+				DF66FAA62C32520D009052B9 /* BLBannerView.swift in Sources */,
 				DFCD64BF2C10167700ECA514 /* BLAssetsSendHisHeaderView.swift in Sources */,
+				DF7EB8452C2E996300D0773C /* BLNoticeListVC.swift in Sources */,
 				DF990E2F2C0DC63F00448134 /* BLImportAssetsVC.swift in Sources */,
 				DFAC358B2BF4C32D008CB9C7 /* JXCategoryTitleView.m in Sources */,
+				DF7EB8412C2E90EA00D0773C /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				DFAC356D2BF4C32D008CB9C7 /* JXCategoryBaseView.m in Sources */,
 				DFAC34DD2BEF0E4F008CB9C7 /* BLWalletDetailVC.swift in Sources */,
 				DFFFEAD92BFC2EA800058F98 /* BLTranscationChartsView.swift in Sources */,
-				DFAC35A82BF4CE0A008CB9C7 /* SDCollectionViewCell.m in Sources */,
 				DFFFEAE62BFC821E00058F98 /* BLTranscationListHeaderView.swift in Sources */,
 				DFBDC0872C0D511F00F6DEE1 /* BLToolItemsView.swift in Sources */,
 				DF0B92092C194A5F001330A1 /* BLLaunchQueryOwnMintModel.swift in Sources */,
@@ -1686,12 +1752,12 @@
 				DFAD2B1E2BE9D5CA0028A4B6 /* BLCreatAssetsCell.swift in Sources */,
 				DFAC35842BF4C32D008CB9C7 /* JXCategoryIndicatorCellModel.m in Sources */,
 				DFF612742BFF32D70041E4B7 /* AbstractLogger.m in Sources */,
-				DFAC35A92BF4CE0A008CB9C7 /* SDCycleScrollView.m in Sources */,
 				DFAC358C2BF4C32D008CB9C7 /* JXCategoryTitleImageCell.m in Sources */,
 				DFAC35722BF4C32D008CB9C7 /* JXCategoryListContainerView.m in Sources */,
 				DFFFEADF2BFC50EB00058F98 /* BLTranscationDetailListVC.swift in Sources */,
 				DFCFF8FB2C05CE6200FC248D /* BLAddAddressModel.swift in Sources */,
 				DFCD38BA2C21926F0070CC44 /* BLIDOListVC.swift in Sources */,
+				DF66FAB62C328F71009052B9 /* BLBottomView.swift in Sources */,
 				DFAC34702BEB4A71008CB9C7 /* BLWalletHeaderView.swift in Sources */,
 				DFCFF8F72C05B1AC00FC248D /* BLAddAddressHeaderView.swift in Sources */,
 				DFB0FC332BDF8BC600B68F8C /* BLBaseView.swift in Sources */,
@@ -1699,6 +1765,7 @@
 				DFCD38BD2C22CC4A0070CC44 /* BLIDOReleaseVC.swift in Sources */,
 				DFAC35072BF49443008CB9C7 /* BLCollectionBTCAddresCell.swift in Sources */,
 				DFFFEAE42BFC7B4C00058F98 /* BLTranscationDetailMyOrderVC.swift in Sources */,
+				DF7EB8382C2E8A7200D0773C /* BLNoticeModel.swift in Sources */,
 				DFAC34EB2BF1F2BC008CB9C7 /* BLTransactionVC.swift in Sources */,
 				DFF612762BFF32D70041E4B7 /* SystemLogger.m in Sources */,
 				DFAC35792BF4C32D008CB9C7 /* JXCategoryImageCellModel.m in Sources */,
@@ -1707,6 +1774,8 @@
 				DFA887CF2BE0A0C900758A91 /* BLGenSeedItemCollectionCell.swift in Sources */,
 				DFAC35742BF4C32D008CB9C7 /* UIColor+JXAdd.m in Sources */,
 				DFD52F2C2BDE169E007A0E82 /* BLAppDelegate.m in Sources */,
+				DF2FBB4A2C2E9EC400CB42F5 /* BLNoticeListCell.swift in Sources */,
+				DF66FAA12C32383A009052B9 /* BLBannerModel.swift in Sources */,
 				DF990E322C0DC7FB00448134 /* BLImportAssetsCell.swift in Sources */,
 				DFD52F3D2BDE16A0007A0E82 /* main.m in Sources */,
 				DFCFF8F52C05ADBF00FC248D /* BLCollectionAddAddressVC.swift in Sources */,
@@ -1719,9 +1788,13 @@
 				DF0B91FD2C17E21C001330A1 /* BLLaunchQueryIssuedModel.swift in Sources */,
 				DF0B92032C19418B001330A1 /* BLCastOnHisVC.swift in Sources */,
 				DFA887C82BE0878200758A91 /* BLBaseTableViewCell.swift in Sources */,
+				DF66FAA42C323D3F009052B9 /* UIImageView+GifView.m in Sources */,
+				DF66FAAB2C32555A009052B9 /* XRCarouselView.m in Sources */,
 				DFAC35852BF4C32D008CB9C7 /* JXCategoryIndicatorView.m in Sources */,
 				DFA4F3F22BFB4DB40094D2AE /* BLTransactionTimeItemView.swift in Sources */,
 				DF0B91FF2C17F529001330A1 /* BLCreatAssetsRateModel.swift in Sources */,
+				DF2FBB4C2C2EA74D00CB42F5 /* BLNoticeContentVC.swift in Sources */,
+				DF66FAB22C328325009052B9 /* BLPersionalInfoCell.swift in Sources */,
 				DF78CA812C09CC6C007ACC47 /* BLCollectionHisListView.swift in Sources */,
 				DFCFF8EE2C05710A00FC248D /* BLWalletViewModel.swift in Sources */,
 				DFD52F812BDE3173007A0E82 /* BLEnum.swift in Sources */,
@@ -1730,6 +1803,7 @@
 				DFB0FC3B2BE080BD00B68F8C /* BLGenSeedNoticeCell.swift in Sources */,
 				DFDDBBC32C0EE768002E563E /* BLAssetsCoinDetailModel.swift in Sources */,
 				DFCD38B42C21718B0070CC44 /* BLDestructionNumCell.swift in Sources */,
+				DF7EB8422C2E90EA00D0773C /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				DF78CA7D2C099D3E007ACC47 /* BLCollectionInvoiceCell.swift in Sources */,
 				DFB0FC2E2BDF477B00B68F8C /* BLCreatWalletCell.swift in Sources */,
 				DFCD64BD2C10153200ECA514 /* BLAssetsSendHisCell.swift in Sources */,
@@ -1752,14 +1826,11 @@
 				DFAC35832BF4C32D008CB9C7 /* JXCategoryIndicatorCell.m in Sources */,
 				DFCD64BB2C1014D600ECA514 /* BLAssetsSendHisVC.swift in Sources */,
 				DFD52F842BDE3BF0007A0E82 /* BLInitWalletVC.swift in Sources */,
-				DFAC35A42BF4CE0A008CB9C7 /* TAAbstractDotView.m in Sources */,
 				DFAC357F2BF4C32D008CB9C7 /* JXCategoryIndicatorImageView.m in Sources */,
 				DFAC35822BF4C32D008CB9C7 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				DFAC35AC2BF5A8B7008CB9C7 /* BLCastOnListCell.swift in Sources */,
 				DFD52F762BDE20CA007A0E82 /* BLTools.swift in Sources */,
 				DFAC34722BEB4E27008CB9C7 /* BLExtension.swift in Sources */,
-				DFAC35A72BF4CE0A008CB9C7 /* TAPageControl.m in Sources */,
-				DFAC35A52BF4CE0A008CB9C7 /* TAAnimatedDotView.m in Sources */,
 				DF4DF5A92C2AAC070016AB95 /* BLUniverseAddressListCell.swift in Sources */,
 				DFAC357A2BF4C32D008CB9C7 /* JXCategoryImageView.m in Sources */,
 				DFAC35772BF4C32D008CB9C7 /* JXCategoryDotView.m in Sources */,
@@ -1782,7 +1853,6 @@
 				DFAC34FF2BF337DB008CB9C7 /* BLTransferCell.swift in Sources */,
 				DF78CA7F2C09CA79007ACC47 /* BLCollectionHisListCell.swift in Sources */,
 				DFAC34E32BF1B31F008CB9C7 /* BLAssetsDetailVC.swift in Sources */,
-				DFAC35AA2BF4CE0A008CB9C7 /* UIView+SDExtension.m in Sources */,
 				DFAC35782BF4C32D008CB9C7 /* JXCategoryImageCell.m in Sources */,
 				DFB0FC2C2BDF352F00B68F8C /* BLCreatWalletVC.swift in Sources */,
 				DFD52F6B2BDE1B28007A0E82 /* BLBaseVC.swift in Sources */,
@@ -1801,7 +1871,9 @@
 				DFAC35862BF4C32D008CB9C7 /* JXCategoryNumberCell.m in Sources */,
 				DFAC358F2BF4C32D008CB9C7 /* JXCategoryTitleVerticalZoomCell.m in Sources */,
 				DFFFEAE22BFC7B3900058F98 /* BLTranscationDetailPoolVC.swift in Sources */,
+				DF7EB8402C2E90EA00D0773C /* LMJVerticalScrollText.m in Sources */,
 				DFDDBBC12C0ED425002E563E /* BLAssetsCoinDetailVC.swift in Sources */,
+				DF66FAAF2C327ECF009052B9 /* BLPersionalInfoVC.swift in Sources */,
 				DFA4F3DD2BF731750094D2AE /* BLCreatCastOnVC.swift in Sources */,
 				DFB0FC352BDF8F3600B68F8C /* BLCommonCollectionView.swift in Sources */,
 				DFF612772BFF32D70041E4B7 /* ErrorRespModel.m in Sources */,
@@ -1963,11 +2035,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7RP6G3T577;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "bitlong/Support Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "以便顺利使用功能服务";
@@ -2018,11 +2092,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7RP6G3T577;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "bitlong/Support Files/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "以便顺利使用功能服务";

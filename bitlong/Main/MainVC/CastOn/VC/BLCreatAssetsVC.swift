@@ -36,7 +36,8 @@ class BLCreatAssetsVC: BLBaseVC,CreatAssetsDelegate,UIImagePickerControllerDeleg
         self.view.addSubview(self.tableView)
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(TopHeight)
-            make?.left.right().bottom().mas_equalTo()(0)
+            make?.left.right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         self.tableView.register(BLCreatAssetLogoCell.self, forCellReuseIdentifier: BLCreatAssetLogoCellId)

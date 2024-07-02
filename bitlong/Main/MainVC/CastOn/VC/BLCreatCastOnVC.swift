@@ -31,7 +31,8 @@ class BLCreatCastOnVC: BLBaseVC,CreatCastOnDelegate,ConfirmDelegate {
         self.view.addSubview(self.tableView)
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(TopHeight+15*SCALE)
-            make?.left.right().bottom().mas_equalTo()(0)
+            make?.left.right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         self.tableView.register(BLCreatCastOnCell.self, forCellReuseIdentifier: BLCreatCastOnCellId)

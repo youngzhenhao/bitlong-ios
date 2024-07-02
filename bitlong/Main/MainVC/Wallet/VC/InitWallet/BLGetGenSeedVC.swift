@@ -50,7 +50,7 @@ class BLGetGenSeedVC: BLBaseVC {
                 make?.top.mas_equalTo()(TopHeight)
             }
             make?.left.right().mas_equalTo()(0)
-            make?.bottom.mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         self.tableView.register(BLGenSeedNoticeCell.self, forCellReuseIdentifier: GenSeedNoticeCellId)

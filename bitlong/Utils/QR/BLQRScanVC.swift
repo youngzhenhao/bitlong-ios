@@ -134,10 +134,11 @@ class BLQRScanVC: BLBaseVC,AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func found(code: String) {
+        self.back()
+        
         // 在此处处理扫描到的 QRCode
         if callBack != nil{
             callBack!(code)
         }
-        self.back()
     }
 }

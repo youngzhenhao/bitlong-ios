@@ -13,6 +13,7 @@ class BLLuanchVC: BLBaseVC {
         super.viewDidLoad()
 
         self.initUI()
+        self.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,12 +24,26 @@ class BLLuanchVC: BLBaseVC {
     
     func initUI(){
         self.view.addSubview(imgView)
-        self.view.addSubview(titleLbl)
+        self.view.addSubview(activityView)
+        self.view.addSubview(loadingLabel)
+        self.view.addSubview(adTitleLbl)
         imgView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().right().bottom().mas_equalTo()(self.view)
         }
         
-        titleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
+        activityView.mas_makeConstraints { (make : MASConstraintMaker?) in
+            make?.centerY.mas_equalTo()(loadingLabel.mas_centerY)
+            make?.right.mas_equalTo()(loadingLabel.mas_left)?.offset()(-5*SCALE)
+            make?.width.height().mas_equalTo()(30*SCALE)
+        }
+        
+        loadingLabel.mas_makeConstraints { (make : MASConstraintMaker?) in
+            make?.centerX.mas_equalTo()(15*SCALE)
+            make?.size.mas_equalTo()(loadingLabel.frame.size)
+            make?.top.mas_equalTo()(2*(SCREEN_HEIGHT/3.0))
+        }
+        
+        adTitleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(10*SCALE)
             make?.right.mas_equalTo()(-10*SCALE)
             make?.height.mas_equalTo()(15*SCALE)
@@ -43,7 +58,28 @@ class BLLuanchVC: BLBaseVC {
         return img
     }()
     
-    lazy var titleLbl : UILabel = {
+    // 使用方式
+    lazy var activityView : UIActivityIndicatorView = {
+        var view = UIActivityIndicatorView.init()
+        // 停止后，隐藏菊花
+        view.hidesWhenStopped = false
+        view.color = UIColorHex(hex: 0x1EFA76, a: 1.0)
+        view.style = .medium
+        
+        return view
+    }()
+    
+    lazy var loadingLabel : UILabel = {
+        var lbl = UILabel.init()
+        lbl.text = "钱包正在初始化中，请稍后"
+        lbl.textColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
+        lbl.font = FONT_NORMAL(s: 12*Float(SCALE))
+        lbl.sizeToFit()
+        
+        return lbl
+    }()
+    
+    lazy var adTitleLbl : UILabel = {
         var lbl = UILabel.init()
         lbl.text = "Taproot Assets" + " " + NSLocalized(key: "walletTypeAdTitle")
         lbl.textColor = UIColorHex(hex: 0xFFFFFF, a: 1.0)
@@ -57,4 +93,12 @@ class BLLuanchVC: BLBaseVC {
         
         return lbl
     }()
+    
+    @objc func startAnimating(){
+        activityView.startAnimating()
+    }
+    
+    @objc func stopAnimating(){
+        activityView.stopAnimating()
+    }
 }

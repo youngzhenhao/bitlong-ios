@@ -15,29 +15,32 @@ class BLInitWalletVC: BLBaseVC {
         self.initUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.setNavigationBar(isHidden: true)
     }
 
     func initUI(){
         self.view.backgroundColor = .white
-        self.view.addSubview(titleLbl)
+        self.tableView.isScrollEnabled = false
+        self.view.addSubview(headerView)
         self.view.addSubview(self.tableView)
-        titleLbl.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(60)
-            make?.left.right().mas_equalTo()(0)
-            make?.height.mas_equalTo()(27)
+        self.view.addSubview(bottomView)
+        headerView.mas_makeConstraints { (make : MASConstraintMaker?) in
+            make?.top.left().right().mas_equalTo()(0)
+            make?.height.mas_greaterThanOrEqualTo()(headerView.frame.height)
         }
         
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(titleLbl.mas_bottom)?.offset()(24)
-            make?.left.mas_equalTo()(24)
-            make?.right.mas_equalTo()(-24)
-            make?.bottom.mas_equalTo()(-96)
+            make?.top.mas_equalTo()(headerView.mas_bottom)?.offset()(24*SCALE)
+            make?.left.right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-58*SCALE)
+        }
+        
+        bottomView.mas_makeConstraints { (make : MASConstraintMaker?) in
+            make?.left.right().bottom().mas_equalTo()(0)
+            make?.height.mas_equalTo()(58*SCALE)
         }
         
         self.tableView.register(BLWalletCell.self, forCellReuseIdentifier: WalletCellId)
@@ -52,15 +55,11 @@ class BLInitWalletVC: BLBaseVC {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 68*SCALE
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 0.01
-        }
-        
-        return 10
+        return 0.01
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -68,7 +67,7 @@ class BLInitWalletVC: BLBaseVC {
             return 0.01
         }
         
-        return 10
+        return 10*SCALE
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,22 +83,25 @@ class BLInitWalletVC: BLBaseVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{//创建钱包
-            self.navigationController?.pushViewController(BLCreatWalletVC.init(), animated: true)
+            self.pushBaseVCStr(vcStr: "BLCreatWalletVC", animated: true)
         }else if indexPath.section == 1{//导入钱包
         }else if indexPath.section == 2{//硬件钱包
         }else if indexPath.section == 3{//观察钱包
         }
     }
     
-    lazy var titleLbl : UILabel = {
-        var lbl = UILabel.init()
-        lbl.text = NSLocalized(key: "creatWalletAdTitle")
-        lbl.font = UIFont.systemFont(ofSize: 20)
-        lbl.textColor = .black
-        lbl.textAlignment = .center
-        
-        return lbl
+    lazy var headerView : BLHeaderView = {
+        var view = BLHeaderView.init()
+
+        return view
     }()
+    
+    lazy var bottomView : BLBottomView = {
+        var view = BLBottomView.init()
+
+        return view
+    }()
+
     
     lazy var list : NSArray = {
         var arr = NSArray.init(objects: 

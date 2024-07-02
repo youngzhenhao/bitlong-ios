@@ -38,7 +38,7 @@ class BLAssetsSendHisVC: BLBaseVC {
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(hisHeaderView.mas_bottom)
             make?.left.right().mas_equalTo()(0)
-            make?.bottom.mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         self.tableView.register(BLAssetsSendHisCell.self, forCellReuseIdentifier: BLAssetsSendHisCellId)
     }

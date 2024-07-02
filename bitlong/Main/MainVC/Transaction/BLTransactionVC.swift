@@ -22,21 +22,27 @@ class BLTransactionVC: BLBaseVC,JXCategoryListCollectionContainerViewDataSource,
         self.setNavigationBar(isHidden: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.loadData()
+    }
+    
     func initUI(){
-        self.view.addSubview(transactionHeaderView)
+        self.view.addSubview(headerView)
         self.view.addSubview(itemView)
         self.view.addSubview(categoryView)
         self.view.addSubview(listHeaderView)
         self.view.addSubview(listContainerView)
         
-        transactionHeaderView.mas_makeConstraints { (make : MASConstraintMaker?) in
+        headerView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().right().mas_equalTo()(0)
-            make?.height.mas_equalTo()(transactionHeaderView.mas_height)
+            make?.height.mas_equalTo()(headerView.mas_height)
         }
-        BLTools.topColorChange(view: transactionHeaderView, colorBegin: UIColorHex(hex: 0xD3CFFC, a: 1.0), colorEnd: UIColorHex(hex: 0xD3CFFC, a: 0.0), direction: 0)
+        BLTools.topColorChange(view: headerView, colorBegin: UIColorHex(hex: 0xD3CFFC, a: 1.0), colorEnd: UIColorHex(hex: 0xD3CFFC, a: 0.0), direction: 0)
         
         itemView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.mas_equalTo()(transactionHeaderView.mas_bottom)
+            make?.top.mas_equalTo()(headerView.mas_bottom)
             make?.left.right().mas_equalTo()(0)
             make?.height.mas_equalTo()(50*SCALE)
         }
@@ -62,7 +68,16 @@ class BLTransactionVC: BLBaseVC,JXCategoryListCollectionContainerViewDataSource,
         self.configCategoryViewImgTitles()
     }
     
-    lazy var transactionHeaderView : BLTransactionHeaderView = {
+    override func loadData() {
+        //banner
+        BLWalletViewModel.getBanner { [weak self] respObj, imageArr in
+            self?.headerView.assignBanner(imageArr: imageArr)
+        } failed: { error in
+            
+        }
+    }
+    
+    lazy var headerView : BLTransactionHeaderView = {
         var view = BLTransactionHeaderView.init()
         
         return view

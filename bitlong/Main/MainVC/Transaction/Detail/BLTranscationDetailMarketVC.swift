@@ -22,7 +22,8 @@ class BLTranscationDetailMarketVC: BLBaseVC,DetailMarketDelegate {
     func initUI(){
         self.view.addSubview(tableView)
         tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.left().right().bottom().mas_equalTo()(0)
+            make?.top.left().right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         tableView.register(BLTranscationDetailMarketCell.self, forCellReuseIdentifier: BLTranscationDetailMarketCellId)

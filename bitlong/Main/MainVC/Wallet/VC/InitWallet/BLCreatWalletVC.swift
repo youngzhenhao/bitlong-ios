@@ -14,13 +14,21 @@ class BLCreatWalletVC: BLBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalized(key: "creatWalletNavTitle")
+        self.setNavTitleColor(titleColor: UIColorHex(hex: 0x383838, a: 1.0), bgColor: UIColorHex(hex: 0xFAFAFA, a: 1.0), bgImage: nil)
         
         self.initUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.setNavigationBar(isHidden: false)
     }
     
     func initUI(){
         self.view.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
         self.tableView.backgroundColor = self.view.backgroundColor
+        self.tableView.isScrollEnabled = false
         self.view.addSubview(self.tableView)
         self.view.addSubview(creatBt)
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in

@@ -12,7 +12,6 @@
 #import "BLBaseModel.h"
 #import "JXCategoryView.h"
 #import "JXCategoryListCollectionContainerView.h"
-#import <SDWebImage/SDWebImage.h>
 #import "BLKeychain.h"
 #import "NetworkManager.h"
 #import <WKWebViewJavascriptBridge/WKWebViewJavascriptBridge.h>
@@ -21,3 +20,5 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <SSZipArchive/SSZipArchive.h>
 #import "WXApi.h"
+#import "LMJVerticalScrollText.h"
+#import "XRCarouselView.h"

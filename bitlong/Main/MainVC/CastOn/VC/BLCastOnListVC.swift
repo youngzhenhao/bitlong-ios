@@ -29,7 +29,8 @@ class BLCastOnListVC: BLBaseVC {
         
         tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.mas_equalTo()(headerView.mas_bottom)
-            make?.left.right().bottom().mas_equalTo()(0)
+            make?.left.right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         tableView.register(BLCastOnListCell.self, forCellReuseIdentifier: BLCastOnListCellID)

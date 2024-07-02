@@ -19,7 +19,8 @@ class BLTranscationDetailListVC: BLBaseVC {
         self.view.addSubview(tableView)
         tableView.tableHeaderView = tableHeaderView
         tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.left().right().bottom().mas_equalTo()(0)
+            make?.top.left().right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         
         tableHeaderView.mas_makeConstraints { (make : MASConstraintMaker?) in

@@ -21,8 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    NSDictionary * walletInfo = [[NSUserDefaults standardUserDefaults] valueForKey:@"WalletInfo"];
-//    if(!walletInfo){
-//        [self initWalletVC
+//    if(walletInfo){
+//        [self initWalletVC];
+//        return YES;
 //    }
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 10*SCALE;
@@ -43,12 +44,16 @@
 }
 
 -(void)initWalletVC{
+    [self.luanchVC stopAnimating];
+    
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:self.walletVC];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 }
 
 -(void)initMainTabBarVC{
+    [self.luanchVC stopAnimating];
+    
     self.window.rootViewController = self.tabBarVC;
     [self.window makeKeyAndVisible];
 }
@@ -82,7 +87,6 @@
         }else if ([litStatus isEqualToString:@"UNLOCKED"]){//钱包已成功解锁，但 RPC 服务器尚未就绪
             static dispatch_once_t onceToken;
             dispatch_once(&onceToken, ^{
-                [BLTools showTostWithTip:@"钱包解锁成功" superView:[BLTools getCurrentVC].view];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf initMainTabBarVC];
                 });
@@ -93,8 +97,6 @@
             [timer invalidate];
             timer = nil;
         }else if ([litStatus isEqualToString:@"NO_START_LND"]){//LND服务挂了，请重新启动服务
-//            [timer invalidate];
-//            timer = nil;
         }
     }];
 }
@@ -131,15 +133,9 @@
 -(void)unlockWallet{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [BLTools showTostWithTip:@"开始解锁钱包" superView:[BLTools getCurrentVC].view];
-        });
         NSDictionary * walletInfo = [userDefaults objectForKey:@"WalletInfo"];
         NSString * passWorld = walletInfo[@"WalletPassWorld"];
         if(!ApiUnlockWallet(passWorld)){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [BLTools showTostWithTip:@"解锁钱包失败" superView:[BLTools getCurrentVC].view];
-            });
         }
     });
 }

@@ -55,7 +55,7 @@ class BLTransactionHeaderView: BLBaseView,UITextFieldDelegate {
             make?.top.mas_equalTo()(searchView.mas_bottom)?.offset()(16*SCALE)
             make?.left.mas_equalTo()(16*SCALE)
             make?.right.mas_equalTo()(-16*SCALE)
-            make?.height.mas_equalTo()((SCREEN_WIDTH - 32*SCALE)/2.7)
+            make?.height.mas_equalTo()((SCREEN_WIDTH - 32*SCALE)/2.727)
         }
         
         BLTools.topColorChange(view: bgView, colorBegin: UIColorHex(hex: 0xD3CFFC, a: 1.0), colorEnd: UIColorHex(hex: 0xD3CFFC, a: 0.0), direction: 0)
@@ -97,11 +97,12 @@ class BLTransactionHeaderView: BLBaseView,UITextFieldDelegate {
         return field
     }()
     
-    lazy var bannerView : UIImageView = {
-        var imgView = UIImageView.init(image: imagePic(name: "ic_home_banner"))
-        imgView.contentMode = .scaleAspectFill
+    lazy var bannerView : BLBannerView = {
+        var view = BLBannerView.init()
+        view.layer.cornerRadius = 6*SCALE
+        view.clipsToBounds = true
         
-        return imgView
+        return view
     }()
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -110,5 +111,9 @@ class BLTransactionHeaderView: BLBaseView,UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func assignBanner(imageArr : NSArray?){
+        bannerView.assignBanner(imageArr: imageArr)
     }
 }

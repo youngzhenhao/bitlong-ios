@@ -41,6 +41,24 @@ class BLBaseView: UIView {
         return table
     }
     
+    func getBannerView() -> XRCarouselView{
+        let view = XRCarouselView.init()
+        //设置占位图片,须在设置图片数组之前设置,不设置则为默认占位图
+        view.placeholderImage = imagePic(name: "placeholder")
+        //设置每张图片的停留时间，默认值为5s，最少为1s
+        view.time = 5;
+        //设置分页控件的图片,不设置则为系统默认
+    //    [_carouselView setPageImage:[UIImage imageNamed:@"other"] andCurrentPageImage:[UIImage imageNamed:@"current"]];
+        //设置分页控件的位置，默认为PositionBottomCenter
+        view.pagePosition = .PositionBottomRight
+        //设置滑动时gif停止播放
+        view.gifPlayMode = .pauseWhenScroll
+        //设置滑动样式
+        view.changeMode = .default
+        
+        return view
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)  
    }

@@ -30,7 +30,7 @@ class BLCoinAssetsCell: BLBaseTableViewCell {
         
         coinImgView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(30*SCALE)
-            make?.width.height().mas_equalTo()(20*SCALE)
+            make?.width.height().mas_equalTo()(36*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
         
@@ -66,7 +66,7 @@ class BLCoinAssetsCell: BLBaseTableViewCell {
     lazy var coinImgView : UIImageView = {
         var imgView = UIImageView.init()
         imgView.contentMode = .scaleAspectFit
-        imgView.layer.cornerRadius = 10*SCALE
+        imgView.layer.cornerRadius = 18*SCALE
         imgView.clipsToBounds = true
         
         return imgView

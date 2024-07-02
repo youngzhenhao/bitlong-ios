@@ -14,8 +14,7 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
         super.viewDidLoad()
         
         self.initUI()
-        BLLoginManger.shared.login { token in
-        }
+        self.getCommonInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +27,7 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.loadData()
+        self.getWalletInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,7 +67,25 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
         channelListVC.view.frame = CGRect(x: SCREEN_WIDTH*2, y: 0, width: SCREEN_WIDTH, height: scrollerView.frame.height)
     }
     
-    override func loadData() {
+    func getCommonInfo(){
+        BLLoginManger.shared.login { token in
+        }
+        
+        //公告
+        BLWalletViewModel.getNotice { [weak self] model, testsArr in
+            self?.headerView.assignNotice(model: model, testsArr: testsArr)
+        } failed: { errorModel in
+            
+        }
+        //banner
+        BLWalletViewModel.getBanner { [weak self] respObj, imageArr in
+            self?.headerView.assignBanner(imageArr: imageArr)
+        } failed: { error in
+            
+        }
+    }
+    
+    func getWalletInfo(){
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
             BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
@@ -163,7 +180,30 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
     }()
     
     //HeaderDelegate
-    func clickedAcation(sender: UIButton) {
+    func scanClicked() {
+        let vc : BLQRScanVC = BLQRScanVC.init()
+        vc.callBack = { [weak self] codeStr in
+            let transferVC : BLAssetsTransferVC = BLAssetsTransferVC.init()
+            transferVC.getDecodeAddr(codeStr: codeStr)
+            self?.pushBaseVC(vc: transferVC, animated: true)
+        }
+        self.pushBaseVC(vc: vc, animated: true)
+    }
+    
+    func persionalClicked() {
+        self.pushBaseVCStr(vcStr: "BLPersionalInfoVC", animated: true)
+    }
+    
+    func walletInfoAcation() {
+        if walletInfoView.superview == nil{
+            appDelegate.window.addSubview(walletInfoView)
+            walletInfoView.mas_makeConstraints { (make : MASConstraintMaker?) in
+                make?.top.left().right().bottom().mas_equalTo()(0)
+            }
+        }
+    }
+    
+    func walletDetailsClicked() {
         let litstatus : LitStatus = BLTools.getLitStatus()
         if litstatus != .SERVER_ACTIVE{
             BLTools.showTost(tip: NSLocalized(key: "serverStatusSynchronizing"), superView: self.view)
@@ -175,13 +215,9 @@ class BLWalletVC : BLBaseVC,HeaderDelegate,SegmentDelegate {
         self.navigationController?.pushViewController(walletDetailVC, animated: true)
     }
     
-    func walletAcation() {
-        if walletInfoView.superview == nil{
-            appDelegate.window.addSubview(walletInfoView)
-            walletInfoView.mas_makeConstraints { (make : MASConstraintMaker?) in
-                make?.top.left().right().bottom().mas_equalTo()(0)
-            }
-        }
+    func noticeClicked(list: [BLNoticeListItem]?) {
+        BLRout.setValue(obj: list as Any, key: "list")
+        self.pushBaseVCStr(vcStr: "BLNoticeListVC", animated: true)
     }
     
     //SegmentDelegate

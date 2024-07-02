@@ -9,7 +9,7 @@ import UIKit
 
 class BLWalletViewModel: BLBaseModel {
     var P2TRModel : BLAddAddressModel?,P2WKHModel : BLAddAddressModel?,NP2WKHModel : BLAddAddressModel?
-     
+    
     func getAddress(){
         var objStr = ApiGetNewAddress_P2TR()
         var obj = self.getJSONObject(obj: objStr)
@@ -57,7 +57,7 @@ class BLWalletViewModel: BLBaseModel {
         if obj != nil && obj is NSDictionary{
             let data : NSDictionary = obj as! NSDictionary
             let walletBalanceModel : BLWalletBalanceModel = BLWalletBalanceModel.mj_object(withKeyValues: data)
-           
+            
             return walletBalanceModel
         }
         
@@ -69,7 +69,7 @@ class BLWalletViewModel: BLBaseModel {
         let assetsListStr : String = ApiListBalances()
         let jsonDic : NSDictionary = assetsListStr.mj_JSONObject() as! NSDictionary
         let assetsModel : BLAssetsModel = BLAssetsModel.mj_object(withKeyValues: jsonDic)
-       
+        
         return assetsModel
     }
     
@@ -79,7 +79,7 @@ class BLWalletViewModel: BLBaseModel {
         if obj != nil && obj is NSDictionary{
             let data : NSDictionary = obj as! NSDictionary
             let decodeModel : BLAssetAddressDecodeModel = BLAssetAddressDecodeModel.mj_object(withKeyValues: data)
-           
+            
             return decodeModel
         }
         
@@ -92,7 +92,7 @@ class BLWalletViewModel: BLBaseModel {
         if obj != nil && obj is NSDictionary{
             let data : NSDictionary = obj as! NSDictionary
             let decodeModel : BLLightingAddressDecodeModel = BLLightingAddressDecodeModel.mj_object(withKeyValues: data)
-           
+            
             return decodeModel
         }
         
@@ -102,7 +102,7 @@ class BLWalletViewModel: BLBaseModel {
     static func getQueryHisAddrs(jsonStr : String) -> BLCollectionHisModel{
         let jsobObj : NSDictionary = jsonStr.mj_JSONObject() as! NSDictionary
         let hisModel : BLCollectionHisModel = BLCollectionHisModel.mj_object(withKeyValues: jsobObj)
-       
+        
         return hisModel
     }
     
@@ -112,7 +112,7 @@ class BLWalletViewModel: BLBaseModel {
         if obj != nil && obj is NSDictionary{
             let data : NSDictionary = obj as! NSDictionary
             let model : BLAssetsCoinDetailModel = BLAssetsCoinDetailModel.mj_object(withKeyValues: data)
-           
+            
             return model
         }
         
@@ -199,10 +199,76 @@ class BLWalletViewModel: BLBaseModel {
     
     //查询BTC余额
     static func getBtcBalance(successed: @escaping (_ respObj : NSDictionary) -> Void, failed: @escaping (_ error : ErrorRespModel) -> Void){
-        NetworkManager.share().getBufRequestUrlString(ApiBtcBalanceGet, paramerers: nil, requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any])) { respObj in
-            
-        } onFailureBlock: { (error : ErrorRespModel?) in
-            
-        }
+        NetworkManager.share().getRequestUrlString(ApiBtcBalanceGet, paramerers: nil, requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any]), onSuccessBlock: { respObj in
+            successed(respObj as! NSDictionary)
+        }, onFailureBlock: { (error : ErrorRespModel?) in
+            failed(error!)
+        }, requestSerializerType: .httpType)
+    }
+    
+    /*
+     公告
+     category:默认1
+     language:语言
+     */
+    static func getNotice(successed: @escaping (_ respObj : BLNoticeModel?,_ textsArr : NSArray?) -> Void, failed: @escaping (_ error : ErrorRespModel) -> Void){
+        let param : NSDictionary = ["category" : 1,
+                                    "language" : languageCode == .ZH ? "CH" : "EN"]
+        NetworkManager.share().getRequestUrlString(ApiGetNotice, paramerers: (param as! [AnyHashable : Any]), requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any]), onSuccessBlock: { respObj in
+            let dic : NSDictionary = respObj as! NSDictionary
+            let obj = dic["data"]
+            if obj != nil && obj is NSDictionary{
+                let model : BLNoticeModel = BLNoticeModel.mj_object(withKeyValues: obj)
+                if model.list != nil && 0 < model.list!.count{
+                    let arr : NSMutableArray = NSMutableArray.init()
+                    for i in 0..<model.list!.count{
+                        let item : BLNoticeListItem = model.list![i]
+                        if item.title != nil{
+                            arr.add(item.title as Any)
+                        }else{
+                            arr.add(NSLocalized(key: "walletNotice"))
+                        }
+                    }
+                    successed(model,arr)
+                }else{
+                    successed(model,nil)
+                }
+            }else{
+                successed(nil,nil)
+            }
+        }, onFailureBlock: { (error : ErrorRespModel?) in
+            failed(error!)
+        }, requestSerializerType: .httpType)
+    }
+    
+    /*
+     轮播图
+     category:首页1，交易页2
+     */
+    static func getBanner(successed: @escaping (_ respObj : BLBannerModel?,_ imageArr : NSArray?) -> Void, failed: @escaping (_ error : ErrorRespModel) -> Void){
+        let param : NSDictionary = ["category" : 1]
+        NetworkManager.share().getRequestUrlString(ApiGetBanner, paramerers: (param as! [AnyHashable : Any]), requestHeader: (BLLoginManger.shared.getHeader() as! [AnyHashable : Any]), onSuccessBlock: { respObj in
+            let dic : NSDictionary = respObj as! NSDictionary
+            let obj = dic["data"]
+            if obj != nil && obj is NSDictionary{
+                let model : BLBannerModel = BLBannerModel.mj_object(withKeyValues: obj)
+                if model.list != nil && 0 < model.list!.count{
+                    let arr : NSMutableArray = NSMutableArray.init()
+                    for i in 0..<model.list!.count{
+                        let item : BLBannerItem = model.list![i]
+                        if item.image != nil{
+                            arr.add(item.image as Any)
+                        }
+                    }
+                    successed(model,arr)
+                }else{
+                    successed(model,nil)
+                }
+            }else{
+                successed(nil,nil)
+            }
+        }, onFailureBlock: { (error : ErrorRespModel?) in
+            failed(error!)
+        }, requestSerializerType: .httpType)
     }
 }

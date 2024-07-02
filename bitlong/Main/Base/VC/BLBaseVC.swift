@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,JXCategoryListCollectionContentViewDelegate {
+@objcMembers class BLBaseVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,JXCategoryListCollectionContentViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()

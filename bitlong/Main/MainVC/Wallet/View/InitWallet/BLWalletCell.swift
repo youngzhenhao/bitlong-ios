@@ -35,31 +35,47 @@ class BLWalletCell: BLBaseTableViewCell {
     func initUI(){
         self.contentView.backgroundColor = UIColor(red: 250, green: 250, blue: 250, alpha: 1)
         
-        self.contentView.addSubview(titleLbl)
-        self.contentView.addSubview(subTitleLbl)
-        self.contentView.addSubview(nextImg)
+        self.contentView.addSubview(containerView)
+        containerView.addSubview(titleLbl)
+        containerView.addSubview(subTitleLbl)
+        containerView.addSubview(nextImg)
+        
+        containerView.mas_makeConstraints { (make :  MASConstraintMaker?) in
+            make?.top.bottom().mas_equalTo()(0)
+            make?.left.mas_equalTo()(24*SCALE)
+            make?.right.mas_equalTo()(-24*SCALE)
+        }
         
         titleLbl.mas_makeConstraints {(make :  MASConstraintMaker?) in
-            make?.left.mas_equalTo()(23)
-            make?.top.mas_equalTo()(20)
-            make?.height.mas_equalTo()(18)
-            make?.right.mas_equalTo()(-100)
+            make?.left.mas_equalTo()(23*SCALE)
+            make?.top.mas_equalTo()(13*SCALE)
+            make?.height.mas_equalTo()(18*SCALE)
+            make?.right.mas_equalTo()(-100*SCALE)
         }
         
         subTitleLbl.mas_makeConstraints {(make :  MASConstraintMaker?) in
-            make?.left.mas_equalTo()(23)
-            make?.top.mas_equalTo()(titleLbl.mas_bottom)?.offset()(8)
-            make?.height.mas_equalTo()(16)
-            make?.right.mas_equalTo()(-100)
+            make?.left.mas_equalTo()(23*SCALE)
+            make?.top.mas_equalTo()(titleLbl.mas_bottom)?.offset()(8*SCALE)
+            make?.height.mas_equalTo()(16*SCALE)
+            make?.right.mas_equalTo()(-100*SCALE)
         }
         
         nextImg.mas_makeConstraints {(make :  MASConstraintMaker?) in
-            make?.right.mas_equalTo()(-26)
-            make?.width.mas_equalTo()(6)
-            make?.height.mas_equalTo()(12)
+            make?.right.mas_equalTo()(-26*SCALE)
+            make?.width.mas_equalTo()(6*SCALE)
+            make?.height.mas_equalTo()(12*SCALE)
             make?.centerY.mas_equalTo()(0)
         }
     }
+    
+    lazy var containerView : UIView = {
+        var view = UIView.init()
+        view.backgroundColor = UIColorHex(hex: 0xFAFAFA, a: 1.0)
+        view.layer.cornerRadius = 8*SCALE
+        view.clipsToBounds = true
+        
+        return view
+    }()
     
     lazy var titleLbl : UILabel = {
         var lbl = UILabel.init()

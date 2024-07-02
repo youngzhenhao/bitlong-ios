@@ -95,7 +95,7 @@
 "walletTotalAssets"              = "总资产";
 "walletAssetsCompany"            = "sats";
 "walletDetails"                  = "详情";
-"walletNotice"                   = "这是一条公告";
+"walletNotice"                   = "暂无公告信息";
 "walletItemOne"                  = "资产";
 "walletItemTwo"                  = "NFT";
 "walletItemThree"                = "通道";

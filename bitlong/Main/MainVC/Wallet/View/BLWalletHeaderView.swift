@@ -8,13 +8,17 @@
 import UIKit
 
 @objc protocol HeaderDelegate : NSObjectProtocol {
-    func walletAcation()
-    func clickedAcation(sender : UIButton)
+    func walletInfoAcation()
+    func scanClicked()
+    func persionalClicked()
+    func walletDetailsClicked()
+    func noticeClicked(list : [BLNoticeListItem]?)
 }
 
-class BLWalletHeaderView: BLBaseView {
+class BLWalletHeaderView: BLBaseView,LMJVerticalScrollTextDelegate {
     
     @objc weak var delegate : HeaderDelegate?
+    var noticeModel : BLNoticeModel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,9 +32,9 @@ class BLWalletHeaderView: BLBaseView {
     
     func initUI(){
         self.addSubview(bgImgView)
-        self.addSubview(walletImgView)
-        self.addSubview(scanImgView)
-        self.addSubview(personalImgView)
+        self.addSubview(walletBt)
+        self.addSubview(scanBt)
+        self.addSubview(personalBt)
         self.addSubview(walletNamelbl)
         self.addSubview(detailBt)
         self.addSubview(allAssetslbl)
@@ -38,34 +42,34 @@ class BLWalletHeaderView: BLBaseView {
         self.addSubview(noticeContainerView)
         noticeContainerView.addSubview(hornImgView)
         noticeContainerView.addSubview(noticeLinelbl)
-        noticeContainerView.addSubview(noticeTitlelbl)
+        noticeContainerView.addSubview(scrollTextView)
         
         bgImgView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.top.left().right().mas_equalTo()(0)
             make?.height.mas_equalTo()(120*SCALE)
         }
         
-        walletImgView.mas_makeConstraints { (make : MASConstraintMaker?) in
+        walletBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(15*SCALE)
             make?.top.mas_equalTo()(StatusBarHeight+10*SCALE)
             make?.width.height().mas_equalTo()(24*SCALE)
         }
         
-        scanImgView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.right.mas_equalTo()(personalImgView.mas_left)?.offset()(-15*SCALE)
-            make?.top.mas_equalTo()(walletImgView.mas_top)
+        scanBt.mas_makeConstraints { (make : MASConstraintMaker?) in
+            make?.right.mas_equalTo()(personalBt.mas_left)?.offset()(-15*SCALE)
+            make?.top.mas_equalTo()(walletBt.mas_top)
             make?.width.height().mas_equalTo()(24*SCALE)
         }
         
-        personalImgView.mas_makeConstraints { (make : MASConstraintMaker?) in
+        personalBt.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.right.mas_equalTo()(-15*SCALE)
-            make?.top.mas_equalTo()(walletImgView.mas_top)
+            make?.top.mas_equalTo()(walletBt.mas_top)
             make?.width.height().mas_equalTo()(24*SCALE)
         }
         
         walletNamelbl.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(18*SCALE)
-            make?.top.mas_equalTo()(walletImgView.mas_bottom)?.offset()(20*SCALE)
+            make?.top.mas_equalTo()(walletBt.mas_bottom)?.offset()(20*SCALE)
             make?.height.mas_equalTo()(24*SCALE)
             make?.width.mas_equalTo()(SCREEN_WIDTH/2.0)
         }
@@ -88,7 +92,7 @@ class BLWalletHeaderView: BLBaseView {
             make?.left.mas_equalTo()(15*SCALE)
             make?.right.mas_equalTo()(-15*SCALE)
             make?.top.mas_equalTo()(allAssetslbl.mas_bottom)?.offset()(10*SCALE)
-            make?.height.mas_equalTo()((SCREEN_WIDTH-30*SCALE)/2.73)
+            make?.height.mas_equalTo()((SCREEN_WIDTH-30*SCALE)/2.727)
         }
         
         noticeContainerView.mas_makeConstraints { (make : MASConstraintMaker?) in
@@ -111,7 +115,7 @@ class BLWalletHeaderView: BLBaseView {
             make?.width.mas_equalTo()(0.5*SCALE)
         }
         
-        noticeTitlelbl.mas_makeConstraints { (make : MASConstraintMaker?) in
+        scrollTextView.mas_makeConstraints { (make : MASConstraintMaker?) in
             make?.left.mas_equalTo()(60*SCALE)
             make?.right.mas_equalTo()(-16*SCALE)
             make?.centerY.mas_equalTo()(0)
@@ -130,28 +134,28 @@ class BLWalletHeaderView: BLBaseView {
         return imgView
     }()
     
-    lazy var walletImgView : UIImageView = {
-        var imgView = UIImageView.init(image: imagePic(name: "ic_home_wallet"))
-        imgView.contentMode = .scaleAspectFill
-        imgView.isUserInteractionEnabled = true
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(walletAcation))
-        imgView.addGestureRecognizer(tap)
+    lazy var walletBt : UIButton = {
+        var bt = UIButton.init()
+        bt.setImage(imagePic(name: "ic_home_wallet"), for: .normal)
+        bt.addTarget(self, action: #selector(clickedAcation(sender:)), for: .touchUpInside)
         
-        return imgView
+        return bt
     }()
     
-    lazy var scanImgView : UIImageView = {
-        var imgView = UIImageView.init(image: imagePic(name: "ic_home_scan"))
-        imgView.contentMode = .scaleAspectFill
+    lazy var scanBt : UIButton = {
+        var bt = UIButton.init()
+        bt.setImage(imagePic(name: "ic_home_scan"), for: .normal)
+        bt.addTarget(self, action: #selector(clickedAcation(sender:)), for: .touchUpInside)
         
-        return imgView
+        return bt
     }()
     
-    lazy var personalImgView : UIImageView = {
-        var imgView = UIImageView.init(image: imagePic(name: "ic_home_personal"))
-        imgView.contentMode = .scaleAspectFill
+    lazy var personalBt : UIButton = {
+        var bt = UIButton.init()
+        bt.setImage(imagePic(name: "ic_home_personal"), for: .normal)
+        bt.addTarget(self, action: #selector(clickedAcation(sender:)), for: .touchUpInside)
         
-        return imgView
+        return bt
     }()
     
     lazy var walletNamelbl : UILabel = {
@@ -187,11 +191,12 @@ class BLWalletHeaderView: BLBaseView {
         return lbl
     }()
     
-    lazy var bannerView : UIImageView = {
-        var imgView = UIImageView.init(image: imagePic(name: "ic_home_banner"))
-        imgView.contentMode = .scaleAspectFit
+    lazy var bannerView : BLBannerView = {
+        var view = BLBannerView.init()
+        view.layer.cornerRadius = 6*SCALE
+        view.clipsToBounds = true
         
-        return imgView
+        return view
     }()
     
     lazy var noticeContainerView : UIView = {
@@ -217,25 +222,45 @@ class BLWalletHeaderView: BLBaseView {
         return lbl
     }()
     
-    lazy var noticeTitlelbl : UILabel = {
-        var lbl : UILabel = UILabel.init()
-        lbl.text = NSLocalized(key: "walletNotice")
-        lbl.textColor = UIColorHex(hex: 0x383838, a: 1.0)
-        lbl.font = FONT_NORMAL(s: 13*Float(SCALE))
-        lbl.textAlignment = .left
+    lazy var scrollTextView : LMJVerticalScrollText = {
+        var scroll = LMJVerticalScrollText.init()
+        scroll.textStayTime        = 1
+        scroll.scrollAnimationTime = 1
+        scroll.textColor           = MainThemeColor()
+        scroll.textFont            = FONT_BOLD(s: 11)
+        scroll.textAlignment       = .left
+        scroll.touchEnable         = true
+        scroll.delegate = self
         
-        return lbl
+        return scroll
     }()
     
     @objc func clickedAcation(sender : UIButton){
-        if delegate != nil && (delegate?.responds(to: #selector(delegate?.clickedAcation(sender:)))) != nil{
-            delegate?.clickedAcation(sender: sender)
+        if sender == walletBt{
+            if delegate != nil && (delegate?.responds(to: #selector(delegate?.walletInfoAcation))) != nil{
+                delegate?.walletInfoAcation()
+            }
+        }else if sender == scanBt{
+            if delegate != nil && (delegate?.responds(to: #selector(delegate?.scanClicked))) != nil{
+                delegate?.scanClicked()
+            }
+        }else if sender == personalBt{
+            if delegate != nil && (delegate?.responds(to: #selector(delegate?.persionalClicked))) != nil{
+                delegate?.persionalClicked()
+            }
+        }else if sender == detailBt{
+            if delegate != nil && (delegate?.responds(to: #selector(delegate?.walletDetailsClicked))) != nil{
+                delegate?.walletDetailsClicked()
+            }
         }
     }
     
-    @objc func walletAcation(){
-        if delegate != nil && (delegate?.responds(to: #selector(delegate?.walletAcation))) != nil{
-            delegate?.walletAcation()
+    //LMJVerticalScrollTextDelegate
+    func verticalScrollText(_ scrollText: LMJVerticalScrollText!, click index: Int, content: String!) {
+        if noticeModel != nil && noticeModel?.list != nil{
+            if delegate != nil && (delegate?.responds(to: #selector(delegate?.noticeClicked(list:)))) != nil{
+                delegate?.noticeClicked(list: noticeModel?.list)
+            }
         }
     }
     
@@ -254,6 +279,29 @@ class BLWalletHeaderView: BLBaseView {
     func assignWalletInfo(balanceModel : BLWalletBalanceModel){
         if balanceModel.total_balance != nil{
             allAssetslbl.text = String.init(format: "%@:%@ %@",NSLocalized(key: "walletTotalAssets"), balanceModel.total_balance!, NSLocalized(key: "walletAssetsCompany"))
+        }
+    }
+
+    func assignBanner(imageArr : NSArray?){
+        bannerView.assignBanner(imageArr: imageArr)
+        
+        if imageArr != nil && 0 < imageArr!.count{
+            bannerView.mas_updateConstraints { (make : MASConstraintMaker?) in
+                make?.height.mas_equalTo()((SCREEN_WIDTH-30*SCALE)/2.727)
+            }
+        }else{
+            bannerView.mas_updateConstraints { (make : MASConstraintMaker?) in
+                make?.height.mas_equalTo()(0)
+            }
+        }
+    }
+    
+    func assignNotice(model : BLNoticeModel?,testsArr : NSArray?){
+        noticeModel = model
+        if testsArr != nil && 0 < testsArr!.count{
+            scrollTextView.stopToEmpty()
+            scrollTextView.textDataArr = (testsArr as! [Any])
+            scrollTextView.startScrollBottomToTopWithNoSpace()
         }
     }
 }

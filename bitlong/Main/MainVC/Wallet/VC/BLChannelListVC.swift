@@ -22,7 +22,8 @@ class BLChannelListVC: BLBaseVC {
         self.view.addSubview(self.tableView)
         self.tableView.mj_header = self.gifHeader
         self.tableView.mas_makeConstraints { (make : MASConstraintMaker?) in
-            make?.top.left().right().bottom().mas_equalTo()(0)
+            make?.top.left().right().mas_equalTo()(0)
+            make?.bottom.mas_equalTo()(-SafeAreaBottomHeight)
         }
         self.tableView.register(BLCoinAssetsCell.self, forCellReuseIdentifier: BLCoinAssetsCellId)
     }
